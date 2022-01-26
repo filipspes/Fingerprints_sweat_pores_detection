@@ -48,6 +48,7 @@ def connect_event_listeners(mainWindow):
     mainWindow.OneStageDetectorCheckBox.stateChanged.connect(one_stage_detector_checkbox_state_changed)
     mainWindow.TwoStageDetectorCheckBox.stateChanged.connect(two_stage_detector_checkbox_state_changed)
     mainWindow.detectPoresButton.clicked.connect(detect_pores_button_clicked)
+    mainWindow.confidenceSlider.valueChanged.connect(confidence_slider_event)
 
     return mainWindow
 
@@ -96,11 +97,15 @@ def create_pixmap(file_path):
     myWin.loadedImageLabel.resize(800, 800)
     myWin.loadedImageLabel.setScaledContents(True)
 
+def confidence_slider_event():
+    myWin.confidenceValue.setText(str(myWin.confidenceSlider.value()+1))
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     myWin = MyWindow()
     myWin = connect_event_listeners(myWin)
     # myWin.OneStageDetectorComboBox.addItem("Yolov5")
     # myWin.TwoStageDetectorComboBox.addItem("Yolov52")
+    myWin.confidenceSlider.setValue(88)
     myWin.showMaximized()
     sys.exit(app.exec_())
