@@ -1,13 +1,17 @@
 import os
-import re
 import shutil
-import subprocess
-from os import listdir
-from os.path import isfile, join
-import cv2
 from PIL import Image
 from itertools import product
-import main
+import logging as LOG
+
+LOG.basicConfig(
+    level=LOG.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        LOG.FileHandler("logfile.log"),
+        LOG.StreamHandler()
+    ]
+)
 
 class imageProcessing:
 
@@ -21,11 +25,11 @@ class imageProcessing:
         im = Image.open(self.path)
 
         size = im.size[0]*8, im.size[1]*8
-        print("Resizing image...")
+        LOG.info("Resizing image...")
         im_resized = im.resize(size, Image.ANTIALIAS)
-        print("Image resized successfully.")
+        LOG.info("Image resized successfully.")
         im_resized.save(path_to_high_res_image+name_of_high_res_image)
-        print("Resized image saved to" + path_to_high_res_image)
+        LOG.info("Resized image saved to" + path_to_high_res_image)
         img = Image.open(path_to_high_res_image+name_of_high_res_image);
         w, h = img.size
 
@@ -35,8 +39,8 @@ class imageProcessing:
             box = (j, i, j + 512, i + 512)
             out = os.path.join(output_dir, f'{i}_{j}.jpg')
             img.crop(box).save(out)
-            numberOfImages = numberOfImages+1;
-        print("Image splitted successfully into " +str(numberOfImages) + " pictures.")
+            numberOfImages = numberOfImages+1
+        LOG.info("Image splitted successfully into " +str(numberOfImages) + " pictures.")
         return size
 
     def joinImages(self, size):
@@ -44,7 +48,7 @@ class imageProcessing:
         file_names = os.listdir(inputDirectory)
 
         joinedImage = Image.new("RGB", (size[0], size[1]), "white")
-        print("Re-creating image...")
+        LOG.info("Re-creating image...")
         counter = 0
         for name in file_names:
             counter=counter+1
@@ -58,39 +62,25 @@ class imageProcessing:
             if(len(splitted) >= 2):
                 joinedImage.paste(imagePart, (int(splitted[1]), int(splitted[0])))
         joinedImage.save('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
-        print("DONE!")
+        LOG.info("All Done")
 
-    def detectPores(self):
-
-        file_names = sorted(os.listdir(self))
-        self.save_images_path_into_file(file_names)
-        print("Changing current working directory to: /home/filip/Documents/DP/YOLOv5/yolov5/")
-        os.chdir('/home/filip/Documents/DP/YOLOv5/yolov5/')
-        executableFile = "python detect_custom.py "
-        weights = "--weight /home/filip/Documents/DP/YOLOv5/yolov5/runs/train/exp6/weights/best.pt"
-        os.system(executableFile+weights)
-        print("\nPore detection finished.")
-
-    def save_images_path_into_file(file_names):
-        text_file = open("/home/filip/Documents/DP/PoreDetection/images_paths.txt", "w")
-
-        for name in file_names:
-            text_file.write("/home/filip/Documents/DP/PoreDetection/parts_of_image/" + name + "\n")
-        text_file.close()
-
-    def remove_content_of_folder(folder): # OK
-        for filename in os.listdir(folder):
-            file_path = os.path.join(folder, filename)
+    def remove_content_of_folder(self, folder_path): # OK
+        for filename in os.listdir(folder_path):
+            file_path = os.path.join(folder_path, filename)
             try:
                 if os.path.isfile(file_path) or os.path.islink(file_path):
                     os.unlink(file_path)
                 elif os.path.isdir(file_path):
                     shutil.rmtree(file_path)
             except Exception as e:
-                print('Failed to delete %s. Reason: %s' % (file_path, e))
+                LOG.error('Failed to delete %s. Reason: %s' % (file_path, e))
 
-    def remove_content_of_folders(self): #OK
-        imageProcessing.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/parts_of_image/')
-        imageProcessing.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/pores_detected/')
-        imageProcessing.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/high_resolution_image/')
-        imageProcessing.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/')
+    def remove_content_of_folders(self):
+        LOG.info('Deleting content of folder: /parts_of_image/')
+        self.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/parts_of_image/')
+        LOG.info('Deleting content of folder: /pores_detected/')
+        self.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/pores_detected/')
+        LOG.info('Deleting content of folder: /high_resolution_image/')
+        self.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/high_resolution_image/')
+        LOG.info('Deleting content of folder: /final_fingerprint/')
+        self.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/')

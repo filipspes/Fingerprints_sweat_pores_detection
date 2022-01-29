@@ -5,6 +5,17 @@ import os
 import shutil
 import time
 import sys
+import logging as LOG
+
+LOG.basicConfig(
+    level=LOG.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        LOG.FileHandler("logfile.log"),
+        LOG.StreamHandler()
+    ]
+)
+
 
 
 def open_image_button_clicked():
@@ -12,6 +23,7 @@ def open_image_button_clicked():
     fileExplorer = FileExplorer()
     file_path = fileExplorer.openFileNameDialog()
     create_pixmap(file_path)
+    LOG.info("Image successfully opened")
     global RUN_PATH
     RUN_PATH = file_path
 
@@ -23,19 +35,20 @@ def detect_pores_button_clicked(self):
         msg.setText("No detector selected ")
         msg.setWindowTitle("Warning")
         msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        LOG.warning("No detector selected warning MessageBox displayed")
         msg.exec_()
 
 def one_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
-        print("Check box 1 checked")
+        LOG.info("Check box 1 checked")
     else:
-        print("Check box 1 unchecked")
+        LOG.info("Check box 1 unchecked")
 
 def two_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
-        print("Check box 2 checked")
+        LOG.info("Check box 2 checked")
     else:
-        print("Check box 2 unchecked")
+        LOG.info("Check box 2 unchecked")
 
 
 
@@ -75,8 +88,6 @@ class FileExplorer(QWidget):
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "",
                                                   "All Files (*);;Python Files (*.py)", options=options)
-        if fileName:
-            print(fileName)
         return fileName
 
 
@@ -98,18 +109,18 @@ def yolo_detector():
     imgProc = image_processing.imageProcessing(RUN_PATH)
     imgProc.remove_content_of_folders()
     size = imgProc.splitImage()
-    remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/')
+    remove_content_of_folder_runs('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/')
     start_time = time.time()
     yolo.model()
     end_time = time.time()
-    print("Detection took: " + str(end_time-start_time) + ' seconds')
+    LOG.info("Detection took: " + str(end_time-start_time) + ' seconds')
     imgProc.joinImages(size)
     create_pixmap_detected_image('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
 
 def confidence_slider_event():
     myWin.confidenceLabel.setText('Confidence: ' + str(myWin.confidenceSlider.value()+1))
 
-def remove_content_of_folder(folder): # OK
+def remove_content_of_folder_runs(folder): # OK
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
@@ -118,9 +129,10 @@ def remove_content_of_folder(folder): # OK
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
         except Exception as e:
-            print('Failed to delete %s. Reason: %s' % (file_path, e))
+            LOG.error('Failed to delete %s. Reason: %s' % (file_path, e))
 
 if __name__ == '__main__':
+    LOG.info('Application started')
     app = QApplication(sys.argv)
     myWin = MyWindow()
     myWin = connect_event_listeners(myWin)
