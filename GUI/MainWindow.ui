@@ -37,9 +37,9 @@
    <widget class="QCheckBox" name="OneStageDetectorCheckBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>270</y>
-      <width>191</width>
+      <x>780</x>
+      <y>70</y>
+      <width>211</width>
       <height>22</height>
      </rect>
     </property>
@@ -57,8 +57,8 @@
    <widget class="QComboBox" name="OneStageDetectorComboBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>300</y>
+      <x>780</x>
+      <y>90</y>
       <width>181</width>
       <height>32</height>
      </rect>
@@ -67,8 +67,8 @@
    <widget class="QComboBox" name="TwoStageDetectorComboBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>400</y>
+      <x>780</x>
+      <y>170</y>
       <width>181</width>
       <height>32</height>
      </rect>
@@ -77,9 +77,9 @@
    <widget class="QCheckBox" name="TwoStageDetectorCheckBox">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>370</y>
-      <width>181</width>
+      <x>780</x>
+      <y>140</y>
+      <width>191</width>
       <height>22</height>
      </rect>
     </property>
@@ -97,11 +97,18 @@
    <widget class="QLabel" name="loadedImageLabel">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>70</y>
-      <width>401</width>
-      <height>521</height>
+      <x>260</x>
+      <y>60</y>
+      <width>480</width>
+      <height>600</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
@@ -111,6 +118,9 @@
     </property>
     <property name="scaledContents">
      <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
     <property name="wordWrap">
      <bool>false</bool>
@@ -128,8 +138,8 @@
    <widget class="QPushButton" name="detectPoresButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>600</y>
+      <x>800</x>
+      <y>530</y>
       <width>171</width>
       <height>34</height>
      </rect>
@@ -149,7 +159,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>150</y>
+      <y>400</y>
       <width>221</width>
       <height>31</height>
      </rect>
@@ -158,12 +168,12 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="ConfidenceLabel">
+   <widget class="QLabel" name="confidenceLabel">
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>120</y>
-      <width>121</width>
+      <y>370</y>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
@@ -178,13 +188,13 @@
      <string>Confidence:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="confidenceValue">
+   <widget class="QLabel" name="predictedImageLabel">
     <property name="geometry">
      <rect>
-      <x>890</x>
-      <y>120</y>
-      <width>58</width>
-      <height>18</height>
+      <x>1050</x>
+      <y>70</y>
+      <width>480</width>
+      <height>600</height>
      </rect>
     </property>
     <property name="font">
@@ -194,19 +204,6 @@
       <bold>true</bold>
      </font>
     </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="predictedImageLabel">
-    <property name="geometry">
-     <rect>
-      <x>1050</x>
-      <y>70</y>
-      <width>401</width>
-      <height>521</height>
-     </rect>
-    </property>
     <property name="frameShape">
      <enum>QFrame::Box</enum>
     </property>
@@ -215,6 +212,9 @@
     </property>
     <property name="scaledContents">
      <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
     <property name="wordWrap">
      <bool>false</bool>

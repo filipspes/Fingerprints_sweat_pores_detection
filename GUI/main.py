@@ -1,23 +1,10 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QWidget
 from PyQt5.QtGui import QPixmap
-
-import image_processing
 from MainWindow import *
 import os
-import re
 import shutil
-import subprocess
-from os import listdir
-from os.path import isfile, join
-import cv2
-from PIL import Image
-from itertools import product
+import time
+import sys
 
 
 def open_image_button_clicked():
@@ -33,15 +20,10 @@ def detect_pores_button_clicked(self):
     if not myWin.OneStageDetectorCheckBox.isChecked():
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)
-        # setting message for Message Box
         msg.setText("No detector selected ")
-        # setting Message box window title
         msg.setWindowTitle("Warning")
-        # declaring buttons on Message Box
         msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        # start the app
         msg.exec_()
-        # QMessageBox.about("Title", "Message")
 
 def one_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
@@ -96,33 +78,47 @@ class FileExplorer(QWidget):
         if fileName:
             print(fileName)
         return fileName
-    # def saveFileDialog(self):
-    #     options = QFileDialog.Options()
-    #     options |= QFileDialog.DontUseNativeDialog
-    #     fileName, _ = QFileDialog.getSaveFileName(self, "QFileDialog.getSaveFileName()", "",
-    #                                               "All Files (*);;Text Files (*.txt)", options=options)
-    #     if fileName:
-    #         print(fileName)
 
 
 def create_pixmap(file_path):
     pixmap = QPixmap(file_path)
     myWin.loadedImageLabel.setPixmap(pixmap)
-    myWin.loadedImageLabel.resize(400, 520)
+    myWin.loadedImageLabel.resize(460, 620)
     myWin.loadedImageLabel.setScaledContents(True)
+
+def create_pixmap_detected_image(file_path):
+    pixmap = QPixmap(file_path)
+    myWin.predictedImageLabel.setPixmap(pixmap)
+    myWin.predictedImageLabel.resize(460, 620)
+    myWin.predictedImageLabel.setScaledContents(True)
 
 def yolo_detector():
     import yolo_detector as yolo
     import image_processing
-    print("Image processing obj variable: " + RUN_PATH)
     imgProc = image_processing.imageProcessing(RUN_PATH)
     imgProc.remove_content_of_folders()
     size = imgProc.splitImage()
+    remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/')
+    start_time = time.time()
     yolo.model()
+    end_time = time.time()
+    print("Detection took: " + str(end_time-start_time) + ' seconds')
+    imgProc.joinImages(size)
+    create_pixmap_detected_image('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
 
 def confidence_slider_event():
-    myWin.confidenceValue.setText(str(myWin.confidenceSlider.value()+1))
+    myWin.confidenceLabel.setText('Confidence: ' + str(myWin.confidenceSlider.value()+1))
 
+def remove_content_of_folder(folder): # OK
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

@@ -18,9 +18,7 @@ class imageProcessing:
         path_to_high_res_image = '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/high_resolution_image/'
         name_of_high_res_image = "my_image_resized.jpg"
         output_dir = '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/parts_of_image/'
-        print(self.path)
         im = Image.open(self.path)
-        # im = Image.open('/home/filip/Documents/DP/Fingerprints-HR/9.jpg')
 
         size = im.size[0]*8, im.size[1]*8
         print("Resizing image...")
@@ -41,8 +39,8 @@ class imageProcessing:
         print("Image splitted successfully into " +str(numberOfImages) + " pictures.")
         return size
 
-    def joinImages(size, current_working_directory):
-        inputDirectory = current_working_directory+"/pores_detected/"
+    def joinImages(self, size):
+        inputDirectory = '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/'
         file_names = os.listdir(inputDirectory)
 
         joinedImage = Image.new("RGB", (size[0], size[1]), "white")
@@ -59,7 +57,7 @@ class imageProcessing:
             imagePart = Image.open(inputDirectory+name)
             if(len(splitted) >= 2):
                 joinedImage.paste(imagePart, (int(splitted[1]), int(splitted[0])))
-        joinedImage.save(current_working_directory+"/final_fingerprint/pores_predicted_final_image.jpg")
+        joinedImage.save('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
         print("DONE!")
 
     def detectPores(self):
@@ -96,16 +94,3 @@ class imageProcessing:
         imageProcessing.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/pores_detected/')
         imageProcessing.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/high_resolution_image/')
         imageProcessing.remove_content_of_folder('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/')
-
-# if __name__ == '__main__':
-#     current_working_directory = os.getcwd()
-#     # print(current_working_directory)
-#     print("Removing content of folders...")
-#     # remove_content_of_folders('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/parts_of_image/')
-#     # remove_content_of_folders('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/pores_detected/')
-#     # remove_content_of_folders('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/high_resolution_image/')
-#     # remove_content_of_folders('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/')
-#     # inputImagePath = input("Please enter image path: ")
-#     # size = splitImage(current_working_directory, inputImagePath, current_working_directory+"/parts_of_image/", 512)
-#     # detectPores(current_working_directory+"/parts_of_image/")
-#     # joinImages(size, current_working_directory)
