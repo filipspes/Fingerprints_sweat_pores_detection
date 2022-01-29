@@ -6,6 +6,12 @@ import shutil
 import time
 import sys
 import logging as LOG
+import yolo_detector
+import image_processing
+import sys
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QMovie
+from PyQt5.QtCore import Qt
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -16,8 +22,6 @@ LOG.basicConfig(
     ]
 )
 
-
-
 def open_image_button_clicked():
     file_path = None
     fileExplorer = FileExplorer()
@@ -27,8 +31,9 @@ def open_image_button_clicked():
     global RUN_PATH
     RUN_PATH = file_path
 
-def detect_pores_button_clicked(self):
-    yolo_detector()
+def detect_pores_button_clicked():
+    myWin.predictedImageLabel.setText('Image is being processed... ')
+    detector()
     if not myWin.OneStageDetectorCheckBox.isChecked():
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)
@@ -94,33 +99,32 @@ class FileExplorer(QWidget):
 def create_pixmap(file_path):
     pixmap = QPixmap(file_path)
     myWin.loadedImageLabel.setPixmap(pixmap)
-    myWin.loadedImageLabel.resize(460, 620)
+    myWin.loadedImageLabel.resize(480, 600)
     myWin.loadedImageLabel.setScaledContents(True)
 
 def create_pixmap_detected_image(file_path):
     pixmap = QPixmap(file_path)
     myWin.predictedImageLabel.setPixmap(pixmap)
-    myWin.predictedImageLabel.resize(460, 620)
+    myWin.predictedImageLabel.resize(480, 600)
     myWin.predictedImageLabel.setScaledContents(True)
 
-def yolo_detector():
-    import yolo_detector as yolo
-    import image_processing
-    imgProc = image_processing.imageProcessing(RUN_PATH)
-    imgProc.remove_content_of_folders()
-    size = imgProc.splitImage()
+def detector():
+    image_proc = image_processing.imageProcessing(RUN_PATH)
+    image_proc.remove_content_of_folders()
+    size = image_proc.splitImage()
     remove_content_of_folder_runs('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/')
     start_time = time.time()
-    yolo.model()
+    yolo_detector.detect()
     end_time = time.time()
     LOG.info("Detection took: " + str(end_time-start_time) + ' seconds')
-    imgProc.joinImages(size)
-    create_pixmap_detected_image('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
+    image_proc.joinImages(size)
+    create_pixmap_detected_image('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint'
+                                 '/pores_predicted_final_image.jpg')
 
 def confidence_slider_event():
     myWin.confidenceLabel.setText('Confidence: ' + str(myWin.confidenceSlider.value()+1))
 
-def remove_content_of_folder_runs(folder): # OK
+def remove_content_of_folder_runs(folder):
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
