@@ -6,7 +6,18 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QWidget
 from PyQt5.QtGui import QPixmap
+
+import image_processing
 from MainWindow import *
+import os
+import re
+import shutil
+import subprocess
+from os import listdir
+from os.path import isfile, join
+import cv2
+from PIL import Image
+from itertools import product
 
 
 def open_image_button_clicked():
@@ -14,8 +25,11 @@ def open_image_button_clicked():
     fileExplorer = FileExplorer()
     file_path = fileExplorer.openFileNameDialog()
     create_pixmap(file_path)
+    global RUN_PATH
+    RUN_PATH = file_path
 
 def detect_pores_button_clicked(self):
+    yolo_detector()
     if not myWin.OneStageDetectorCheckBox.isChecked():
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)
@@ -94,18 +108,26 @@ class FileExplorer(QWidget):
 def create_pixmap(file_path):
     pixmap = QPixmap(file_path)
     myWin.loadedImageLabel.setPixmap(pixmap)
-    myWin.loadedImageLabel.resize(800, 800)
+    myWin.loadedImageLabel.resize(400, 520)
     myWin.loadedImageLabel.setScaledContents(True)
+
+def yolo_detector():
+    import yolo_detector as yolo
+    import image_processing
+    print("Image processing obj variable: " + RUN_PATH)
+    imgProc = image_processing.imageProcessing(RUN_PATH)
+    imgProc.remove_content_of_folders()
+    size = imgProc.splitImage()
+    yolo.model()
 
 def confidence_slider_event():
     myWin.confidenceValue.setText(str(myWin.confidenceSlider.value()+1))
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     myWin = MyWindow()
     myWin = connect_event_listeners(myWin)
-    # myWin.OneStageDetectorComboBox.addItem("Yolov5")
-    # myWin.TwoStageDetectorComboBox.addItem("Yolov52")
     myWin.confidenceSlider.setValue(88)
     myWin.showMaximized()
     sys.exit(app.exec_())

@@ -1,1 +1,4 @@
 __pycache__/
+PoreDetections/
+runs/
+yolov5s.pt

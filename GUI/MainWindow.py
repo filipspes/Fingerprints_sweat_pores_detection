@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1129, 839)
+        MainWindow.resize(1800, 800)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.OpenImageButton = QtWidgets.QPushButton(self.centralwidget)
@@ -81,9 +81,17 @@ class Ui_MainWindow(object):
         self.confidenceValue.setFont(font)
         self.confidenceValue.setText("")
         self.confidenceValue.setObjectName("confidenceValue")
+        self.predictedImageLabel = QtWidgets.QLabel(self.centralwidget)
+        self.predictedImageLabel.setGeometry(QtCore.QRect(1050, 70, 401, 521))
+        self.predictedImageLabel.setFrameShape(QtWidgets.QFrame.Box)
+        self.predictedImageLabel.setScaledContents(False)
+        self.predictedImageLabel.setWordWrap(False)
+        self.predictedImageLabel.setIndent(2)
+        self.predictedImageLabel.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse)
+        self.predictedImageLabel.setObjectName("predictedImageLabel")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1129, 30))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1800, 30))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -102,6 +110,7 @@ class Ui_MainWindow(object):
         self.loadedImageLabel.setText(_translate("MainWindow", "No image to display"))
         self.detectPoresButton.setText(_translate("MainWindow", "Detect Pores"))
         self.ConfidenceLabel.setText(_translate("MainWindow", "Confidence:"))
+        self.predictedImageLabel.setText(_translate("MainWindow", "No image to display"))
 
 
 if __name__ == "__main__":
