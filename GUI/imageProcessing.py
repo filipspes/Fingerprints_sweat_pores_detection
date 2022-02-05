@@ -83,8 +83,8 @@ class ImageProcessing:
     def remove_content_of_folders(self):
         LOG.info('Deleting content of a folder: /parts_of_image/')
         remove_content_of_folder(self.config.get("paths", "path_to_parts_of_image"))
-        LOG.info('Deleting content of a folder: /pores_detected/')
-        remove_content_of_folder(self.config.get("paths", "path_to_detected_parts_of_image"))
+        # LOG.info('Deleting content of a folder: /pores_detected/')
+        # remove_content_of_folder(self.config.get("paths", "path_to_detected_parts_of_image"))
         LOG.info('Deleting content of a folder: /high_resolution_image/')
         remove_content_of_folder(self.config.get("paths", "path_to_high_resolution_image"))
         LOG.info('Deleting content of a folder: /final_fingerprint/')

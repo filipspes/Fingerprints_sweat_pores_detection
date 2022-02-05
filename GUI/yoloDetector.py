@@ -33,7 +33,7 @@ class Yolo:
 
     def create_model(self):
         yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
-                                      path=self.config.get("paths", "path_to_high_resolution_image"))
+                                      path=self.config.get("paths", "path_to_yolo_weights"))
         LOG.info(
             "Yolov5 model weights loaded loaded from path: " + self.config.get("paths",
                                                                                "path_to_high_resolution_image"))

@@ -115,26 +115,27 @@ def create_pixmap_detected_image(file_path):
 
 def detector():
     config = cfg.get_config()
+    yolo = yoloDetector.Yolo()
     image_proc = imageProcessing.ImageProcessing(RUN_PATH)
     image_proc.remove_content_of_folders()
     size = image_proc.split_image()
     remove_content_of_folder_runs()
     start_time = time.time()
-    yoloDetector.detect()
+    yolo.detect()
     end_time = time.time()
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
     image_proc.join_images(size)
-    create_pixmap_detected_image(config.get("paths", "path_to_parts_of_image") +
-                                 config.get("names", "name_of_detected_final_image"))
+    create_pixmap_detected_image('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
 
 
 def confidence_slider_event():
     myWin.confidenceLabel.setText('Confidence: ' + str(myWin.confidenceSlider.value() + 1))
 
 
-def remove_content_of_folder_runs(folder):
-    for filename in os.listdir(folder):
-        file_path = os.path.join(folder, filename)
+def remove_content_of_folder_runs():
+    config = cfg.get_config()
+    for filename in os.listdir(config.get("paths", "detections")):
+        file_path = os.path.join(config.get("paths", "detections"), filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
