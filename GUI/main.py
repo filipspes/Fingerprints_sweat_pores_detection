@@ -4,14 +4,14 @@ from MainWindow import *
 import os
 import shutil
 import time
-import sys
 import logging as LOG
-import yolo_detector
-import image_processing
+import yoloDetector
+import imageProcessing
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QMovie
-from PyQt5.QtCore import Qt
+from PyQt5 import QtCore
+import config as cfg
+
+# TODO: Rozdelit funkcionalitu do suborov
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -22,6 +22,7 @@ LOG.basicConfig(
     ]
 )
 
+
 def open_image_button_clicked():
     file_path = None
     fileExplorer = FileExplorer()
@@ -30,6 +31,7 @@ def open_image_button_clicked():
     LOG.info("Image successfully opened")
     global RUN_PATH
     RUN_PATH = file_path
+
 
 def detect_pores_button_clicked():
     myWin.predictedImageLabel.setText('Image is being processed... ')
@@ -43,18 +45,19 @@ def detect_pores_button_clicked():
         LOG.warning("No detector selected warning MessageBox displayed")
         msg.exec_()
 
+
 def one_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
         LOG.info("Check box 1 checked")
     else:
         LOG.info("Check box 1 unchecked")
 
+
 def two_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
         LOG.info("Check box 2 checked")
     else:
         LOG.info("Check box 2 unchecked")
-
 
 
 def connect_event_listeners(mainWindow):
@@ -102,27 +105,32 @@ def create_pixmap(file_path):
     myWin.loadedImageLabel.resize(480, 600)
     myWin.loadedImageLabel.setScaledContents(True)
 
+
 def create_pixmap_detected_image(file_path):
     pixmap = QPixmap(file_path)
     myWin.predictedImageLabel.setPixmap(pixmap)
     myWin.predictedImageLabel.resize(480, 600)
     myWin.predictedImageLabel.setScaledContents(True)
 
+
 def detector():
-    image_proc = image_processing.imageProcessing(RUN_PATH)
+    config = cfg.get_config()
+    image_proc = imageProcessing.ImageProcessing(RUN_PATH)
     image_proc.remove_content_of_folders()
-    size = image_proc.splitImage()
-    remove_content_of_folder_runs('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/')
+    size = image_proc.split_image()
+    remove_content_of_folder_runs()
     start_time = time.time()
-    yolo_detector.detect()
+    yoloDetector.detect()
     end_time = time.time()
-    LOG.info("Detection took: " + str(end_time-start_time) + ' seconds')
-    image_proc.joinImages(size)
-    create_pixmap_detected_image('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint'
-                                 '/pores_predicted_final_image.jpg')
+    LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
+    image_proc.join_images(size)
+    create_pixmap_detected_image(config.get("paths", "path_to_parts_of_image") +
+                                 config.get("names", "name_of_detected_final_image"))
+
 
 def confidence_slider_event():
-    myWin.confidenceLabel.setText('Confidence: ' + str(myWin.confidenceSlider.value()+1))
+    myWin.confidenceLabel.setText('Confidence: ' + str(myWin.confidenceSlider.value() + 1))
+
 
 def remove_content_of_folder_runs(folder):
     for filename in os.listdir(folder):
@@ -134,6 +142,7 @@ def remove_content_of_folder_runs(folder):
                 shutil.rmtree(file_path)
         except Exception as e:
             LOG.error('Failed to delete %s. Reason: %s' % (file_path, e))
+
 
 if __name__ == '__main__':
     LOG.info('Application started')
