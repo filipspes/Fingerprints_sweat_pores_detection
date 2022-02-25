@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1800</width>
-    <height>800</height>
+    <width>1842</width>
+    <height>804</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="OpenImageButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>50</y>
+      <x>40</x>
+      <y>70</y>
       <width>171</width>
       <height>34</height>
      </rect>
@@ -34,73 +34,13 @@
      <string>Open Image</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="OneStageDetectorCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>70</y>
-      <width>211</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>One-stage detector</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="OneStageDetectorComboBox">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>90</y>
-      <width>181</width>
-      <height>32</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="TwoStageDetectorComboBox">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>170</y>
-      <width>181</width>
-      <height>32</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="TwoStageDetectorCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>140</y>
-      <width>191</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Two-stage detector</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="loadedImageLabel">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>60</y>
-      <width>480</width>
-      <height>600</height>
+      <x>240</x>
+      <y>70</y>
+      <width>520</width>
+      <height>640</height>
      </rect>
     </property>
     <property name="font">
@@ -138,8 +78,8 @@
    <widget class="QPushButton" name="detectPoresButton">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>530</y>
+      <x>840</x>
+      <y>670</y>
       <width>171</width>
       <height>34</height>
      </rect>
@@ -155,84 +95,10 @@
      <string>Detect Pores</string>
     </property>
    </widget>
-   <widget class="QSlider" name="confidenceSlider">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>400</y>
-      <width>221</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="confidenceLabel">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>370</y>
-      <width>191</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>Confidence:</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="predictedImageLabel">
-    <property name="geometry">
-     <rect>
-      <x>1050</x>
-      <y>70</y>
-      <width>480</width>
-      <height>600</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::Box</enum>
-    </property>
-    <property name="text">
-     <string>No image to display</string>
-    </property>
-    <property name="scaledContents">
-     <bool>false</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="wordWrap">
-     <bool>false</bool>
-    </property>
-    <property name="margin">
-     <number>135</number>
-    </property>
-    <property name="indent">
-     <number>2</number>
-    </property>
-    <property name="textInteractionFlags">
-     <set>Qt::LinksAccessibleByMouse</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>1050</x>
+      <x>1090</x>
       <y>40</y>
       <width>391</width>
       <height>31</height>
@@ -269,13 +135,283 @@
      <string>Input image</string>
     </property>
    </widget>
+   <widget class="QLabel" name="predictedImageLabel">
+    <property name="geometry">
+     <rect>
+      <x>1080</x>
+      <y>70</y>
+      <width>520</width>
+      <height>640</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="text">
+     <string>No image to display</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+    <property name="margin">
+     <number>135</number>
+    </property>
+    <property name="indent">
+     <number>2</number>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::LinksAccessibleByMouse</set>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="configurationGroupbox">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>340</y>
+      <width>281</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>Attributes settings</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>30</y>
+       <width>281</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>243</width>
+       <height>161</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="confidenceLabel">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Confidence: 0,75</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="confidenceSlider">
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="maximum">
+         <number>99</number>
+        </property>
+        <property name="singleStep">
+         <number>1</number>
+        </property>
+        <property name="value">
+         <number>75</number>
+        </property>
+        <property name="sliderPosition">
+         <number>75</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="invertedAppearance">
+         <bool>false</bool>
+        </property>
+        <property name="invertedControls">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="iouLabel">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>IoU: 0,45</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="iouSlider">
+        <property name="value">
+         <number>50</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="maxDetPerImageLabel">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Max objects to detect: 1000</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="maxDetectionPerImageSlider">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>2000</number>
+        </property>
+        <property name="value">
+         <number>1000</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="detectorsTypesGroupBox">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>80</y>
+      <width>281</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="title">
+     <string>Detector type</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>40</y>
+       <width>241</width>
+       <height>146</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="OneStageDetectorCheckBox">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>One-stage detector</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="OneStageDetectorComboBox"/>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="TwoStageDetectorCheckBox">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Two-stage detector</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="TwoStageDetectorComboBox"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="Line" name="line_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>30</y>
+       <width>281</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1800</width>
+     <width>1842</width>
      <height>30</height>
     </rect>
    </property>

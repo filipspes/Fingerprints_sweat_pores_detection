@@ -3,6 +3,7 @@ import torch
 from PIL import Image
 import logging as LOG
 import config
+from main import *
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -15,8 +16,11 @@ LOG.basicConfig(
 
 
 class Yolo:
-    def __init__(self):
+    def __init__(self, confidence, iou, maxDet):
         self.config = config.get_config()
+        self.confidence = confidence
+        self.iou = iou
+        self.maxDet = maxDet
 
     def detect(self):
         yolov5_model = self.create_model()
@@ -32,8 +36,18 @@ class Yolo:
         results.pandas().xyxy[0].to_json(orient="records")  # JSON img2 predictions
 
     def create_model(self):
+
         yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
                                       path=self.config.get("paths", "path_to_yolo_weights"))
+        print("Confidence" + str(yolov5_model.conf))
+        yolov5_model.conf = self.confidence/100
+        print("Confidence" + str(yolov5_model.conf))
+        print("IOU" + str(yolov5_model.iou))
+        yolov5_model.iou = self.iou/100
+        print("IOU" + str(yolov5_model.iou))
+        print("Max_Det" + str(yolov5_model.max_det))
+        yolov5_model.max_det = self.maxDet
+        print("Max_Det" + str(yolov5_model.max_det))
         LOG.info(
             "Yolov5 model weights loaded loaded from path: " + self.config.get("paths",
                                                                                "path_to_high_resolution_image"))
