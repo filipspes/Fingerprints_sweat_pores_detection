@@ -1,5 +1,7 @@
+import threading
+
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QWidget
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QMovie
 from MainWindow import *
 import os
 import shutil
@@ -36,7 +38,8 @@ def open_image_button_clicked():
 
 def detect_pores_button_clicked():
     myWin.predictedImageLabel.setText('Image is being processed... ')
-    detector()
+    thredd()
+    # detector()
     # if not myWin.OneStageDetectorCheckBox.isChecked():
     #     msg = QMessageBox()
     #     msg.setIcon(QMessageBox.Warning)
@@ -68,7 +71,7 @@ def connect_event_listeners(mainWindow):
     mainWindow.detectPoresButton.clicked.connect(detect_pores_button_clicked)
     mainWindow.confidenceSlider.valueChanged.connect(confidence_slider_event)
     mainWindow.iouSlider.valueChanged.connect(iou_slider_event)
-    mainWindow.maxDetectionPerImageSlider.valueChanged.connect(max_det_per_image_slider_event)
+    # mainWindow.maxDetectionPerImageSlider.valueChanged.connect(max_det_per_image_slider_event)
 
     return mainWindow
 
@@ -101,6 +104,7 @@ class FileExplorer(QWidget):
                                                   "All Files (*);;Python Files (*.py)", options=options)
         return fileName
 
+
 def create_pixmap(file_path):
     pixmap = QPixmap(file_path)
     myWin.loadedImageLabel.setPixmap(pixmap)
@@ -114,10 +118,19 @@ def create_pixmap_detected_image(file_path):
     myWin.predictedImageLabel.resize(520, 640)
     myWin.predictedImageLabel.setScaledContents(True)
 
+def thredd():
+    myWin.spinnerLabel.resize(64, 64)
+    movie = QMovie("1497.gif")  # Create a QMovie from our gif
+    myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
+    myWin.spinnerLabel.show()
+    detectorThread = threading.Thread(target=detector)
+    movie.start()
+    detectorThread.start()
+    print("Done!")
 
 def detector():
     config = cfg.get_config()
-    yolo = yoloDetector.Yolo(myWin.confidenceSlider.value(), myWin.iouSlider.value(), myWin.maxDetectionPerImageSlider.value())
+    yolo = yoloDetector.Yolo(myWin.confidenceSlider.value(), myWin.iouSlider.value())
     image_proc = imageProcessing.ImageProcessing(RUN_PATH)
     image_proc.remove_content_of_folders()
     size = image_proc.split_image()
@@ -127,16 +140,17 @@ def detector():
     end_time = time.time()
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
     image_proc.join_images(size)
-    create_pixmap_detected_image('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
+    create_pixmap_detected_image(
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
+    myWin.spinnerLabel.hide()
+
 
 def confidence_slider_event():
-    myWin.confidenceLabel.setText('Confidence: ' + str((myWin.confidenceSlider.value() + 1)/100))
+    myWin.confidenceLabel.setText('Confidence: ' + str((myWin.confidenceSlider.value() + 1) / 100))
+
 
 def iou_slider_event():
-    myWin.iouLabel.setText('IoU: ' + str((myWin.iouSlider.value() + 1)/100))
-
-def max_det_per_image_slider_event():
-    myWin.maxDetPerImageLabel.setText('Max objects to detect: ' + str(myWin.maxDetectionPerImageSlider.value()))
+    myWin.iouLabel.setText('IoU: ' + str((myWin.iouSlider.value() + 1) / 100))
 
 
 def remove_content_of_folder_runs():
