@@ -3,3 +3,4 @@ PoreDetections/
 runs/
 yolov5s.pt
 logfile.log
+loadingSpinner.gif

@@ -14,8 +14,6 @@ from PyQt5 import QtCore
 import config as cfg
 from PyQt5.QtWidgets import *
 
-# TODO: Rozdelit funkcionalitu do suborov
-
 LOG.basicConfig(
     level=LOG.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -37,17 +35,30 @@ def open_image_button_clicked():
 
 
 def detect_pores_button_clicked():
-    myWin.predictedImageLabel.setText('Image is being processed... ')
-    thredd()
-    # detector()
-    # if not myWin.OneStageDetectorCheckBox.isChecked():
-    #     msg = QMessageBox()
-    #     msg.setIcon(QMessageBox.Warning)
-    #     msg.setText("No detector selected ")
-    #     msg.setWindowTitle("Warning")
-    #     msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-    #     LOG.warning("No detector selected warning MessageBox displayed")
-    #     msg.exec_()
+    if not myWin.Yolov5DetectorCheckBox.isChecked() and not myWin.MaskRcnnCheckBox.isChecked():
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText("No detector selected")
+        msg.setWindowTitle("Warning")
+        msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        LOG.warning("No detector selected warning MessageBox displayed")
+        msg.exec_()
+    if myWin.Yolov5DetectorCheckBox.isChecked():
+        if 'RUN_PATH' not in globals() or RUN_PATH == "":
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText("No image detected.")
+            msg.setWindowTitle("No image")
+            msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+            LOG.warning("No image is opened")
+            msg.exec_()
+        else:
+            myWin.predictedImageLabel.setText('Image is being processed... ')
+            myWin.number_of_pores_detected_label.setText("")
+            thredd()
+    if myWin.MaskRcnnCheckBox.isChecked():
+        myWin.number_of_pores_detected_label.setText("")
+        print("No implemented yet.")
 
 
 def one_stage_detector_checkbox_state_changed(state):
@@ -66,12 +77,11 @@ def two_stage_detector_checkbox_state_changed(state):
 
 def connect_event_listeners(mainWindow):
     mainWindow.OpenImageButton.clicked.connect(open_image_button_clicked)
-    mainWindow.OneStageDetectorCheckBox.stateChanged.connect(one_stage_detector_checkbox_state_changed)
-    mainWindow.TwoStageDetectorCheckBox.stateChanged.connect(two_stage_detector_checkbox_state_changed)
+    mainWindow.Yolov5DetectorCheckBox.stateChanged.connect(one_stage_detector_checkbox_state_changed)
+    mainWindow.MaskRcnnCheckBox.stateChanged.connect(two_stage_detector_checkbox_state_changed)
     mainWindow.detectPoresButton.clicked.connect(detect_pores_button_clicked)
     mainWindow.confidenceSlider.valueChanged.connect(confidence_slider_event)
     mainWindow.iouSlider.valueChanged.connect(iou_slider_event)
-    # mainWindow.maxDetectionPerImageSlider.valueChanged.connect(max_det_per_image_slider_event)
 
     return mainWindow
 
@@ -118,15 +128,16 @@ def create_pixmap_detected_image(file_path):
     myWin.predictedImageLabel.resize(520, 640)
     myWin.predictedImageLabel.setScaledContents(True)
 
+
 def thredd():
     myWin.spinnerLabel.resize(64, 64)
-    movie = QMovie("1497.gif")  # Create a QMovie from our gif
+    movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
     myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
     myWin.spinnerLabel.show()
     detectorThread = threading.Thread(target=detector)
     movie.start()
     detectorThread.start()
-    print("Done!")
+
 
 def detector():
     config = cfg.get_config()
@@ -136,13 +147,22 @@ def detector():
     size = image_proc.split_image()
     remove_content_of_folder_runs()
     start_time = time.time()
-    yolo.detect()
+    number_of_detected_pores = yolo.detect()
     end_time = time.time()
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
     image_proc.join_images(size)
     create_pixmap_detected_image(
         '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
     myWin.spinnerLabel.hide()
+    path_to_results = config.get("paths", "path_to_results")
+    myWin.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Information)
+    msg.setText("The results have been saved to the /PoreDetections/ folder.")
+    msg.setWindowTitle("Results saved")
+    msg.setStandardButtons(QMessageBox.Ok)
+    msg.exec_()
+    LOG.info("Final image saved to : " + config.get("paths", "path_to_detected_final_image"))
 
 
 def confidence_slider_event():
