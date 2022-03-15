@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1842</width>
-    <height>804</height>
+    <height>856</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -403,6 +403,19 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="openDetectedImageButton">
+    <property name="geometry">
+     <rect>
+      <x>1220</x>
+      <y>720</y>
+      <width>241</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open detected image in new window</string>
     </property>
    </widget>
   </widget>

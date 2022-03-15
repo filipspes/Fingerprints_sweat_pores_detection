@@ -2,6 +2,7 @@ import threading
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QWidget
 from PyQt5.QtGui import QPixmap, QMovie
+
 from MainWindow import *
 import os
 import shutil
@@ -10,7 +11,7 @@ import logging as LOG
 import yoloDetector
 import imageProcessing
 import sys
-from PyQt5 import QtCore
+from PyQt5 import QtCore, Qt
 import config as cfg
 from PyQt5.QtWidgets import *
 
@@ -34,11 +35,115 @@ def open_image_button_clicked():
     RUN_PATH = file_path
 
 
+def open_image_part_button_clicked():
+    scene = QtWidgets.QGraphicsScene()
+    pixmap = QPixmap('/home/filip/Documents/DP/FP_Parts/3.jpg')
+    item = QtWidgets.QGraphicsPixmapItem(pixmap)
+    scene.addItem(item)
+    myWin.graphicView.setScene(scene)
+    myWin.graphicView.scale(0.5, 0.5)
+    myWin.graphicView.setMouseTracking(True)
+
+
+class PhotoViewer(QtWidgets.QGraphicsView):
+    photoClicked = QtCore.pyqtSignal(QtCore.QPoint)
+
+    def __init__(self, parent):
+        super(PhotoViewer, self).__init__(parent)
+        self._zoom = 0
+        self._empty = True
+        self._scene = QtWidgets.QGraphicsScene()
+        self._photo = QtWidgets.QGraphicsPixmapItem()
+        self._scene.addItem(self._photo)
+        self.setScene(self._scene)
+        self.setTransformationAnchor(QtWidgets.QGraphicsView.AnchorUnderMouse)
+        self.setResizeAnchor(QtWidgets.QGraphicsView.AnchorUnderMouse)
+        self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.setBackgroundBrush(QtGui.QBrush(QtGui.QColor(30, 30, 30)))
+        self.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.setWindowTitle('Detected image window')
+
+
+    def hasPhoto(self):
+        return not self._empty
+
+    def fitInView(self, scale=True):
+        rect = QtCore.QRectF(self._photo.pixmap().rect())
+        if not rect.isNull():
+            self.setSceneRect(rect)
+            if self.hasPhoto():
+                unity = self.transform().mapRect(QtCore.QRectF(0, 0, 1, 1))
+                self.scale(1 / unity.width(), 1 / unity.height())
+                # viewrect = self.viewport().rect()
+                # scenerect = self.transform().mapRect(rect)
+                # factor = max(viewrect.width() / scenerect.width(),
+                #              viewrect.height() / scenerect.height())
+                self.scale(0.1, 0.1)
+            self._zoom = 0
+
+    def setPhoto(self, pixmap=None):
+        self._zoom = 0
+        if pixmap and not pixmap.isNull():
+            self._empty = False
+            self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
+            self._photo.setPixmap(pixmap)
+        else:
+            self._empty = True
+            self.setDragMode(QtWidgets.QGraphicsView.NoDrag)
+            self._photo.setPixmap(QtGui.QPixmap())
+        self.fitInView()
+
+    def wheelEvent(self, event):
+        if self.hasPhoto():
+            if event.angleDelta().y() > 0:
+                factor = 1.25
+                self._zoom += 1
+            else:
+                factor = 0.8
+                self._zoom -= 1
+            if self._zoom > 0:
+                self.scale(factor, factor)
+            elif self._zoom == 0:
+                self.fitInView()
+            else:
+                self._zoom = 0
+
+    def toggleDragMode(self):
+        if self.dragMode() == QtWidgets.QGraphicsView.ScrollHandDrag:
+            self.setDragMode(QtWidgets.QGraphicsView.NoDrag)
+        elif not self._photo.pixmap().isNull():
+            self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
+
+    def mousePressEvent(self, event):
+        if self._photo.isUnderMouse():
+            self.photoClicked.emit(self.mapToScene(event.pos()).toPoint())
+        super(PhotoViewer, self).mousePressEvent(event)
+
+
+class Window(QtWidgets.QWidget):
+    def __init__(self):
+        super(Window, self).__init__()
+        self.viewer = PhotoViewer(self)
+        VBlayout = QtWidgets.QVBoxLayout(self)
+        VBlayout.addWidget(self.viewer)
+        HBlayout = QtWidgets.QHBoxLayout()
+        HBlayout.setAlignment(QtCore.Qt.AlignLeft)
+        VBlayout.addLayout(HBlayout)
+
+    def loadImage(self, path):
+        self.viewer.setPhoto(QtGui.QPixmap(path))
+
+    def photoClicked(self, pos):
+        if self.viewer.dragMode() == QtWidgets.QGraphicsView.NoDrag:
+            self.editPixInfo.setText('%d, %d' % (pos.x(), pos.y()))
+
+
 def detect_pores_button_clicked():
     if not myWin.Yolov5DetectorCheckBox.isChecked() and not myWin.MaskRcnnCheckBox.isChecked():
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)
-        msg.setText("No detector selected")
+        msg.setText("No detector selected, please select detector.")
         msg.setWindowTitle("Warning")
         msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
         LOG.warning("No detector selected warning MessageBox displayed")
@@ -47,7 +152,7 @@ def detect_pores_button_clicked():
         if 'RUN_PATH' not in globals() or RUN_PATH == "":
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
-            msg.setText("No image detected.")
+            msg.setText("No input image. Please load an input image.")
             msg.setWindowTitle("No image")
             msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
             LOG.warning("No image is opened")
@@ -82,7 +187,6 @@ def connect_event_listeners(mainWindow):
     mainWindow.detectPoresButton.clicked.connect(detect_pores_button_clicked)
     mainWindow.confidenceSlider.valueChanged.connect(confidence_slider_event)
     mainWindow.iouSlider.valueChanged.connect(iou_slider_event)
-
     return mainWindow
 
 
@@ -90,6 +194,18 @@ class MyWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(MyWindow, self).__init__(parent)
         self.setupUi(self)
+        self.seconWindow = Window()
+        self.openDetectedImageButton.clicked.connect(show_new_window)
+
+
+
+def show_new_window(self):
+    myWin.seconWindow.setGeometry(0, 0, 800, 600)
+    myWin.seconWindow.loadImage('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
+    myWin.seconWindow.setWindowTitle("Detected image window")
+    myWin.seconWindow.show()
+    print(type(myWin.seconWindow))
+
 
 
 class FileExplorer(QWidget):
@@ -105,12 +221,12 @@ class FileExplorer(QWidget):
 
     def initUI(self):
         self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
+        self.setGeometry(0, 0, 400, 300)
 
     def openFileNameDialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "",
+        fileName, _ = QFileDialog.getOpenFileName(self, "File Explorer", "",
                                                   "All Files (*);;Python Files (*.py)", options=options)
         return fileName
 
@@ -134,9 +250,13 @@ def thredd():
     movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
     myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
     myWin.spinnerLabel.show()
+    # win = Window()
+    # win.setGeometry(500, 300, 800, 600)
     detectorThread = threading.Thread(target=detector)
     movie.start()
+    # detector(win)
     detectorThread.start()
+
 
 
 def detector():
@@ -156,13 +276,7 @@ def detector():
     myWin.spinnerLabel.hide()
     path_to_results = config.get("paths", "path_to_results")
     myWin.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
-    msg = QMessageBox()
-    msg.setIcon(QMessageBox.Information)
-    msg.setText("The results have been saved to the /PoreDetections/ folder.")
-    msg.setWindowTitle("Results saved")
-    msg.setStandardButtons(QMessageBox.Ok)
-    msg.exec_()
-    LOG.info("Final image saved to : " + config.get("paths", "path_to_detected_final_image"))
+    myWin.openDetectedImageButton.setEnabled(True)
 
 
 def confidence_slider_event():
@@ -193,5 +307,6 @@ if __name__ == '__main__':
     myWin = connect_event_listeners(myWin)
     myWin.configurationGroupbox.setEnabled(True)
     myWin.detectorsTypesGroupBox.setEnabled(True)
+    myWin.openDetectedImageButton.setEnabled(False)
     myWin.showMaximized()
     sys.exit(app.exec_())

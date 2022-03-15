@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1842, 804)
+        MainWindow.resize(1842, 856)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.OpenImageButton = QtWidgets.QPushButton(self.centralwidget)
@@ -177,6 +177,9 @@ class Ui_MainWindow(object):
         self.number_of_pores_detected_label.setText("")
         self.number_of_pores_detected_label.setAlignment(QtCore.Qt.AlignCenter)
         self.number_of_pores_detected_label.setObjectName("number_of_pores_detected_label")
+        self.openDetectedImageButton = QtWidgets.QPushButton(self.centralwidget)
+        self.openDetectedImageButton.setGeometry(QtCore.QRect(1220, 720, 241, 34))
+        self.openDetectedImageButton.setObjectName("openDetectedImageButton")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1842, 30))
@@ -204,6 +207,7 @@ class Ui_MainWindow(object):
         self.detectorsTypesGroupBox.setTitle(_translate("MainWindow", "Detector type"))
         self.Yolov5DetectorCheckBox.setText(_translate("MainWindow", "YOLOv5 (One-stage)"))
         self.MaskRcnnCheckBox.setText(_translate("MainWindow", "Mask R-CNN (Two-stage)"))
+        self.openDetectedImageButton.setText(_translate("MainWindow", "Open detected image in new window"))
 
 
 if __name__ == "__main__":

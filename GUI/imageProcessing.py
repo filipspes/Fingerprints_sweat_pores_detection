@@ -55,7 +55,7 @@ class ImageProcessing:
             out = os.path.join(path_to_parts_of_image, f'{i}_{j}.jpg')
             img.crop(box).save(out)
             number_of_images = number_of_images + 1
-        LOG.info("The image has been split into " + str(number_of_images) + " pictures.")
+        LOG.info(f"The image has been split into {number_of_images} pictures.") #F-string added
         return size
 
     def join_images(self, size):
