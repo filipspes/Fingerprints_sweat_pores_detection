@@ -24,6 +24,7 @@ LOG.basicConfig(
     ]
 )
 
+
 def connect_event_listeners(mainWindow):
     mainWindow.OpenImageButton.clicked.connect(open_image_button_clicked)
     mainWindow.Yolov5DetectorCheckBox.stateChanged.connect(one_stage_detector_checkbox_state_changed)
@@ -37,11 +38,12 @@ def connect_event_listeners(mainWindow):
     mainWindow.TurOffMasksButton.clicked.connect(turn_off_masks_button_clicked)
     return mainWindow
 
+
 def open_image_button_clicked():
     file_path = None
     fileExplorer = FileExplorer()
     file_path = fileExplorer.openFileNameDialog()
-    create_pixmap(file_path)
+    create_pixmap_input_image(file_path, True)
     LOG.info("Image successfully opened")
     global RUN_PATH
     RUN_PATH = file_path
@@ -50,26 +52,38 @@ def open_image_button_clicked():
 
 
 def open_image_part_button_clicked():
-    file_path = '/home/filip/Documents/DP/FP Parts_Test/1.jpg'
-    create_pixmap_block(file_path)
+    fileExplorer = FileExplorer()
+    file_path = fileExplorer.openFileNameDialog()
+    create_pixmap_input_image(file_path, False)
     global RUN_PATH
     RUN_PATH = file_path
     myWin.block_of_image_opened = True
     myWin.full_image_opened = False
 
-def create_pixmap_block(file_path):
+
+def create_pixmap_input_image(file_path, scaled_content):
     pixmap = QPixmap(file_path)
     myWin.loadedImageLabel.setPixmap(pixmap)
+    img = Image.open(file_path)
+    wid, hgt = img.size
+    print(str(wid) + "x" + str(hgt))
+    img.close()
+    myWin.ResolutionInputImageLabel.setText(str(wid) + "x" + str(hgt))
     myWin.loadedImageLabel.resize(520, 640)
-    myWin.loadedImageLabel.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
-    # myWin.loadedImageLabel.setScaledContents(True)
+    myWin.loadedImageLabel.setScaledContents(scaled_content)
 
-def create_pixmap_block_detected(file_path):
+
+def create_pixmap_detected_image(file_path, scaled_content):
     pixmap = QPixmap(file_path)
     myWin.predictedImageLabel.setPixmap(pixmap)
+    img = Image.open(file_path)
+    wid, hgt = img.size
+    print(str(wid) + "x" + str(hgt))
+    img.close()
+    myWin.ResolutionOutputImageLabel.setText(str(wid) + "x" + str(hgt))
     myWin.predictedImageLabel.resize(520, 640)
-    myWin.predictedImageLabel.setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
-    # myWin.predictedImageLabel.setScaledContents(True)
+    myWin.predictedImageLabel.setScaledContents(scaled_content)
+
 
 class PhotoViewer(QtWidgets.QGraphicsView):
     photoClicked = QtCore.pyqtSignal(QtCore.QPoint)
@@ -89,7 +103,6 @@ class PhotoViewer(QtWidgets.QGraphicsView):
         self.setBackgroundBrush(QtGui.QBrush(QtGui.QColor(30, 30, 30)))
         self.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.setWindowTitle('Detected image window')
-
 
     def hasPhoto(self):
         return not self._empty
@@ -197,8 +210,10 @@ def detect_pores_button_clicked():
 
 def one_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
+        myWin.YoloModelsComboBox.setEnabled(True)
         LOG.info("Check box 1 checked")
     else:
+        myWin.YoloModelsComboBox.setEnabled(True)
         LOG.info("Check box 1 unchecked")
 
 
@@ -209,24 +224,25 @@ def two_stage_detector_checkbox_state_changed(state):
         LOG.info("Check box 2 unchecked")
 
 
-
-
 def show_new_window(self):
     myWin.seconWindow.setGeometry(0, 0, 800, 600)
     if myWin.full_image_opened:
-        myWin.seconWindow.loadImage('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
-        myWin.seconWindow.setWindowTitle("Detected image window")
+        myWin.seconWindow.loadImage(
+            '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
+        # myWin.seconWindow.setWindowTitle("Detected image window")
+        myWin.predictedImageLabel
         myWin.seconWindow.show()
     elif myWin.block_of_image_opened:
         if myWin.mask_turned_on:
-            myWin.seconWindow.loadImage('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
+            myWin.seconWindow.loadImage(
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
             myWin.seconWindow.setWindowTitle("Detected image window")
             myWin.seconWindow.show()
         else:
-            myWin.seconWindow.loadImage('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
+            myWin.seconWindow.loadImage(
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
             myWin.seconWindow.setWindowTitle("Detected image window")
             myWin.seconWindow.show()
-
 
 
 class FileExplorer(QWidget):
@@ -252,50 +268,30 @@ class FileExplorer(QWidget):
         return fileName
 
 
-def create_pixmap(file_path):
-    pixmap = QPixmap(file_path)
-    myWin.loadedImageLabel.setPixmap(pixmap)
-    myWin.loadedImageLabel.resize(520, 640)
-    myWin.loadedImageLabel.setScaledContents(True)
-
-
-
-def create_pixmap_detected_image(file_path):
-    pixmap = QPixmap(file_path)
-    myWin.predictedImageLabel.setPixmap(pixmap)
-    myWin.predictedImageLabel.resize(520, 640)
-    myWin.predictedImageLabel.setScaledContents(True)
-
-
 def full_image_detecting_thread():
     myWin.spinnerLabel.resize(64, 64)
     movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
     myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
     myWin.spinnerLabel.show()
-    # win = Window()
-    # win.setGeometry(500, 300, 800, 600)
     full_image_detector_detector = threading.Thread(target=detect_pores_on_full_image)
     movie.start()
-    # detector(win)
     full_image_detector_detector.start()
+
 
 def block_image_detecting_thread():
     myWin.spinnerLabel.resize(64, 64)
     movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
     myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
     myWin.spinnerLabel.show()
-    # win = Window()
-    # win.setGeometry(500, 300, 800, 600)
     block_image_detector_detector = threading.Thread(target=detect_pores_on_block_of_image)
     movie.start()
-    # detector(win)
     block_image_detector_detector.start()
-
 
 
 def detect_pores_on_full_image():
     config = cfg.get_config()
-    yolo = yoloDetector.Yolo(myWin.confidenceSlider.value(), myWin.iouSlider.value(), '')
+    yolo = yoloDetector.Yolo(myWin.confidenceSlider.value(), myWin.iouSlider.value(), '',
+                             myWin.YoloModelsComboBox.currentText())
     image_proc = imageProcessing.ImageProcessing(RUN_PATH)
     image_proc.remove_content_of_folders()
     size = image_proc.split_image()
@@ -306,15 +302,17 @@ def detect_pores_on_full_image():
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
     image_proc.join_images(size)
     create_pixmap_detected_image(
-        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
     myWin.spinnerLabel.hide()
     path_to_results = config.get("paths", "path_to_results")
     myWin.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
     myWin.openDetectedImageButton.setEnabled(True)
 
+
 def detect_pores_on_block_of_image():
     config = cfg.get_config()
-    yolo = yoloDetector.Yolo(myWin.confidenceSlider.value(), myWin.iouSlider.value(), RUN_PATH)
+    yolo = yoloDetector.Yolo(myWin.confidenceSlider.value(), myWin.iouSlider.value(), RUN_PATH,
+                             myWin.YoloModelsComboBox.currentText())
     remove_content_of_folder_runs()
     start_time = time.time()
     number_of_detected_pores = yolo.detect(True, False)
@@ -323,9 +321,10 @@ def detect_pores_on_block_of_image():
     # input_directory = config.get("paths", "path_to_detected_parts_of_image")
     # file_name = os.listdir(input_directory)
     list_of_images = os.listdir('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/')
-    shutil.copyfile('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/'+list_of_images[0],
+    shutil.copyfile('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/' + list_of_images[0],
                     '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
-    create_pixmap_block_detected('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
+    create_pixmap_detected_image(
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg', False)
     myWin.spinnerLabel.hide()
     path_to_results = config.get("paths", "path_to_results")
     myWin.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
@@ -350,6 +349,7 @@ def load_json_button_handle():
     myWin.json_is_loaded = True
     myWin.json = data
 
+
 def show_masks_button_click_handle():
     config = cfg.get_config()
     path_to_detected_image = '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg'
@@ -365,15 +365,26 @@ def show_masks_button_click_handle():
         x1 = shape['points'][1][0]
         y1 = shape['points'][1][1]
         # all_shapes.append(single_shape)
-        draw.ellipse([x-10, y-10, x+10, y+10], fill='yellow', width=2)
+        draw.ellipse([x - 5, y - 5, x + 5, y + 5], fill='yellow', width=2)
         # draw.text([x, y - 10], text)
     img.save('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
-    create_pixmap_block_detected('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
+    create_pixmap_detected_image(
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg', False)
     myWin.mask_turned_on = True
 
+
 def turn_off_masks_button_clicked():
-    create_pixmap_block_detected('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
+    create_pixmap_detected_image(
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg', False)
     myWin.mask_turned_on = False
+
+
+def fill_combobox():
+    myWin.YoloModelsComboBox.addItem("YOLOv5 S")
+    myWin.YoloModelsComboBox.addItem("YOLOv5 M")
+    myWin.YoloModelsComboBox.addItem("YOLOv5 L")
+    myWin.YoloModelsComboBox.addItem("YOLOv5 XL")
+
 
 def remove_content_of_folder_runs():
     config = cfg.get_config()
@@ -386,6 +397,7 @@ def remove_content_of_folder_runs():
                 shutil.rmtree(file_path)
         except Exception as e:
             LOG.error('Failed to delete %s. Reason: %s' % (file_path, e))
+
 
 class MyWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -400,6 +412,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.json = None
         self.mask_turned_on = False
 
+
 if __name__ == '__main__':
     LOG.info('Application started')
     app = QApplication(sys.argv)
@@ -409,4 +422,6 @@ if __name__ == '__main__':
     myWin.detectorsTypesGroupBox.setEnabled(True)
     myWin.openDetectedImageButton.setEnabled(False)
     myWin.showMaximized()
+    myWin.YoloModelsComboBox.setEnabled(False)
+    fill_combobox()
     sys.exit(app.exec_())

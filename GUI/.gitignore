@@ -1,6 +1,9 @@
 __pycache__/
 PoreDetections/
 runs/
-yolov5s.pt
+YOLOv5_S_weights.pt
+YOLOv5_M_weights.pt
+YOLOv5_L_weights.pt
+YOLOv5_XL_weights.pt
 logfile.log
 loadingSpinner.gif
