@@ -418,6 +418,58 @@
      <string>Open detected image in new window</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="LoadBlockOfImageButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>120</y>
+      <width>171</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load block of image</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="LoadAnnotationsJsonButton">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>160</y>
+      <width>171</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Load annotations JSON</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ShowMasksButton">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>710</y>
+      <width>171</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Turn on masks</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="TurOffMasksButton">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>750</y>
+      <width>171</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Turn off masks</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

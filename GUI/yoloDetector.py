@@ -18,14 +18,20 @@ LOG.basicConfig(
 
 
 class Yolo:
-    def __init__(self, confidence, iou):
+    def __init__(self, confidence, iou, path_to_single_image):
         self.config = config.get_config()
         self.confidence = confidence
         self.iou = iou
+        self.path_to_single_image = path_to_single_image
 
-    def detect(self):
+    def detect(self, single_image, multiple_images):
         yolov5_model = self.create_model()
-        images = self.load_images_to_detect()
+        images = None
+        if single_image:
+            images = self.load_single_image_to_detect(self.path_to_single_image)
+        elif multiple_images:
+            images = self.load_images_to_detect()
+        # images = self.load_images_to_detect()
         torch.cuda.empty_cache()
         results = yolov5_model(images, size=320)
         results.save()
@@ -71,3 +77,9 @@ class Yolo:
             img = Image.open(self.config.get("paths", "path_to_parts_of_image") + path)
             images_to_detect.append(img)
         return images_to_detect
+
+    def load_single_image_to_detect(self, path_to_single_image):
+        LOG.info("Loading image for detection")
+        # img_paths = os.listdir(self.config.get("paths", "path_to_parts_of_image"))
+        img = Image.open(path_to_single_image)
+        return img
