@@ -18,11 +18,12 @@ LOG.basicConfig(
 
 
 class Yolo:
-    def __init__(self, confidence, iou, path_to_single_image):
+    def __init__(self, confidence, iou, path_to_single_image, model_size):
         self.config = config.get_config()
         self.confidence = confidence
         self.iou = iou
         self.path_to_single_image = path_to_single_image
+        self.model_size = model_size
 
     def detect(self, single_image, multiple_images):
         yolov5_model = self.create_model()
@@ -31,7 +32,6 @@ class Yolo:
             images = self.load_single_image_to_detect(self.path_to_single_image)
         elif multiple_images:
             images = self.load_images_to_detect()
-        # images = self.load_images_to_detect()
         torch.cuda.empty_cache()
         results = yolov5_model(images, size=320)
         results.save()
@@ -59,14 +59,34 @@ class Yolo:
         return len(final_json_object)
 
     def create_model(self):
-
-        yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
-                                      path=self.config.get("paths", "path_to_yolo_weights"))
+        # yolov5_model = None
+        yolov5_model = None
+        if self.model_size == "YOLOv5 S":
+            yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
+                                        path=self.config.get("paths", "path_to_yolo_weights_S"))
+            LOG.info(
+                "Yolov5 model weights loaded from path: " + self.config.get("paths",
+                                                                            "path_to_yolo_weights_S"))
+        elif self.model_size == "YOLOv5 M":
+            yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
+                                        path=self.config.get("paths", "path_to_yolo_weights_M"))
+            LOG.info(
+                "Yolov5 model weights loaded from path: " + self.config.get("paths",
+                                                                            "path_to_yolo_weights_M"))
+        elif self.model_size == "YOLOv5 L":
+            yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
+                                        path=self.config.get("paths", "path_to_yolo_weights_L"))
+            LOG.info(
+                "Yolov5 model weights loaded from path: " + self.config.get("paths",
+                                                                            "path_to_yolo_weights_L"))
+        elif self.model_size == "YOLOv5 XL":
+            yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
+                                        path=self.config.get("paths", "path_to_yolo_weights_XL"))
+            LOG.info(
+                "Yolov5 model weights loaded from path: " + self.config.get("paths",
+                                                                            "path_to_yolo_weights_XL"))
         yolov5_model.conf = self.confidence / 100
         yolov5_model.iou = self.iou / 100
-        LOG.info(
-            "Yolov5 model weights loaded loaded from path: " + self.config.get("paths",
-                                                                               "path_to_high_resolution_image"))
         return yolov5_model
 
     def load_images_to_detect(self):
