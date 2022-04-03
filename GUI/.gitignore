@@ -1,6 +1,7 @@
 __pycache__/
 PoreDetections/
 runs/
+YOLOv5_N_weights.pt
 YOLOv5_S_weights.pt
 YOLOv5_M_weights.pt
 YOLOv5_L_weights.pt

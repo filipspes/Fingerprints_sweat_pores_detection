@@ -61,25 +61,32 @@ class Yolo:
     def create_model(self):
         # yolov5_model = None
         yolov5_model = None
-        if self.model_size == "YOLOv5 S":
+
+        if self.model_size == "YOLOv5 Nano":
             yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
                                         path=self.config.get("paths", "path_to_yolo_weights_S"))
             LOG.info(
                 "Yolov5 model weights loaded from path: " + self.config.get("paths",
                                                                             "path_to_yolo_weights_S"))
-        elif self.model_size == "YOLOv5 M":
+        elif self.model_size == "YOLOv5 Small":
+            yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
+                                        path=self.config.get("paths", "path_to_yolo_weights_S"))
+            LOG.info(
+                "Yolov5 model weights loaded from path: " + self.config.get("paths",
+                                                                            "path_to_yolo_weights_S"))
+        elif self.model_size == "YOLOv5 Medium":
             yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
                                         path=self.config.get("paths", "path_to_yolo_weights_M"))
             LOG.info(
                 "Yolov5 model weights loaded from path: " + self.config.get("paths",
                                                                             "path_to_yolo_weights_M"))
-        elif self.model_size == "YOLOv5 L":
+        elif self.model_size == "YOLOv5 Large":
             yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
                                         path=self.config.get("paths", "path_to_yolo_weights_L"))
             LOG.info(
                 "Yolov5 model weights loaded from path: " + self.config.get("paths",
                                                                             "path_to_yolo_weights_L"))
-        elif self.model_size == "YOLOv5 XL":
+        elif self.model_size == "YOLOv5 XLarge":
             yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom',
                                         path=self.config.get("paths", "path_to_yolo_weights_XL"))
             LOG.info(

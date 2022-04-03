@@ -1,5 +1,8 @@
 import json
 import threading
+
+import cv2
+import mrcnn
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QWidget
 from PyQt5.QtGui import QPixmap, QMovie
 from PIL import Image, ImageDraw
@@ -8,11 +11,15 @@ import os
 import shutil
 import time
 import logging as LOG
+import matplotlib.pyplot as plt
 import yoloDetector
 import imageProcessing
 import sys
+import numpy as np
 from PyQt5 import QtCore
 import config as cfg
+from mrcnn.config import Config
+import mrcnn.model as modellib
 from PyQt5.QtWidgets import *
 
 LOG.basicConfig(
@@ -38,6 +45,13 @@ def connect_event_listeners(mainWindow):
     mainWindow.TurOffMasksButton.clicked.connect(turn_off_masks_button_clicked)
     return mainWindow
 
+class SimpleConfig(Config):
+    NAME = "coco_inference"
+
+    GPU_COUNT = 1
+    IMAGES_PER_GPU = 1
+
+    NUM_CLASSES = 25
 
 def open_image_button_clicked():
     file_path = None
@@ -49,6 +63,21 @@ def open_image_button_clicked():
     RUN_PATH = file_path
     myWin.block_of_image_opened = False
     myWin.full_image_opened = True
+
+    # model = modellib.MaskRCNN(mode="inference",
+    #                              config=SimpleConfig(),
+    #                              model_dir=os.getcwd())
+    #
+    # print(model.keras_model.summary())
+    # model.load_weights(
+    #     filepath="/home/filip/Documents/DP/Mask-RCNN/Mask_RCNN/logs/fingerprints20220328T1033/mask_rcnn_fingerprints_0100.h5",
+    #     by_name=True)
+    # print("weights loaded")
+
+    # image = cv2.imread("/home/filip/Documents/DP/FP Parts_Test/2.jpg")
+    # r = model.detect(images=[image],
+    #                  verbose=0)
+
 
 
 def open_image_part_button_clicked():
@@ -66,7 +95,6 @@ def create_pixmap_input_image(file_path, scaled_content):
     myWin.loadedImageLabel.setPixmap(pixmap)
     img = Image.open(file_path)
     wid, hgt = img.size
-    print(str(wid) + "x" + str(hgt))
     img.close()
     myWin.ResolutionInputImageLabel.setText(str(wid) + "x" + str(hgt))
     myWin.loadedImageLabel.resize(520, 640)
@@ -78,7 +106,6 @@ def create_pixmap_detected_image(file_path, scaled_content):
     myWin.predictedImageLabel.setPixmap(pixmap)
     img = Image.open(file_path)
     wid, hgt = img.size
-    print(str(wid) + "x" + str(hgt))
     img.close()
     myWin.ResolutionOutputImageLabel.setText(str(wid) + "x" + str(hgt))
     myWin.predictedImageLabel.resize(520, 640)
@@ -179,6 +206,7 @@ class Window(QtWidgets.QWidget):
 
 
 def detect_pores_button_clicked():
+    myWin.RealPoresLabel.setText("")
     if not myWin.Yolov5DetectorCheckBox.isChecked() and not myWin.MaskRcnnCheckBox.isChecked():
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Warning)
@@ -301,8 +329,9 @@ def detect_pores_on_full_image():
     end_time = time.time()
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
     image_proc.join_images(size)
+    image_proc.resize_final_image()
     create_pixmap_detected_image(
-        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg', True)
     myWin.spinnerLabel.hide()
     path_to_results = config.get("paths", "path_to_results")
     myWin.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
@@ -353,37 +382,46 @@ def load_json_button_handle():
 def show_masks_button_click_handle():
     config = cfg.get_config()
     path_to_detected_image = '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg'
-    img = Image.open(path_to_detected_image)
+    img = cv2.imread(path_to_detected_image)
     if not myWin.json_is_loaded:
         load_json_button_handle()
-    img = img.resize((int(myWin.json['imageWidth']), int(myWin.json['imageHeight'])))
-    draw = ImageDraw.Draw(img)
+    shapes = np.zeros_like(img, np.uint8)
+    shapes_count = 0
     for shape in myWin.json['shapes']:
         single_shape = [shape['points'][0][0], shape['points'][0][1], shape['points'][1][0], shape['points'][1][1]]
         x = shape['points'][0][0]
         y = shape['points'][0][1]
         x1 = shape['points'][1][0]
         y1 = shape['points'][1][1]
-        # all_shapes.append(single_shape)
-        draw.ellipse([x - 5, y - 5, x + 5, y + 5], fill='yellow', width=2)
-        # draw.text([x, y - 10], text)
-    img.save('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
+        center_coordinates = (int(x), int(y))
+        cv2.circle(shapes, center_coordinates, 20, (255, 0, 0), cv2.FILLED)
+        shapes_count = shapes_count + 1
+
+    masked_image = img.copy()
+    alpha = 0.5
+    mask = shapes.astype(bool)
+    masked_image[mask] = cv2.addWeighted(img, alpha, shapes, 1 - alpha, 0)[mask]
+    img_rgb = cv2.cvtColor(masked_image, cv2.COLOR_BGR2RGB)
+    Image.fromarray(img_rgb).save('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
     create_pixmap_detected_image(
         '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg', False)
     myWin.mask_turned_on = True
+    myWin.RealPoresLabel.setText("Real pores: " + str(shapes_count))
 
 
 def turn_off_masks_button_clicked():
     create_pixmap_detected_image(
         '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg', False)
     myWin.mask_turned_on = False
+    myWin.RealPoresLabel.setText("")
 
 
 def fill_combobox():
-    myWin.YoloModelsComboBox.addItem("YOLOv5 S")
-    myWin.YoloModelsComboBox.addItem("YOLOv5 M")
-    myWin.YoloModelsComboBox.addItem("YOLOv5 L")
-    myWin.YoloModelsComboBox.addItem("YOLOv5 XL")
+    myWin.YoloModelsComboBox.addItem("YOLOv5 Nano")
+    myWin.YoloModelsComboBox.addItem("YOLOv5 Small")
+    myWin.YoloModelsComboBox.addItem("YOLOv5 Medium")
+    myWin.YoloModelsComboBox.addItem("YOLOv5 Large")
+    myWin.YoloModelsComboBox.addItem("YOLOv5 XLarge")
 
 
 def remove_content_of_folder_runs():

@@ -32,6 +32,7 @@ class ImageProcessing:
 
     def __init__(self, path):
         self.path = path
+        self.initial_size = None
         self.config = config.get_config()
 
     def split_image(self):
@@ -40,6 +41,7 @@ class ImageProcessing:
         path_to_parts_of_image = self.config.get("paths", "path_to_parts_of_image")
         im = Image.open(self.path)
         size = im.size[0] * 8, im.size[1] * 8
+        self.initial_size = size
         LOG.info("Resizing image...")
         im_resized = im.resize(size, Image.ANTIALIAS)
         LOG.info("Image resized successfully.")
@@ -79,6 +81,13 @@ class ImageProcessing:
         joined_image.save(self.config.get("paths", "path_to_detected_final_image")
                           + self.config.get("names", "name_of_detected_final_image"))
         LOG.info("All Done")
+
+    def resize_final_image(self):
+        image = Image.open(self.config.get("paths", "path_to_detected_final_image")
+                          + self.config.get("names", "name_of_detected_final_image"))
+        resized_image = image.resize((self.initial_size[0], self.initial_size[1]))
+        print(str(self.initial_size[0]) + str(self.initial_size[1]))
+        resized_image.save('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
 
     def remove_content_of_folders(self):
         LOG.info('Deleting content of a folder: /parts_of_image/')
