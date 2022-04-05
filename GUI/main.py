@@ -2,7 +2,7 @@ import json
 import threading
 
 import cv2
-import mrcnn
+# import mrcnn
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QWidget
 from PyQt5.QtGui import QPixmap, QMovie
 from PIL import Image, ImageDraw
@@ -20,7 +20,10 @@ from PyQt5 import QtCore
 import config as cfg
 from mrcnn.config import Config
 import mrcnn.model as modellib
+from mrcnn import visualize
+from mrcnn import utils
 from PyQt5.QtWidgets import *
+import skimage
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -30,6 +33,53 @@ LOG.basicConfig(
         LOG.StreamHandler()
     ]
 )
+
+class CigButtsConfig(Config):
+    """Configuration for training on the cigarette butts dataset.
+    Derives from the base Config class and overrides values specific
+    to the cigarette butts dataset.
+    """
+    # Give the configuration a recognizable name
+    NAME = "fingerprints"
+
+    # Train on 1 GPU and 1 image per GPU. Batch size is 1 (GPUs * images/GPU).
+    GPU_COUNT = 1
+    IMAGES_PER_GPU = 1
+
+    # Number of classes (including background)
+    NUM_CLASSES = 1 + 1  # background + 1 (cig_butt)
+
+    # All of our training images are 512x512
+    IMAGE_MIN_DIM = 512
+    IMAGE_MAX_DIM = 512
+    IMAGE_RESIZE_MODE = "square"
+
+    # You can experiment with this number to see if it improves training
+    STEPS_PER_EPOCH = 16
+
+    # This is how often validation is run. If you are using too much hard drive space
+    # on saved models (in the MODEL_DIR), try making this value larger.
+    VALIDATION_STEPS = 5
+
+    # Matterport originally used resnet101, but I downsized to fit it on my graphics card
+    BACKBONE = 'resnet101'
+
+    # To be honest, I haven't taken the time to figure out what these do
+    RPN_ANCHOR_SCALES = (8, 16, 32, 64, 128)
+    TRAIN_ROIS_PER_IMAGE = 20
+    MAX_GT_INSTANCES = 20
+    POST_NMS_ROIS_INFERENCE = 500
+    POST_NMS_ROIS_TRAINING = 1000
+
+config = CigButtsConfig()
+config.display()
+
+class InferenceConfig(CigButtsConfig):
+    GPU_COUNT = 1
+    IMAGES_PER_GPU = 1
+    IMAGE_MIN_DIM = 512
+    IMAGE_MAX_DIM = 512
+    DETECTION_MIN_CONFIDENCE = 0.5
 
 
 def connect_event_listeners(mainWindow):
@@ -45,13 +95,6 @@ def connect_event_listeners(mainWindow):
     mainWindow.TurOffMasksButton.clicked.connect(turn_off_masks_button_clicked)
     return mainWindow
 
-class SimpleConfig(Config):
-    NAME = "coco_inference"
-
-    GPU_COUNT = 1
-    IMAGES_PER_GPU = 1
-
-    NUM_CLASSES = 25
 
 def open_image_button_clicked():
     file_path = None
@@ -63,20 +106,6 @@ def open_image_button_clicked():
     RUN_PATH = file_path
     myWin.block_of_image_opened = False
     myWin.full_image_opened = True
-
-    # model = modellib.MaskRCNN(mode="inference",
-    #                              config=SimpleConfig(),
-    #                              model_dir=os.getcwd())
-    #
-    # print(model.keras_model.summary())
-    # model.load_weights(
-    #     filepath="/home/filip/Documents/DP/Mask-RCNN/Mask_RCNN/logs/fingerprints20220328T1033/mask_rcnn_fingerprints_0100.h5",
-    #     by_name=True)
-    # print("weights loaded")
-
-    # image = cv2.imread("/home/filip/Documents/DP/FP Parts_Test/2.jpg")
-    # r = model.detect(images=[image],
-    #                  verbose=0)
 
 
 
@@ -141,10 +170,10 @@ class PhotoViewer(QtWidgets.QGraphicsView):
             if self.hasPhoto():
                 unity = self.transform().mapRect(QtCore.QRectF(0, 0, 1, 1))
                 self.scale(1 / unity.width(), 1 / unity.height())
-                # viewrect = self.viewport().rect()
-                # scenerect = self.transform().mapRect(rect)
-                # factor = max(viewrect.width() / scenerect.width(),
-                #              viewrect.height() / scenerect.height())
+                viewrect = self.viewport().rect()
+                scenerect = self.transform().mapRect(rect)
+                factor = max(viewrect.width() / scenerect.width(),
+                             viewrect.height() / scenerect.height())
                 self.scale(0.1, 0.1)
             self._zoom = 0
 
@@ -228,12 +257,12 @@ def detect_pores_button_clicked():
             myWin.predictedImageLabel.setText('Image is being processed... ')
             myWin.number_of_pores_detected_label.setText("")
             if myWin.full_image_opened:
-                full_image_detecting_thread()
+                detect_pores_on_full_image()
             elif myWin.block_of_image_opened:
-                block_image_detecting_thread()
+                detect_pores_on_block_of_image()
     if myWin.MaskRcnnCheckBox.isChecked():
         myWin.number_of_pores_detected_label.setText("")
-        print("No implemented yet.")
+        detect_pores_on_full_image_mask_rcnn()
 
 
 def one_stage_detector_checkbox_state_changed(state):
@@ -256,19 +285,18 @@ def show_new_window(self):
     myWin.seconWindow.setGeometry(0, 0, 800, 600)
     if myWin.full_image_opened:
         myWin.seconWindow.loadImage(
-            '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
-        # myWin.seconWindow.setWindowTitle("Detected image window")
-        myWin.predictedImageLabel
+            '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
+        myWin.seconWindow.setWindowTitle("Detected image window")
         myWin.seconWindow.show()
     elif myWin.block_of_image_opened:
         if myWin.mask_turned_on:
             myWin.seconWindow.loadImage(
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
             myWin.seconWindow.setWindowTitle("Detected image window")
             myWin.seconWindow.show()
         else:
             myWin.seconWindow.loadImage(
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
             myWin.seconWindow.setWindowTitle("Detected image window")
             myWin.seconWindow.show()
 
@@ -296,24 +324,68 @@ class FileExplorer(QWidget):
         return fileName
 
 
-def full_image_detecting_thread():
-    myWin.spinnerLabel.resize(64, 64)
-    movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
-    myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
-    myWin.spinnerLabel.show()
-    full_image_detector_detector = threading.Thread(target=detect_pores_on_full_image)
-    movie.start()
-    full_image_detector_detector.start()
+# def full_image_detecting_thread():
+#     myWin.spinnerLabel.resize(64, 64)
+#     movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
+#     myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
+#     myWin.spinnerLabel.show()
+#     full_image_detector_detector = threading.Thread(target=detect_pores_on_full_image)
+#     movie.start()
+#     full_image_detector_detector.start()
 
 
-def block_image_detecting_thread():
-    myWin.spinnerLabel.resize(64, 64)
-    movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
-    myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
-    myWin.spinnerLabel.show()
-    block_image_detector_detector = threading.Thread(target=detect_pores_on_block_of_image)
-    movie.start()
-    block_image_detector_detector.start()
+# def block_image_detecting_thread():
+#     myWin.spinnerLabel.resize(64, 64)
+#     # movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
+#     myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
+#     myWin.spinnerLabel.show()
+#     block_image_detector_detector = threading.Thread(target=detect_pores_on_block_of_image)
+#     # movie.start()
+#     # block_image_detector_detector.start()
+
+def detect_pores_on_full_image_mask_rcnn():
+    config = cfg.get_config()
+    image_proc = imageProcessing.ImageProcessing(RUN_PATH)
+    image_proc.remove_content_of_folders()
+    size = image_proc.split_image()
+    remove_content_of_folder_runs()
+    start_time = time.time()
+    inference_config = InferenceConfig()
+    rcnn = modellib.MaskRCNN(mode='inference',
+                             config=inference_config,
+                             model_dir='./')
+    rcnn.load_weights('/home/filip/Documents/DP/Git/DP_2021-2022/Mask_RCNN/logs/fingerprints20220404T1558/mask_rcnn_fingerprints_0100.h5', by_name=True)
+    print("model loaded")
+    end_time = time.time()
+
+    dataset_val = CocoLikeDataset()
+    dataset_val.load_data('/home/filip/Documents/DP/MR/Mask_RCNN/datasets/fingerprints_pores/val/coco_annotations.json',
+                          '/home/filip/Documents/DP/MR/Mask_RCNN/datasets/fingerprints_pores/val/images')
+    dataset_val.prepare()
+
+    # real_test_dir = ROOT_DIR+'/samples/PoresDetection/parts_of_image/'
+    real_test_dir = '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/parts_of_image/'
+    image_paths = []
+    file_names = []
+    for filename in os.listdir(real_test_dir):
+        if os.path.splitext(filename)[1].lower() in ['.png', '.jpg', '.jpeg']:
+            image_paths.append(os.path.join(real_test_dir, filename))
+            file_names.append(filename)
+
+    for image_path, file_name in zip(image_paths, file_names):
+        img = skimage.io.imread(image_path)
+        img_arr = np.array(img)
+        results = rcnn.detect([img_arr], verbose=1)
+        r = results[0]
+        visualize.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
+                                    dataset_val.class_names, r['scores'], figsize=(5, 5))
+
+    LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
+    image_proc.join_images(size, False)
+    create_pixmap_detected_image(
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
+    image_proc.resize_final_image()
+    myWin.openDetectedImageButton.setEnabled(True)
 
 
 def detect_pores_on_full_image():
@@ -328,10 +400,10 @@ def detect_pores_on_full_image():
     number_of_detected_pores = yolo.detect(False, True)
     end_time = time.time()
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
-    image_proc.join_images(size)
-    image_proc.resize_final_image()
+    image_proc.join_images(size, True)
+    # image_proc.resize_final_image()
     create_pixmap_detected_image(
-        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg', True)
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
     myWin.spinnerLabel.hide()
     path_to_results = config.get("paths", "path_to_results")
     myWin.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
@@ -449,6 +521,99 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.json_is_loaded = False
         self.json = None
         self.mask_turned_on = False
+
+
+class CocoLikeDataset(utils.Dataset):
+    """ Generates a COCO-like dataset, i.e. an image dataset annotated in the style of the COCO dataset.
+        See http://cocodataset.org/#home for more information.
+    """
+    def load_data(self, annotation_json, images_dir):
+        """ Load the coco-like dataset from json
+        Args:
+            annotation_json: The path to the coco annotations json file
+            images_dir: The directory holding the images referred to by the json file
+        """
+        # Load json from file
+        json_file = open(annotation_json)
+        coco_json = json.load(json_file)
+        json_file.close()
+
+        # Add the class names using the base method from utils.Dataset
+        source_name = "coco_like"
+        for category in coco_json['categories']:
+            class_id = category['id']
+            class_name = category['name']
+            if class_id < 1:
+                print('Error: Class id for "{}" cannot be less than one. (0 is reserved for the background)'.format(class_name))
+                return
+
+            self.add_class(source_name, class_id, class_name)
+
+        # Get all annotations
+        annotations = {}
+        for annotation in coco_json['annotations']:
+            image_id = annotation['image_id']
+            if image_id not in annotations:
+                annotations[image_id] = []
+            annotations[image_id].append(annotation)
+
+        # Get all images and add them to the dataset
+        seen_images = {}
+        for image in coco_json['images']:
+            image_id = image['id']
+            if image_id in seen_images:
+                print("Warning: Skipping duplicate image id: {}".format(image))
+            else:
+                seen_images[image_id] = image
+                try:
+                    image_file_name = image['file_name']
+                    image_width = image['width']
+                    image_height = image['height']
+                except KeyError as key:
+                    print("Warning: Skipping image (id: {}) with missing key: {}".format(image_id, key))
+
+                image_path = os.path.abspath(os.path.join(images_dir, image_file_name))
+                image_annotations = annotations[image_id]
+
+                # Add the image using the base method from utils.Dataset
+                self.add_image(
+                    source=source_name,
+                    image_id=image_id,
+                    path=image_path,
+                    width=image_width,
+                    height=image_height,
+                    annotations=image_annotations
+                )
+
+    def load_mask(self, image_id):
+        """ Load instance masks for the given image.
+        MaskRCNN expects masks in the form of a bitmap [height, width, instances].
+        Args:
+            image_id: The id of the image to load masks for
+        Returns:
+            masks: A bool array of shape [height, width, instance count] with
+                one mask per instance.
+            class_ids: a 1D array of class IDs of the instance masks.
+        """
+        image_info = self.image_info[image_id]
+        annotations = image_info['annotations']
+        instance_masks = []
+        class_ids = []
+
+        for annotation in annotations:
+            class_id = annotation['category_id']
+            mask = Image.new('1', (image_info['width'], image_info['height']))
+            mask_draw = ImageDraw.ImageDraw(mask, '1')
+            for segmentation in annotation['segmentation']:
+                mask_draw.polygon(segmentation, fill=1)
+                bool_array = np.array(mask) > 0
+                instance_masks.append(bool_array)
+                class_ids.append(class_id)
+
+        mask = np.dstack(instance_masks)
+        class_ids = np.array(class_ids, dtype=np.int32)
+
+        return mask, class_ids
 
 
 if __name__ == '__main__':

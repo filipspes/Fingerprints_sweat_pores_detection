@@ -60,8 +60,11 @@ class ImageProcessing:
         LOG.info(f"The image has been split into {number_of_images} pictures.") #F-string added
         return size
 
-    def join_images(self, size):
-        input_directory = self.config.get("paths", "path_to_detected_parts_of_image")
+    def join_images(self, size, yolo):
+        if yolo:
+            input_directory = self.config.get("paths", "path_to_detected_parts_of_image")
+        else:
+            input_directory = self.config.get("paths", "path_to_detected_parts_of_image_mask")
         file_names = os.listdir(input_directory)
 
         joined_image = Image.new("RGB", (size[0], size[1]), "white")

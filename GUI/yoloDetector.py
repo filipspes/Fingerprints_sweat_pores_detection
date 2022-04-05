@@ -3,7 +3,7 @@ import os
 import torch
 from PIL import Image
 import logging as LOG
-import config
+import config as cf
 from main import *
 from datetime import datetime
 
@@ -19,7 +19,7 @@ LOG.basicConfig(
 
 class Yolo:
     def __init__(self, confidence, iou, path_to_single_image, model_size):
-        self.config = config.get_config()
+        self.config = cf.get_config()
         self.confidence = confidence
         self.iou = iou
         self.path_to_single_image = path_to_single_image
