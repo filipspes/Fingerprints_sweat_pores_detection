@@ -3,8 +3,7 @@ import shutil
 from PIL import Image
 from itertools import product
 import logging as LOG
-from configparser import ConfigParser
-import config
+import app_config
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -33,7 +32,7 @@ class ImageProcessing:
     def __init__(self, path):
         self.path = path
         self.initial_size = None
-        self.config = config.get_config()
+        self.config = app_config.get_config()
 
     def split_image(self):
         path_to_high_res_image = self.config.get("paths", "ROOT_DIR") + 'PoreDetections/high_resolution_image/'

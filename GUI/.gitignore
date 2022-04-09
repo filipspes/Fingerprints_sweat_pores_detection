@@ -2,6 +2,7 @@ __pycache__/
 PoreDetections/
 runs/
 mrcnn_models/
+yolov5_models/
 .idea/
 YOLOv5_N_weights.pt
 YOLOv5_S_weights.pt
