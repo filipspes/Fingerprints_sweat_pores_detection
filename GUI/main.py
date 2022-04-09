@@ -63,7 +63,6 @@ def open_image_button_clicked():
     myWin.full_image_opened = True
 
 
-
 def open_image_part_button_clicked():
     fileExplorer = FileExplorer()
     file_path = fileExplorer.openFileNameDialog()
@@ -237,7 +236,6 @@ def detect_pores_button_clicked():
 def one_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
         myWin.YoloModelsComboBox.setEnabled(True)
-        myWin.MaskRcnnBackboneComboBox.setChecked(False)
         LOG.info("Check box 1 checked")
     else:
         myWin.YoloModelsComboBox.setEnabled(False)
@@ -254,21 +252,22 @@ def two_stage_detector_checkbox_state_changed(state):
 
 
 def show_new_window(self):
+    config = cfg.get_config()
     myWin.seconWindow.setGeometry(0, 0, 800, 600)
     if myWin.full_image_opened:
         myWin.seconWindow.loadImage(
-            '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
+            config.get("paths", "ROOT_DIR") + 'PoreDetections/final_fingerprint/pores_predicted_final_image.jpg')
         myWin.seconWindow.setWindowTitle("Detected image window")
         myWin.seconWindow.show()
     elif myWin.block_of_image_opened:
         if myWin.mask_turned_on:
             myWin.seconWindow.loadImage(
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
+                config.get("paths", "ROOT_DIR") + 'PoreDetections/block_of_image_detected/masked_image.jpg')
             myWin.seconWindow.setWindowTitle("Detected image window")
             myWin.seconWindow.show()
         else:
             myWin.seconWindow.loadImage(
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
+                config.get("paths", "ROOT_DIR") + 'PoreDetections/block_of_image_detected/detected_image.jpg')
             myWin.seconWindow.setWindowTitle("Detected image window")
             myWin.seconWindow.show()
 
@@ -295,15 +294,17 @@ class FileExplorer(QWidget):
                                                   "All Files (*);;Python Files (*.py)", options=options)
         return fileName
 
+
 def detect_pores_on_block_of_image_mask_rcnn():
     config = cfg.get_config()
     image_proc = imageProcessing.ImageProcessing(RUN_PATH)
     image_proc.remove_content_of_folders()
     inference_config = mrc.InferenceConfig()
-    rcnn = modellib.MaskRCNN(mode='inference',
+    mask_rcnn_model = modellib.MaskRCNN(mode='inference',
                              config=inference_config,
                              model_dir='./')
-    rcnn.load_weights('/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprint_resnet50_all.h5', by_name=True)
+    mask_rcnn_model.load_weights(
+        config.get("paths", "ROOT_DIR") + 'mrcnn_models/mask_rcnn_fingerprint_resnet50_all.h5', by_name=True)
     dataset_val = CocoLikeDataset()
     dataset_val.load_data('/home/filip/Documents/DP/MR/Mask_RCNN/datasets/fingerprints_pores/val/coco_annotations.json',
                           '/home/filip/Documents/DP/MR/Mask_RCNN/datasets/fingerprints_pores/val/images')
@@ -312,14 +313,15 @@ def detect_pores_on_block_of_image_mask_rcnn():
     print(RUN_PATH)
     img = skimage.io.imread(RUN_PATH)
     img_arr = np.array(img)
-    results = rcnn.detect([img_arr], verbose=1)
+    results = mask_rcnn_model.detect([img_arr], verbose=1)
     r = results[0]
     visualize_detections.display_instances(img, "detected_block_of_image.jpg", r['rois'], r['masks'], r['class_ids'],
-                                        dataset_val.class_names, r['scores'])
+                                           dataset_val.class_names, r['scores'])
     print(len(r['rois']))
     create_pixmap_detected_image(
-        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/pores_detected/detected_block_of_image.jpg', True)
+        config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/detected_block_of_image.jpg', True)
     myWin.openDetectedImageButton.setEnabled(True)
+
 
 def detect_pores_on_full_image_mask_rcnn():
     config = cfg.get_config()
@@ -329,10 +331,12 @@ def detect_pores_on_full_image_mask_rcnn():
     remove_content_of_folder_runs()
     start_time = time.time()
     inference_config = mrc.InferenceConfig()
-    rcnn = modellib.MaskRCNN(mode='inference',
-                             config=inference_config,
-                             model_dir='./')
-    rcnn.load_weights('/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprint_resnet50_all.h5', by_name=True)
+    mask_rcnn_model = modellib.MaskRCNN(mode='inference',
+                                        config=inference_config,
+                                        model_dir='./')
+    mask_rcnn_model.load_weights(config.get("paths", "ROOT_DIR") + 'mrcnn_models'
+                                                                   '/mask_rcnn_fingerprint_resnet50_all.h5',
+                                 by_name=True)
     print("model loaded")
     end_time = time.time()
 
@@ -341,8 +345,7 @@ def detect_pores_on_full_image_mask_rcnn():
                           '/home/filip/Documents/DP/MR/Mask_RCNN/datasets/fingerprints_pores/val/images')
     dataset_val.prepare()
 
-    # real_test_dir = ROOT_DIR+'/samples/PoresDetection/parts_of_image/'
-    real_test_dir = '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/parts_of_image/'
+    real_test_dir = config.get("paths", "ROOT_DIR") + 'PoreDetections/parts_of_image/'
     image_paths = []
     file_names = []
     for filename in os.listdir(real_test_dir):
@@ -353,25 +356,26 @@ def detect_pores_on_full_image_mask_rcnn():
     for image_path, file_name in zip(image_paths, file_names):
         img = skimage.io.imread(image_path)
         if np.mean(img) == 255:
-            shutil.copyfile(image_path, '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/pores_detected/'+file_name)
+            shutil.copyfile(image_path, config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/' + file_name)
         else:
             img_arr = np.array(img)
-            results = rcnn.detect([img_arr], verbose=1)
+            results = mask_rcnn_model.detect([img_arr], verbose=1)
             r = results[0]
             visualize_detections.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
-                                        dataset_val.class_names, r['scores'], figsize=(5, 5))
+                                                   dataset_val.class_names, r['scores'], figsize=(5, 5))
             print(len(r['rois']))
 
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
     image_proc.join_images(size, False)
     create_pixmap_detected_image(
-        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
+        config.get("paths", "ROOT_DIR") + 'PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
     image_proc.resize_final_image()
     myWin.openDetectedImageButton.setEnabled(True)
 
+
 def detect_pores_on_full_image():
     config = cfg.get_config()
-    yolo = yoloDetector.Yolo(myWin.confidenceSlider.value(), myWin.iouSlider.value(), '',
+    yolo = yoloDetector.Yolo(myWin.confidenceSlider.value(), myWin.maxDetectionsSlider_2.value(), '',
                              myWin.YoloModelsComboBox.currentText())
     image_proc = imageProcessing.ImageProcessing(RUN_PATH)
     image_proc.remove_content_of_folders()
@@ -382,11 +386,9 @@ def detect_pores_on_full_image():
     end_time = time.time()
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
     image_proc.join_images(size, True)
-    # image_proc.resize_final_image()
     create_pixmap_detected_image(
-        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
-    myWin.spinnerLabel.hide()
-    path_to_results = config.get("paths", "path_to_results")
+        config.get("paths", "ROOT_DIR") + 'PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
+    # myWin.spinnerLabel.hide()
     myWin.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
     myWin.openDetectedImageButton.setEnabled(True)
 
@@ -406,7 +408,8 @@ def detect_pores_on_block_of_image():
     shutil.copyfile('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/' + list_of_images[0],
                     '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
     create_pixmap_detected_image(
-        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg', False)
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg',
+        False)
     myWin.spinnerLabel.hide()
     path_to_results = config.get("paths", "path_to_results")
     myWin.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
@@ -455,7 +458,8 @@ def show_masks_button_click_handle():
     mask = shapes.astype(bool)
     masked_image[mask] = cv2.addWeighted(img, alpha, shapes, 1 - alpha, 0)[mask]
     img_rgb = cv2.cvtColor(masked_image, cv2.COLOR_BGR2RGB)
-    Image.fromarray(img_rgb).save('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
+    Image.fromarray(img_rgb).save(
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg')
     create_pixmap_detected_image(
         '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/masked_image.jpg', False)
     myWin.mask_turned_on = True
@@ -464,7 +468,8 @@ def show_masks_button_click_handle():
 
 def turn_off_masks_button_clicked():
     create_pixmap_detected_image(
-        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg', False)
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg',
+        False)
     myWin.mask_turned_on = False
     myWin.RealPoresLabel.setText("")
 
@@ -476,6 +481,7 @@ def fill_combobox_yolo():
     myWin.YoloModelsComboBox.addItem("YOLOv5 Large")
     myWin.YoloModelsComboBox.addItem("YOLOv5 XLarge")
 
+
 def fill_combobox_mask_rcnn():
     myWin.MaskRcnnBackboneComboBox.addItem("Resnet 50")
     myWin.MaskRcnnBackboneComboBox.addItem("Resnet 101")
@@ -483,8 +489,8 @@ def fill_combobox_mask_rcnn():
 
 def remove_content_of_folder_runs():
     config = cfg.get_config()
-    for filename in os.listdir(config.get("paths", "detections")):
-        file_path = os.path.join(config.get("paths", "detections"), filename)
+    for filename in os.listdir(config.get("paths", "ROOT_DIR") + 'runs/detect/'):
+        file_path = os.path.join(config.get("paths", "ROOT_DIR") + 'runs/detect/', filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
@@ -512,6 +518,7 @@ class CocoLikeDataset(utils.Dataset):
     """ Generates a COCO-like dataset, i.e. an image dataset annotated in the style of the COCO dataset.
         See http://cocodataset.org/#home for more information.
     """
+
     def load_data(self, annotation_json, images_dir):
         """ Load the coco-like dataset from json
         Args:
@@ -529,7 +536,8 @@ class CocoLikeDataset(utils.Dataset):
             class_id = category['id']
             class_name = category['name']
             if class_id < 1:
-                print('Error: Class id for "{}" cannot be less than one. (0 is reserved for the background)'.format(class_name))
+                print('Error: Class id for "{}" cannot be less than one. (0 is reserved for the background)'.format(
+                    class_name))
                 return
 
             self.add_class(source_name, class_id, class_name)

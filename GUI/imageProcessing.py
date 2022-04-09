@@ -36,16 +36,17 @@ class ImageProcessing:
         self.config = config.get_config()
 
     def split_image(self):
-        path_to_high_res_image = self.config.get("paths", "path_to_high_resolution_image")
+        path_to_high_res_image = self.config.get("paths", "ROOT_DIR") + 'PoreDetections/high_resolution_image/'
         name_of_high_res_image = self.config.get("names", "name_of_high_resolution_image")
-        path_to_parts_of_image = self.config.get("paths", "path_to_parts_of_image")
+        path_to_parts_of_image = self.config.get("paths", "ROOT_DIR") + 'PoreDetections/parts_of_image/'
         im = Image.open(self.path)
         size = im.size[0] * 8, im.size[1] * 8
         self.initial_size = size
         LOG.info("Resizing image...")
         im_resized = im.resize(size, Image.ANTIALIAS)
         LOG.info("Image resized successfully.")
-        im_resized.save(path_to_high_res_image + name_of_high_res_image)
+        im_resized.save(
+            self.config.get("paths", "ROOT_DIR") + 'PoreDetections/high_resolution_image/' + name_of_high_res_image)
         LOG.info("Resized image saved to" + path_to_high_res_image)
         img = Image.open(path_to_high_res_image + name_of_high_res_image);
         w, h = img.size
@@ -57,14 +58,14 @@ class ImageProcessing:
             out = os.path.join(path_to_parts_of_image, f'{i}_{j}.jpg')
             img.crop(box).save(out)
             number_of_images = number_of_images + 1
-        LOG.info(f"The image has been split into {number_of_images} pictures.") #F-string added
+        LOG.info(f"The image has been split into {number_of_images} pictures.")  # F-string added
         return size
 
     def join_images(self, size, yolo):
         if yolo:
-            input_directory = self.config.get("paths", "path_to_detected_parts_of_image")
+            input_directory = self.config.get("paths", "ROOT_DIR") + 'runs/detect/exp/'
         else:
-            input_directory = self.config.get("paths", "path_to_detected_parts_of_image_mask")
+            input_directory = self.config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/'
         file_names = os.listdir(input_directory)
 
         joined_image = Image.new("RGB", (size[0], size[1]), "white")
@@ -81,23 +82,16 @@ class ImageProcessing:
             image_part = Image.open(input_directory + name)
             if len(split) >= 2:
                 joined_image.paste(image_part, (int(split[1]), int(split[0])))
-        joined_image.save(self.config.get("paths", "path_to_detected_final_image")
+        joined_image.save(self.config.get("paths", "ROOT_DIR") + 'PoreDetections/final_fingerprint/'
                           + self.config.get("names", "name_of_detected_final_image"))
         LOG.info("All Done")
 
-    def resize_final_image(self):
-        image = Image.open(self.config.get("paths", "path_to_detected_final_image")
-                          + self.config.get("names", "name_of_detected_final_image"))
-        resized_image = image.resize((self.initial_size[0], self.initial_size[1]))
-        print(str(self.initial_size[0]) + str(self.initial_size[1]))
-        resized_image.save('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image.jpg')
-
     def remove_content_of_folders(self):
         LOG.info('Deleting content of a folder: /parts_of_image/')
-        remove_content_of_folder(self.config.get("paths", "path_to_parts_of_image"))
-        # LOG.info('Deleting content of a folder: /pores_detected/')
-        # remove_content_of_folder(self.config.get("paths", "path_to_detected_parts_of_image"))
+        remove_content_of_folder(self.config.get("paths", "ROOT_DIR") + 'PoreDetections/parts_of_image/')
+        LOG.info('Deleting content of a folder: /pores_detected/')
+        remove_content_of_folder(self.config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/')
         LOG.info('Deleting content of a folder: /high_resolution_image/')
-        remove_content_of_folder(self.config.get("paths", "path_to_high_resolution_image"))
+        remove_content_of_folder(self.config.get("paths", "ROOT_DIR") + 'PoreDetections/high_resolution_image/')
         LOG.info('Deleting content of a folder: /final_fingerprint/')
-        remove_content_of_folder(self.config.get("paths", "path_to_detected_final_image"))
+        remove_content_of_folder(self.config.get("paths", "ROOT_DIR") + 'PoreDetections/final_fingerprint/')
