@@ -180,7 +180,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>320</y>
+      <y>380</y>
       <width>281</width>
       <height>161</height>
      </rect>
@@ -270,7 +270,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="iouLabel">
+       <widget class="QLabel" name="maxDetectionsLabel">
         <property name="font">
          <font>
           <pointsize>12</pointsize>
@@ -279,14 +279,17 @@
          </font>
         </property>
         <property name="text">
-         <string>IoU: 0,45</string>
+         <string>Max detections: 100</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="iouSlider">
+       <widget class="QSlider" name="maxDetectionsSlider_2">
+        <property name="maximum">
+         <number>1000</number>
+        </property>
         <property name="value">
-         <number>50</number>
+         <number>100</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -474,10 +477,17 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>240</y>
+      <y>260</y>
       <width>281</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
    </widget>
    <widget class="QLabel" name="ResolutionInputImageLabel">
@@ -547,6 +557,63 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="MaskRcnnBackboneComboBox">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>330</y>
+      <width>281</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>240</y>
+      <width>161</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>YOLOv5 model type:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>310</y>
+      <width>231</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Mask R-CNN Backbone type:</string>
     </property>
    </widget>
   </widget>

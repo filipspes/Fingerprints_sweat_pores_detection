@@ -2,11 +2,13 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.12.3
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -75,7 +77,7 @@ class Ui_MainWindow(object):
         self.predictedImageLabel.setTextInteractionFlags(QtCore.Qt.LinksAccessibleByMouse)
         self.predictedImageLabel.setObjectName("predictedImageLabel")
         self.configurationGroupbox = QtWidgets.QGroupBox(self.centralwidget)
-        self.configurationGroupbox.setGeometry(QtCore.QRect(780, 320, 281, 161))
+        self.configurationGroupbox.setGeometry(QtCore.QRect(780, 380, 281, 161))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -115,19 +117,20 @@ class Ui_MainWindow(object):
         self.confidenceSlider.setInvertedControls(False)
         self.confidenceSlider.setObjectName("confidenceSlider")
         self.verticalLayout.addWidget(self.confidenceSlider)
-        self.iouLabel = QtWidgets.QLabel(self.layoutWidget)
+        self.maxDetectionsLabel = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
         font.setWeight(50)
-        self.iouLabel.setFont(font)
-        self.iouLabel.setObjectName("iouLabel")
-        self.verticalLayout.addWidget(self.iouLabel)
-        self.iouSlider = QtWidgets.QSlider(self.layoutWidget)
-        self.iouSlider.setProperty("value", 50)
-        self.iouSlider.setOrientation(QtCore.Qt.Horizontal)
-        self.iouSlider.setObjectName("iouSlider")
-        self.verticalLayout.addWidget(self.iouSlider)
+        self.maxDetectionsLabel.setFont(font)
+        self.maxDetectionsLabel.setObjectName("maxDetectionsLabel")
+        self.verticalLayout.addWidget(self.maxDetectionsLabel)
+        self.maxDetectionsSlider_2 = QtWidgets.QSlider(self.layoutWidget)
+        self.maxDetectionsSlider_2.setMaximum(1000)
+        self.maxDetectionsSlider_2.setProperty("value", 100)
+        self.maxDetectionsSlider_2.setOrientation(QtCore.Qt.Horizontal)
+        self.maxDetectionsSlider_2.setObjectName("maxDetectionsSlider_2")
+        self.verticalLayout.addWidget(self.maxDetectionsSlider_2)
         self.detectorsTypesGroupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.detectorsTypesGroupBox.setGeometry(QtCore.QRect(780, 80, 281, 151))
         font = QtGui.QFont()
@@ -193,7 +196,12 @@ class Ui_MainWindow(object):
         self.TurOffMasksButton.setGeometry(QtCore.QRect(830, 780, 171, 34))
         self.TurOffMasksButton.setObjectName("TurOffMasksButton")
         self.YoloModelsComboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.YoloModelsComboBox.setGeometry(QtCore.QRect(780, 240, 281, 32))
+        self.YoloModelsComboBox.setGeometry(QtCore.QRect(780, 260, 281, 32))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.YoloModelsComboBox.setFont(font)
         self.YoloModelsComboBox.setObjectName("YoloModelsComboBox")
         self.ResolutionInputImageLabel = QtWidgets.QLabel(self.centralwidget)
         self.ResolutionInputImageLabel.setGeometry(QtCore.QRect(400, 720, 201, 21))
@@ -225,6 +233,30 @@ class Ui_MainWindow(object):
         self.RealPoresLabel.setText("")
         self.RealPoresLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.RealPoresLabel.setObjectName("RealPoresLabel")
+        self.MaskRcnnBackboneComboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.MaskRcnnBackboneComboBox.setGeometry(QtCore.QRect(780, 330, 281, 32))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.MaskRcnnBackboneComboBox.setFont(font)
+        self.MaskRcnnBackboneComboBox.setObjectName("MaskRcnnBackboneComboBox")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(780, 240, 161, 18))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.centralwidget)
+        self.label_4.setGeometry(QtCore.QRect(780, 310, 231, 18))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1842, 30))
@@ -248,7 +280,7 @@ class Ui_MainWindow(object):
         self.predictedImageLabel.setText(_translate("MainWindow", "No image to display"))
         self.configurationGroupbox.setTitle(_translate("MainWindow", "Attributes settings"))
         self.confidenceLabel.setText(_translate("MainWindow", "Confidence: 0,75"))
-        self.iouLabel.setText(_translate("MainWindow", "IoU: 0,45"))
+        self.maxDetectionsLabel.setText(_translate("MainWindow", "Max detections: 100"))
         self.detectorsTypesGroupBox.setTitle(_translate("MainWindow", "Detector type"))
         self.Yolov5DetectorCheckBox.setText(_translate("MainWindow", "YOLOv5 (One-stage)"))
         self.MaskRcnnCheckBox.setText(_translate("MainWindow", "Mask R-CNN (Two-stage)"))
@@ -257,6 +289,8 @@ class Ui_MainWindow(object):
         self.LoadAnnotationsJsonButton.setText(_translate("MainWindow", "Load annotations JSON"))
         self.ShowMasksButton.setText(_translate("MainWindow", "Turn on masks"))
         self.TurOffMasksButton.setText(_translate("MainWindow", "Turn off masks"))
+        self.label_3.setText(_translate("MainWindow", "YOLOv5 model type:"))
+        self.label_4.setText(_translate("MainWindow", "Mask R-CNN Backbone type:"))
 
 
 if __name__ == "__main__":
@@ -267,4 +301,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-

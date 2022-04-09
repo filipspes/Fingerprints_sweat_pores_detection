@@ -24,6 +24,8 @@ from mrcnn import visualize
 from mrcnn import utils
 from PyQt5.QtWidgets import *
 import skimage
+import visualize_detections
+import mask_rcnn_config as mrc
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -34,53 +36,6 @@ LOG.basicConfig(
     ]
 )
 
-class CigButtsConfig(Config):
-    """Configuration for training on the cigarette butts dataset.
-    Derives from the base Config class and overrides values specific
-    to the cigarette butts dataset.
-    """
-    # Give the configuration a recognizable name
-    NAME = "fingerprints"
-
-    # Train on 1 GPU and 1 image per GPU. Batch size is 1 (GPUs * images/GPU).
-    GPU_COUNT = 1
-    IMAGES_PER_GPU = 1
-
-    # Number of classes (including background)
-    NUM_CLASSES = 1 + 1  # background + 1 (cig_butt)
-
-    # All of our training images are 512x512
-    IMAGE_MIN_DIM = 512
-    IMAGE_MAX_DIM = 512
-    IMAGE_RESIZE_MODE = "square"
-
-    # You can experiment with this number to see if it improves training
-    STEPS_PER_EPOCH = 16
-
-    # This is how often validation is run. If you are using too much hard drive space
-    # on saved models (in the MODEL_DIR), try making this value larger.
-    VALIDATION_STEPS = 5
-
-    # Matterport originally used resnet101, but I downsized to fit it on my graphics card
-    BACKBONE = 'resnet101'
-
-    # To be honest, I haven't taken the time to figure out what these do
-    RPN_ANCHOR_SCALES = (8, 16, 32, 64, 128)
-    TRAIN_ROIS_PER_IMAGE = 20
-    MAX_GT_INSTANCES = 20
-    POST_NMS_ROIS_INFERENCE = 500
-    POST_NMS_ROIS_TRAINING = 1000
-
-config = CigButtsConfig()
-config.display()
-
-class InferenceConfig(CigButtsConfig):
-    GPU_COUNT = 1
-    IMAGES_PER_GPU = 1
-    IMAGE_MIN_DIM = 512
-    IMAGE_MAX_DIM = 512
-    DETECTION_MIN_CONFIDENCE = 0.5
-
 
 def connect_event_listeners(mainWindow):
     mainWindow.OpenImageButton.clicked.connect(open_image_button_clicked)
@@ -88,7 +43,7 @@ def connect_event_listeners(mainWindow):
     mainWindow.MaskRcnnCheckBox.stateChanged.connect(two_stage_detector_checkbox_state_changed)
     mainWindow.detectPoresButton.clicked.connect(detect_pores_button_clicked)
     mainWindow.confidenceSlider.valueChanged.connect(confidence_slider_event)
-    mainWindow.iouSlider.valueChanged.connect(iou_slider_event)
+    mainWindow.maxDetectionsSlider_2.valueChanged.connect(max_deetection_slider_event)
     mainWindow.LoadAnnotationsJsonButton.clicked.connect(load_json_button_handle)
     mainWindow.LoadBlockOfImageButton.clicked.connect(open_image_part_button_clicked)
     mainWindow.ShowMasksButton.clicked.connect(show_masks_button_click_handle)
@@ -261,23 +216,40 @@ def detect_pores_button_clicked():
             elif myWin.block_of_image_opened:
                 detect_pores_on_block_of_image()
     if myWin.MaskRcnnCheckBox.isChecked():
-        myWin.number_of_pores_detected_label.setText("")
-        detect_pores_on_full_image_mask_rcnn()
+        if 'RUN_PATH' not in globals() or RUN_PATH == "":
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText("No input image. Please load an input image.")
+            msg.setWindowTitle("No image")
+            msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+            LOG.warning("No image is opened")
+            msg.exec_()
+        else:
+            myWin.predictedImageLabel.setText('Image is being processed... ')
+            myWin.number_of_pores_detected_label.setText("")
+            if myWin.full_image_opened:
+                detect_pores_on_full_image_mask_rcnn()
+            elif myWin.block_of_image_opened:
+                detect_pores_on_block_of_image_mask_rcnn()
+                myWin.number_of_pores_detected_label.setText("")
 
 
 def one_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
         myWin.YoloModelsComboBox.setEnabled(True)
+        myWin.MaskRcnnBackboneComboBox.setChecked(False)
         LOG.info("Check box 1 checked")
     else:
-        myWin.YoloModelsComboBox.setEnabled(True)
+        myWin.YoloModelsComboBox.setEnabled(False)
         LOG.info("Check box 1 unchecked")
 
 
 def two_stage_detector_checkbox_state_changed(state):
     if (QtCore.Qt.Checked == state):
+        myWin.MaskRcnnBackboneComboBox.setEnabled(True)
         LOG.info("Check box 2 checked")
     else:
+        myWin.MaskRcnnBackboneComboBox.setEnabled(False)
         LOG.info("Check box 2 unchecked")
 
 
@@ -323,25 +295,31 @@ class FileExplorer(QWidget):
                                                   "All Files (*);;Python Files (*.py)", options=options)
         return fileName
 
+def detect_pores_on_block_of_image_mask_rcnn():
+    config = cfg.get_config()
+    image_proc = imageProcessing.ImageProcessing(RUN_PATH)
+    image_proc.remove_content_of_folders()
+    inference_config = mrc.InferenceConfig()
+    rcnn = modellib.MaskRCNN(mode='inference',
+                             config=inference_config,
+                             model_dir='./')
+    rcnn.load_weights('/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprint_resnet50_all.h5', by_name=True)
+    dataset_val = CocoLikeDataset()
+    dataset_val.load_data('/home/filip/Documents/DP/MR/Mask_RCNN/datasets/fingerprints_pores/val/coco_annotations.json',
+                          '/home/filip/Documents/DP/MR/Mask_RCNN/datasets/fingerprints_pores/val/images')
+    dataset_val.prepare()
 
-# def full_image_detecting_thread():
-#     myWin.spinnerLabel.resize(64, 64)
-#     movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
-#     myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
-#     myWin.spinnerLabel.show()
-#     full_image_detector_detector = threading.Thread(target=detect_pores_on_full_image)
-#     movie.start()
-#     full_image_detector_detector.start()
-
-
-# def block_image_detecting_thread():
-#     myWin.spinnerLabel.resize(64, 64)
-#     # movie = QMovie("loadingSpinner.gif")  # Create a QMovie from our gif
-#     myWin.spinnerLabel.setMovie(movie)  # use setMovie function in our QLabel
-#     myWin.spinnerLabel.show()
-#     block_image_detector_detector = threading.Thread(target=detect_pores_on_block_of_image)
-#     # movie.start()
-#     # block_image_detector_detector.start()
+    print(RUN_PATH)
+    img = skimage.io.imread(RUN_PATH)
+    img_arr = np.array(img)
+    results = rcnn.detect([img_arr], verbose=1)
+    r = results[0]
+    visualize_detections.display_instances(img, "detected_block_of_image.jpg", r['rois'], r['masks'], r['class_ids'],
+                                        dataset_val.class_names, r['scores'])
+    print(len(r['rois']))
+    create_pixmap_detected_image(
+        '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/pores_detected/detected_block_of_image.jpg', True)
+    myWin.openDetectedImageButton.setEnabled(True)
 
 def detect_pores_on_full_image_mask_rcnn():
     config = cfg.get_config()
@@ -350,11 +328,11 @@ def detect_pores_on_full_image_mask_rcnn():
     size = image_proc.split_image()
     remove_content_of_folder_runs()
     start_time = time.time()
-    inference_config = InferenceConfig()
+    inference_config = mrc.InferenceConfig()
     rcnn = modellib.MaskRCNN(mode='inference',
                              config=inference_config,
                              model_dir='./')
-    rcnn.load_weights('/home/filip/Documents/DP/Git/DP_2021-2022/Mask_RCNN/logs/fingerprints20220404T1558/mask_rcnn_fingerprints_0100.h5', by_name=True)
+    rcnn.load_weights('/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprint_resnet50_all.h5', by_name=True)
     print("model loaded")
     end_time = time.time()
 
@@ -374,11 +352,15 @@ def detect_pores_on_full_image_mask_rcnn():
 
     for image_path, file_name in zip(image_paths, file_names):
         img = skimage.io.imread(image_path)
-        img_arr = np.array(img)
-        results = rcnn.detect([img_arr], verbose=1)
-        r = results[0]
-        visualize.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
-                                    dataset_val.class_names, r['scores'], figsize=(5, 5))
+        if np.mean(img) == 255:
+            shutil.copyfile(image_path, '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/pores_detected/'+file_name)
+        else:
+            img_arr = np.array(img)
+            results = rcnn.detect([img_arr], verbose=1)
+            r = results[0]
+            visualize_detections.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
+                                        dataset_val.class_names, r['scores'], figsize=(5, 5))
+            print(len(r['rois']))
 
     LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
     image_proc.join_images(size, False)
@@ -386,7 +368,6 @@ def detect_pores_on_full_image_mask_rcnn():
         '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/final_fingerprint/pores_predicted_final_image.jpg', True)
     image_proc.resize_final_image()
     myWin.openDetectedImageButton.setEnabled(True)
-
 
 def detect_pores_on_full_image():
     config = cfg.get_config()
@@ -436,8 +417,8 @@ def confidence_slider_event():
     myWin.confidenceLabel.setText('Confidence: ' + str((myWin.confidenceSlider.value() + 1) / 100))
 
 
-def iou_slider_event():
-    myWin.iouLabel.setText('IoU: ' + str((myWin.iouSlider.value() + 1) / 100))
+def max_deetection_slider_event():
+    myWin.maxDetectionsLabel.setText('Max detections: ' + str((myWin.maxDetectionsSlider_2.value())))
 
 
 def load_json_button_handle():
@@ -488,12 +469,16 @@ def turn_off_masks_button_clicked():
     myWin.RealPoresLabel.setText("")
 
 
-def fill_combobox():
+def fill_combobox_yolo():
     myWin.YoloModelsComboBox.addItem("YOLOv5 Nano")
     myWin.YoloModelsComboBox.addItem("YOLOv5 Small")
     myWin.YoloModelsComboBox.addItem("YOLOv5 Medium")
     myWin.YoloModelsComboBox.addItem("YOLOv5 Large")
     myWin.YoloModelsComboBox.addItem("YOLOv5 XLarge")
+
+def fill_combobox_mask_rcnn():
+    myWin.MaskRcnnBackboneComboBox.addItem("Resnet 50")
+    myWin.MaskRcnnBackboneComboBox.addItem("Resnet 101")
 
 
 def remove_content_of_folder_runs():
@@ -626,5 +611,7 @@ if __name__ == '__main__':
     myWin.openDetectedImageButton.setEnabled(False)
     myWin.showMaximized()
     myWin.YoloModelsComboBox.setEnabled(False)
-    fill_combobox()
+    myWin.MaskRcnnBackboneComboBox.setEnabled(False)
+    fill_combobox_yolo()
+    fill_combobox_mask_rcnn()
     sys.exit(app.exec_())
