@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>1842</width>
-    <height>884</height>
+    <height>970</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>DetectorMainWindow</string>
+   <string>Fingeprint sweat pores detector</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="OpenImageButton">
@@ -31,7 +31,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Open Image</string>
+     <string>Load full image</string>
     </property>
    </widget>
    <widget class="QLabel" name="loadedImageLabel">
@@ -385,13 +385,13 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="number_of_pores_detected_label">
+   <widget class="QPushButton" name="LoadBlockOfImageButton">
     <property name="geometry">
      <rect>
-      <x>780</x>
-      <y>620</y>
-      <width>281</width>
-      <height>31</height>
+      <x>40</x>
+      <y>140</y>
+      <width>171</width>
+      <height>34</height>
      </rect>
     </property>
     <property name="font">
@@ -402,49 +402,20 @@
      </font>
     </property>
     <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="openDetectedImageButton">
-    <property name="geometry">
-     <rect>
-      <x>1210</x>
-      <y>750</y>
-      <width>241</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Open detected image in new window</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="LoadBlockOfImageButton">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>120</y>
-      <width>171</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Load block of image</string>
+     <string>Load image part</string>
     </property>
    </widget>
    <widget class="QPushButton" name="LoadAnnotationsJsonButton">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>160</y>
+      <y>180</y>
       <width>171</width>
       <height>34</height>
      </rect>
     </property>
     <property name="text">
-     <string>Load annotations JSON</string>
+     <string>Load JSON annotations</string>
     </property>
    </widget>
    <widget class="QPushButton" name="ShowMasksButton">
@@ -501,53 +472,7 @@
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="ResolutionOutputImageLabel">
-    <property name="geometry">
-     <rect>
-      <x>1240</x>
-      <y>720</y>
-      <width>201</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="RealPoresLabel">
-    <property name="geometry">
-     <rect>
-      <x>780</x>
-      <y>660</y>
-      <width>281</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
+      <pointsize>12</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -615,6 +540,76 @@
     <property name="text">
      <string>Mask R-CNN Backbone type:</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>720</y>
+      <width>311</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="ResolutionOutputImageLabel">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="number_of_pores_detected_label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="RealPoresLabel">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="openDetectedImageButton">
+       <property name="text">
+        <string>Open detected image in new window</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

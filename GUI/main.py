@@ -149,9 +149,10 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 self.app_config.get("paths",
                                     "ROOT_DIR") + 'PoreDetections/final_fingerprint/pores_predicted_final_image.jpg',
                 True)
-            self.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
+            end_time = time.time()
+            detection_time = round((end_time - start_time), 2)
+            self.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
         else:
-            start_time = time.time()
             number_of_detected_pores = yolo.detect(True, False)
             list_of_images = os.listdir('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/')
             shutil.copyfile('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/' + list_of_images[0],
@@ -161,10 +162,10 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image'
                 '.jpg',
                 False)
-            self.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected!")
+            end_time = time.time()
+            detection_time = round((end_time - start_time), 2)
+            self.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
 
-        end_time = time.time()
-        LOG.info("Detection took: " + str(end_time - start_time) + ' seconds')
         self.openDetectedImageButton.setEnabled(True)
 
     def detect_fingerprint_pores_mask_rcnn(self, full_image):
@@ -173,6 +174,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         mask_rcnn = mask_rcnn_detector.MaskRCNN(RUN_PATH, self.MaskRcnnBackboneComboBox.currentText(),
                                                 self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(),
                                                 self.MaskRcnnBackboneComboBox.currentText())
+        start_time = time.time()
         if full_image:
             size = image_proc.split_image()
             mask_rcnn.detect_fingeprint_pores_on_multiple_images()
@@ -181,11 +183,17 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 self.app_config.get("paths",
                                     "ROOT_DIR") + 'PoreDetections/final_fingerprint/pores_predicted_final_image.jpg',
                 True)
+            end_time = time.time()
+            detection_time = round((end_time - start_time), 2)
+            self.number_of_pores_detected_label.setText(str(mask_rcnn.number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
         else:
             mask_rcnn.detect_fingeprint_pores_on_single_image()
             self.create_pixmap_detected_image(
                 self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/detected_block_of_image.jpg',
                 False)
+            end_time = time.time()
+            detection_time = round((end_time - start_time), 2)
+            self.number_of_pores_detected_label.setText(str(mask_rcnn.number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
         self.openDetectedImageButton.setEnabled(True)
 
     def show_new_window(self):
