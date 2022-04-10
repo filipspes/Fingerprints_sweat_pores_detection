@@ -73,41 +73,6 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.MaskRcnnBackboneComboBox.setEnabled(False)
         self.Yolov5DetectorCheckBox.setChecked(True)
 
-    def turn_off_masks_button_clicked(self):
-        self.create_pixmap_detected_image(self.app_config.get("paths", "ROOT_DIR") +
-                                          'PoreDetections/block_of_image_detected/detected_image.jpg', False)
-        self.mask_turned_on = False
-        self.RealPoresLabel.setText("")
-
-    def show_masks_button_click_handle(self):
-        path_to_detected_image = self.app_config.get("paths",
-                                                     "ROOT_DIR") + 'PoreDetections/block_of_image_detected/detected_image.jpg'
-        img = cv2.imread(path_to_detected_image)
-        if not self.json_is_loaded:
-            self.load_json_button_handle()
-        shapes = np.zeros_like(img, np.uint8)
-        shapes_count = 0
-        for shape in self.json['shapes']:
-            x = shape['points'][0][0]
-            y = shape['points'][0][1]
-            x1 = shape['points'][1][0]
-            y1 = shape['points'][1][1]
-            center_coordinates = (int(x), int(y))
-            cv2.circle(shapes, center_coordinates, 20, (255, 0, 0), cv2.FILLED)
-            shapes_count = shapes_count + 1
-
-        masked_image = img.copy()
-        alpha = 0.5
-        mask = shapes.astype(bool)
-        masked_image[mask] = cv2.addWeighted(img, alpha, shapes, 1 - alpha, 0)[mask]
-        img_rgb = cv2.cvtColor(masked_image, cv2.COLOR_BGR2RGB)
-        Image.fromarray(img_rgb).save(self.app_config.get("paths", "ROOT_DIR") +
-                                      'PoreDetections/block_of_image_detected/masked_image.jpg')
-        self.create_pixmap_detected_image(self.app_config.get("paths", "ROOT_DIR") +
-                                          'PoreDetections/block_of_image_detected/masked_image.jpg', False)
-        self.mask_turned_on = True
-        self.RealPoresLabel.setText("Real pores: " + str(shapes_count))
-
     def load_json_button_handle(self):
         file_explorer = fileExplorer.FileExplorer()
         file_path = file_explorer.openFileNameDialog()
@@ -154,12 +119,13 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             self.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
         else:
             number_of_detected_pores = yolo.detect(True, False)
-            list_of_images = os.listdir('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/')
-            shutil.copyfile('/home/filip/Documents/DP/Git/DP_2021-2022/GUI/runs/detect/exp/' + list_of_images[0],
-                            '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected'
-                            '/detected_image.jpg')
+            list_of_images = os.listdir('/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/runs/detect/exp/')
+            shutil.copyfile('/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/runs/detect/exp/' + list_of_images[0],
+                            '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
+                            '/block_of_image_detected/detected_image.jpg')
             self.create_pixmap_detected_image(
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI/PoreDetections/block_of_image_detected/detected_image'
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
+                '/block_of_image_detected/detected_image'
                 '.jpg',
                 False)
             end_time = time.time()
@@ -232,6 +198,45 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         else:
             self.MaskRcnnBackboneComboBox.setEnabled(False)
 
+    def show_real_mask_checkbox_state_changed(self, state):
+        if QtCore.Qt.Checked == state:
+            self.draw_masks_from_json()
+        else:
+            self.create_pixmap_detected_image(self.app_config.get("paths", "ROOT_DIR") +
+                                              'PoreDetections/block_of_image_detected/detected_image.jpg', False)
+            self.mask_turned_on = False
+            self.RealPoresLabel.setText("")
+
+    def draw_masks_from_json(self):
+        path_to_detected_image = self.app_config.get("paths",
+                                                     "ROOT_DIR") + 'PoreDetections/block_of_image_detected/detected_image.jpg'
+        img = cv2.imread(path_to_detected_image)
+        if not self.json_is_loaded:
+            self.load_json_button_handle()
+        shapes = np.zeros_like(img, np.uint8)
+        shapes_count = 0
+        for shape in self.json['shapes']:
+            x = shape['points'][0][0]
+            y = shape['points'][0][1]
+            x1 = shape['points'][1][0]
+            y1 = shape['points'][1][1]
+            center_coordinates = (int(x), int(y))
+            cv2.circle(shapes, center_coordinates, 20, (255, 0, 0), cv2.FILLED)
+            shapes_count = shapes_count + 1
+
+        masked_image = img.copy()
+        alpha = 0.5
+        mask = shapes.astype(bool)
+        masked_image[mask] = cv2.addWeighted(img, alpha, shapes, 1 - alpha, 0)[mask]
+        img_rgb = cv2.cvtColor(masked_image, cv2.COLOR_BGR2RGB)
+        Image.fromarray(img_rgb).save(self.app_config.get("paths", "ROOT_DIR") +
+                                      'PoreDetections/block_of_image_detected/masked_image.jpg')
+        self.create_pixmap_detected_image(self.app_config.get("paths", "ROOT_DIR") +
+                                          'PoreDetections/block_of_image_detected/masked_image.jpg', False)
+        self.mask_turned_on = True
+        self.RealPoresLabel.setText("Real pores: " + str(shapes_count))
+
+
     def detect_pores_button_clicked(self):
         self.RealPoresLabel.setText("")
         if not self.Yolov5DetectorCheckBox.isChecked() and not self.MaskRcnnCheckBox.isChecked():
@@ -285,7 +290,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         img = Image.open(file_path)
         wid, hgt = img.size
         img.close()
-        self.ResolutionInputImageLabel.setText(str(wid) + "x" + str(hgt))
+        self.InputImageLabel.setText("Input image: " + str(wid) + "x" + str(hgt))
         self.loadedImageLabel.resize(520, 640)
         self.loadedImageLabel.setScaledContents(scaled_content)
 
@@ -295,7 +300,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         img = Image.open(file_path)
         wid, hgt = img.size
         img.close()
-        self.ResolutionOutputImageLabel.setText(str(wid) + "x" + str(hgt))
+        self.OutputImageLabel.setText("Output image:" + str(wid) + "x" + str(hgt))
         self.predictedImageLabel.resize(520, 640)
         self.predictedImageLabel.setScaledContents(scaled_content)
 
@@ -319,8 +324,7 @@ def connect_event_listeners(mainWindow):
     mainWindow.maxDetectionsSlider_2.valueChanged.connect(mainWindow.max_detection_slider_event)
     mainWindow.LoadAnnotationsJsonButton.clicked.connect(mainWindow.load_json_button_handle)
     mainWindow.LoadBlockOfImageButton.clicked.connect(mainWindow.open_image_part_button_clicked)
-    mainWindow.ShowMasksButton.clicked.connect(mainWindow.show_masks_button_click_handle)
-    mainWindow.TurOffMasksButton.clicked.connect(mainWindow.turn_off_masks_button_clicked)
+    mainWindow.showRealMaskCheckBox.stateChanged.connect(mainWindow.show_real_mask_checkbox_state_changed)
     return mainWindow
 
 
