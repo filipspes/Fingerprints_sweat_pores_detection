@@ -2,8 +2,10 @@ import skimage
 
 from main import *
 from config import MaskRcnnConfig as mask_rcnn_config
-import mrcnn.model as modellib
+# import mrcnn.model as modellib
+from mask_rcnn import model as modellib
 import time
+
 
 LOG.basicConfig(
     level=LOG.INFO,
