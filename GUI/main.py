@@ -3,21 +3,18 @@ import cv2
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
 from PIL import Image
-import ImageViewer
 from MainWindow import *
 import os
 import shutil
 import time
 import logging as LOG
-import YoloDetector
-import ImageProcessing
+from detectors import YoloDetector, MaskRcnnDetector
+from utils import ImageProcessing, ImageViewer
 import sys
 import numpy as np
 from PyQt5 import QtCore
-import AppConfig as app_config
+from config import AppConfig as app_config
 from PyQt5.QtWidgets import *
-import MaskRcnnDetector
-import FileExplorer as fileExplorer
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -74,7 +71,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.Yolov5DetectorCheckBox.setChecked(True)
 
     def load_json_button_handle(self):
-        file_explorer = fileExplorer.FileExplorer()
+        file_explorer = FileExplorer.FileExplorer()
         file_path = file_explorer.openFileNameDialog()
         f = open(file_path)
         data = json.load(f)
@@ -142,8 +139,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         image_proc = ImageProcessing.ImageProcessing(RUN_PATH)
         image_proc.remove_content_of_folders()
         mask_rcnn = MaskRcnnDetector.MaskRCNN(RUN_PATH, self.MaskRcnnBackboneComboBox.currentText(),
-                                                self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(),
-                                                self.MaskRcnnBackboneComboBox.currentText())
+                                              self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(),
+                                              self.MaskRcnnBackboneComboBox.currentText())
         if full_image:
             size = image_proc.split_image()
             mask_rcnn.detect_fingeprint_pores_on_multiple_images()
@@ -272,7 +269,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
 
     def open_image_button_clicked(self):
         file_path = None
-        file_explorer = fileExplorer.FileExplorer()
+        file_explorer = FileExplorer.FileExplorer()
         file_path = file_explorer.openFileNameDialog()
         self.create_pixmap_input_image(file_path, True)
         LOG.info("Image successfully opened")
@@ -282,7 +279,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.full_image_opened = True
 
     def open_image_part_button_clicked(self):
-        file_explorer = fileExplorer.FileExplorer()
+        file_explorer = FileExplorer.FileExplorer()
         file_path = file_explorer.openFileNameDialog()
         self.create_pixmap_input_image(file_path, False)
         global RUN_PATH

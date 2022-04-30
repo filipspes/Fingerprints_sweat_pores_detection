@@ -4,13 +4,13 @@ from PIL import Image
 from itertools import product
 import logging as LOG
 
-import AppConfig
+from config import AppConfig
 
 LOG.basicConfig(
     level=LOG.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        LOG.FileHandler("logfile.log"),
+        LOG.FileHandler("../logfile.log"),
         LOG.StreamHandler()
     ]
 )

@@ -1,7 +1,7 @@
 import skimage
 
 from main import *
-import MaskRcnnConfig as mask_rcnn_config
+from config import MaskRcnnConfig as mask_rcnn_config
 import mrcnn.model as modellib
 import time
 
@@ -9,7 +9,7 @@ LOG.basicConfig(
     level=LOG.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        LOG.FileHandler("logfile.log"),
+        LOG.FileHandler("../logfile.log"),
         LOG.StreamHandler()
     ]
 )
@@ -34,7 +34,7 @@ class MaskRCNN:
         inference_config.display()
         mask_rcnn_model = modellib.MaskRCNN(mode='inference',
                                             config=inference_config,
-                                            model_dir='./')
+                                            model_dir='../')
         path_to_model = self.config.get("paths", "ROOT_DIR") + 'mrcnn_models/mask_rcnn_fingerprints_' + self.selected_model.lower() + '.h5'
         mask_rcnn_model.load_weights(path_to_model, by_name=True)
         LOG.info("Mask R-CNN model weights loaded from path: " + path_to_model)

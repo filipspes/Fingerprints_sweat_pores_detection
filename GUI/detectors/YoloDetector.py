@@ -6,7 +6,7 @@ LOG.basicConfig(
     level=LOG.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        LOG.FileHandler("logfile.log"),
+        LOG.FileHandler("../logfile.log"),
         LOG.StreamHandler()
     ]
 )
