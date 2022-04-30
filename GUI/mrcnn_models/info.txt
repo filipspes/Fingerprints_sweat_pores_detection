@@ -1,0 +1,3 @@
+Mask R-CNN models should be in this directory.
+
+These models are large and therefore they need to be downloaded separately.
