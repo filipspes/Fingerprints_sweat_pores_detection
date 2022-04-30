@@ -1,17 +1,10 @@
-import os
-import sys
-import logging
 import random
-import itertools
 import colorsys
-from PIL import Image as im
-
 import numpy as np
 from skimage.measure import find_contours
 import matplotlib.pyplot as plt
-from matplotlib import patches,  lines
+from matplotlib import patches
 from matplotlib.patches import Polygon
-import IPython.display
 
 
 def display_instances(image, file_name, boxes, masks, class_ids, class_names,

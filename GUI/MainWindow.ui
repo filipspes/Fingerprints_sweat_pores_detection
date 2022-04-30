@@ -459,8 +459,8 @@
    <widget class="QPushButton" name="OpenImageButton">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>70</y>
+      <x>250</x>
+      <y>30</y>
       <width>171</width>
       <height>34</height>
      </rect>
@@ -479,8 +479,8 @@
    <widget class="QLabel" name="loadedImageLabel">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>70</y>
+      <x>250</x>
+      <y>190</y>
       <width>520</width>
       <height>640</height>
      </rect>
@@ -521,7 +521,7 @@
     <property name="geometry">
      <rect>
       <x>830</x>
-      <y>700</y>
+      <y>860</y>
       <width>171</width>
       <height>34</height>
      </rect>
@@ -540,8 +540,8 @@
    <widget class="QLabel" name="OutputImageLabel">
     <property name="geometry">
      <rect>
-      <x>1080</x>
-      <y>40</y>
+      <x>1070</x>
+      <y>150</y>
       <width>521</width>
       <height>31</height>
      </rect>
@@ -560,8 +560,8 @@
    <widget class="QLabel" name="InputImageLabel">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>40</y>
+      <x>250</x>
+      <y>150</y>
       <width>521</width>
       <height>31</height>
      </rect>
@@ -580,8 +580,8 @@
    <widget class="QLabel" name="predictedImageLabel">
     <property name="geometry">
      <rect>
-      <x>1080</x>
-      <y>70</y>
+      <x>1070</x>
+      <y>190</y>
       <width>520</width>
       <height>641</height>
      </rect>
@@ -622,7 +622,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>380</y>
+      <y>490</y>
       <width>281</width>
       <height>161</height>
      </rect>
@@ -745,7 +745,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>80</y>
+      <y>190</y>
       <width>281</width>
       <height>151</height>
      </rect>
@@ -830,8 +830,8 @@
    <widget class="QPushButton" name="LoadBlockOfImageButton">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>140</y>
+      <x>250</x>
+      <y>70</y>
       <width>171</width>
       <height>34</height>
      </rect>
@@ -850,8 +850,8 @@
    <widget class="QPushButton" name="LoadAnnotationsJsonButton">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>180</y>
+      <x>250</x>
+      <y>110</y>
       <width>171</width>
       <height>34</height>
      </rect>
@@ -864,7 +864,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>260</y>
+      <y>380</y>
       <width>281</width>
       <height>32</height>
      </rect>
@@ -881,7 +881,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>330</y>
+      <y>440</y>
       <width>281</width>
       <height>32</height>
      </rect>
@@ -898,7 +898,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>240</y>
+      <y>360</y>
       <width>161</width>
       <height>18</height>
      </rect>
@@ -918,7 +918,7 @@
     <property name="geometry">
      <rect>
       <x>780</x>
-      <y>310</y>
+      <y>420</y>
       <width>231</width>
       <height>18</height>
      </rect>
@@ -938,7 +938,7 @@
     <property name="geometry">
      <rect>
       <x>1300</x>
-      <y>720</y>
+      <y>840</y>
       <width>301</width>
       <height>71</height>
      </rect>
@@ -983,10 +983,10 @@
    <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>1080</x>
-      <y>720</y>
-      <width>221</width>
-      <height>71</height>
+      <x>1070</x>
+      <y>840</y>
+      <width>225</width>
+      <height>72</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">

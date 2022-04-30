@@ -1,7 +1,4 @@
-import json
-import os
 import torch
-import app_config as app_config
 from main import *
 from datetime import datetime
 
@@ -33,6 +30,7 @@ class Yolo:
         torch.cuda.empty_cache()
         results = yolov5_model(images, size=320)
         results.save()
+        torch.cuda.empty_cache()
         number_of_detected_pores = self.create_json_files(results)
         LOG.info("Pores detection finished")
         torch.cuda.empty_cache()

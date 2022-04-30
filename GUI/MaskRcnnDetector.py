@@ -1,10 +1,9 @@
 import skimage
 
-import app_config as app_config
-import visualize_mask_rcnn_detections
 from main import *
-import mask_rcnn_config as mask_rcnn_config
+import MaskRcnnConfig as mask_rcnn_config
 import mrcnn.model as modellib
+import time
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -25,6 +24,7 @@ class MaskRCNN:
         self.max_detections = max_detections
         self.backbone = backbone
         self.number_of_detected_pores = 0
+        self.start_time = time.time()
 
     def load_mask_rcnn_model(self):
         inference_config = mask_rcnn_config.InferenceConfig()
@@ -54,6 +54,7 @@ class MaskRCNN:
 
     def detect_fingeprint_pores_on_multiple_images(self):
         mask_rcnn_model_loaded = self.load_mask_rcnn_model()
+        self.start_time = time.time()
         class_names = ['BG', 'pore']
         parts_of_image = self.config.get("paths", "ROOT_DIR") + 'PoreDetections/parts_of_image/'
         image_paths = []
@@ -66,6 +67,8 @@ class MaskRCNN:
 
         for image_path, file_name in zip(image_paths, file_names):
             img = skimage.io.imread(image_path)
+            if len(img.shape) < 3:
+                print("GrayscaleImage: " + image_path)
             if np.mean(img) == 255:
                 shutil.copyfile(image_path,
                                 self.config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/' + file_name)

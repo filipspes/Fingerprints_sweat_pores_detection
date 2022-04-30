@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QWidget
+from PyQt5.QtWidgets import QFileDialog, QWidget
 
 
 class FileExplorer(QWidget):
