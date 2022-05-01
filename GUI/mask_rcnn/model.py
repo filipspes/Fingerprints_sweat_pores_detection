@@ -1644,7 +1644,7 @@ def generate_random_rois(image_shape, count, gt_class_ids, gt_boxes):
 
 class DataGenerator(KU.Sequence):
     """An iterable that returns images and corresponding target class ids,
-        bounding box deltas, and masks. It inherits from keras.utils.Sequence to avoid data redundancy
+        bounding box deltas, and masks. It inherits from keras.custom_utils.Sequence to avoid data redundancy
         when multiprocessing=True.
 
         dataset: The Dataset object to pick data from

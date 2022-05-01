@@ -1,10 +1,10 @@
 import skimage
 
 from main import *
-from config import MaskRcnnConfig as mask_rcnn_config
-# import mrcnn.model as modellib
-from mask_rcnn import model as modellib
+import AppConfig as app_config
+from mask_rcnn import model as modellib, MaskRcnnConfig as mask_rcnn_config, VisualizeMaskRcnnDetections
 import time
+import numpy as np
 
 
 LOG.basicConfig(
@@ -49,9 +49,9 @@ class MaskRCNN:
         img_arr = np.array(img)
         results = mask_rcnn_model_loaded.detect([img_arr], verbose=1)
         r = results[0]
-        visualize_mask_rcnn_detections.display_instances(img, "detected_block_of_image.jpg", r['rois'], r['masks'],
-                                                         r['class_ids'],
-                                                         class_names, r['scores'])
+        VisualizeMaskRcnnDetections.display_instances(img, "detected_block_of_image.jpg", r['rois'], r['masks'],
+                                                      r['class_ids'],
+                                                      class_names, r['scores'])
         self.number_of_detected_pores = len(r['rois'])
 
     def detect_fingeprint_pores_on_multiple_images(self):
@@ -78,8 +78,8 @@ class MaskRCNN:
                 img_arr = np.array(img)
                 results = mask_rcnn_model_loaded.detect([img_arr], verbose=1)
                 r = results[0]
-                visualize_mask_rcnn_detections.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
-                                                                 class_names, r['scores'], figsize=(5, 5))
+                VisualizeMaskRcnnDetections.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
+                                                              class_names, r['scores'], figsize=(5, 5))
                 print(len(r['rois']))
                 number_of_detected_pores = number_of_detected_pores + len(r['rois'])
 

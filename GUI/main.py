@@ -9,12 +9,13 @@ import shutil
 import time
 import logging as LOG
 from detectors import YoloDetector, MaskRcnnDetector
-from utils import ImageProcessing, ImageViewer
+from custom_utils import ImageProcessing, ImageViewer
 import sys
 import numpy as np
 from PyQt5 import QtCore
-from config import AppConfig as app_config
+import AppConfig as app_config
 from PyQt5.QtWidgets import *
+from custom_utils import FileExplorer as FilesExplorer
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -71,7 +72,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.Yolov5DetectorCheckBox.setChecked(True)
 
     def load_json_button_handle(self):
-        file_explorer = FileExplorer.FileExplorer()
+        file_explorer = FilesExplorer.FileExplorer()
         file_path = file_explorer.openFileNameDialog()
         f = open(file_path)
         data = json.load(f)
@@ -269,7 +270,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
 
     def open_image_button_clicked(self):
         file_path = None
-        file_explorer = FileExplorer.FileExplorer()
+        file_explorer = FilesExplorer.FileExplorer()
         file_path = file_explorer.openFileNameDialog()
         self.create_pixmap_input_image(file_path, True)
         LOG.info("Image successfully opened")
@@ -279,7 +280,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.full_image_opened = True
 
     def open_image_part_button_clicked(self):
-        file_explorer = FileExplorer.FileExplorer()
+        file_explorer = FilesExplorer.FileExplorer()
         file_path = file_explorer.openFileNameDialog()
         self.create_pixmap_input_image(file_path, False)
         global RUN_PATH

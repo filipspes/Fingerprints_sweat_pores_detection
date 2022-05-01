@@ -4,7 +4,7 @@ from PIL import Image
 from itertools import product
 import logging as LOG
 
-from config import AppConfig
+import AppConfig
 
 LOG.basicConfig(
     level=LOG.INFO,
