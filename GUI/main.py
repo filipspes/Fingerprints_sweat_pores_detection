@@ -5,6 +5,7 @@ from PyQt5.QtGui import QPixmap
 from PIL import Image
 from MainWindow import *
 import os
+from os.path import exists
 import shutil
 import time
 import logging as LOG
@@ -70,15 +71,20 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.YoloModelsComboBox.setEnabled(False)
         self.MaskRcnnBackboneComboBox.setEnabled(False)
         self.Yolov5DetectorCheckBox.setChecked(True)
+        self.showRealMaskCheckBox.setEnabled(False)
 
     def load_json_button_handle(self):
-        file_explorer = FilesExplorer.FileExplorer()
+        file_explorer = FilesExplorer.FileExplorer(custom_filter="Json (*.json)")
         file_path = file_explorer.openFileNameDialog()
-        f = open(file_path)
-        data = json.load(f)
-        f.close()
-        self.json_is_loaded = True
-        self.json = data
+        if file_path is None or file_path == "":
+            return
+        else:
+            f = open(file_path)
+            data = json.load(f)
+            f.close()
+            self.json_is_loaded = True
+            self.json = data
+            self.mask_turned_on = False
 
     def confidence_slider_event(self):
         self.confidenceLabel.setText('Confidence: ' + str((self.confidenceSlider.value() + 1) / 100))
@@ -101,6 +107,12 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         yolo = YoloDetector.Yolo(self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(), RUN_PATH,
                                  self.YoloModelsComboBox.currentText())
         remove_content_of_folder_runs()
+        path_to_model = self.app_config.get("paths",
+                                        "ROOT_DIR") + '/yolov5_models/YOLOv5_' + self.YoloModelsComboBox.currentText() + '_weights.pt'
+        if not exists(path_to_model):
+            msg = warning_message_box_popup("Selected model does not exists in folder: yolov5_models", msgbox_type='error')
+            msg.exec_()
+            return
         start_time = time.time()
         if full_image:
             image_proc = ImageProcessing.ImageProcessing(RUN_PATH)
@@ -133,7 +145,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             end_time = time.time()
             detection_time = round((end_time - start_time), 2)
             self.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
-
+            self.showRealMaskCheckBox.setEnabled(True)
         self.openDetectedImageButton.setEnabled(True)
 
     def detect_fingerprint_pores_mask_rcnn(self, full_image):
@@ -142,6 +154,12 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         mask_rcnn = MaskRcnnDetector.MaskRCNN(RUN_PATH, self.MaskRcnnBackboneComboBox.currentText(),
                                               self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(),
                                               self.MaskRcnnBackboneComboBox.currentText())
+
+        path_to_model = self.app_config.get("paths", "ROOT_DIR") + 'mrcnn_models/mask_rcnn_fingerprints_' + self.MaskRcnnBackboneComboBox.currentText().lower() + '.h5'
+        if not exists(path_to_model):
+            msg = warning_message_box_popup("Selected model does not exists in folder: mrcnn_models", msgbox_type='error')
+            msg.exec_()
+            return
         if full_image:
             size = image_proc.split_image()
             mask_rcnn.detect_fingeprint_pores_on_multiple_images()
@@ -199,10 +217,14 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         if QtCore.Qt.Checked == state:
             self.Yolov5DetectorCheckBox.setChecked(False)
             self.MaskRcnnBackboneComboBox.setEnabled(True)
+            msg = warning_message_box_popup("Out of memory may occur when using Mask-RCNN", msgbox_type='warning')
+            msg.exec_()
+
         else:
             self.MaskRcnnBackboneComboBox.setEnabled(False)
 
     def show_real_mask_checkbox_state_changed(self, state):
+
         if QtCore.Qt.Checked == state:
             self.draw_masks_from_json()
         else:
@@ -217,6 +239,10 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         img = cv2.imread(path_to_detected_image)
         if not self.json_is_loaded:
             self.load_json_button_handle()
+        if self.json is None:
+            self.showRealMaskCheckBox.setChecked(False)
+            self.json_is_loaded = False
+            return
         shapes = np.zeros_like(img, np.uint8)
         shapes_count = 0
         for shape in self.json['shapes']:
@@ -244,11 +270,11 @@ class MyWindow(QMainWindow, Ui_MainWindow):
     def detect_pores_button_clicked(self):
         self.RealPoresLabel.setText("")
         if not self.Yolov5DetectorCheckBox.isChecked() and not self.MaskRcnnCheckBox.isChecked():
-            msg = warning_message_box_popup("No detector selected, please select detector.")
+            msg = warning_message_box_popup("No detector selected, please select detector.", msgbox_type='error')
             msg.exec_()
         if self.Yolov5DetectorCheckBox.isChecked():
             if 'RUN_PATH' not in globals() or RUN_PATH == "":
-                msg = warning_message_box_popup("No input image. Please load an input image.")
+                msg = warning_message_box_popup("No input image. Please load an input image.", msgbox_type='error')
                 msg.exec_()
             else:
                 self.number_of_pores_detected_label.setText("")
@@ -258,7 +284,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                     self.detect_fingerprint_pores_yolo(False)
         if self.MaskRcnnCheckBox.isChecked():
             if 'RUN_PATH' not in globals() or RUN_PATH == "":
-                msg = warning_message_box_popup("No input image. Please load an input image.")
+                msg = warning_message_box_popup("No input image. Please load an input image.", msgbox_type='error')
                 msg.exec_()
             else:
                 self.number_of_pores_detected_label.setText("")
@@ -270,7 +296,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
 
     def open_image_button_clicked(self):
         file_path = None
-        file_explorer = FilesExplorer.FileExplorer()
+        file_explorer = FilesExplorer.FileExplorer(custom_filter="Images (*.png *.jpg)")
         file_path = file_explorer.openFileNameDialog()
         self.create_pixmap_input_image(file_path, True)
         LOG.info("Image successfully opened")
@@ -280,7 +306,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.full_image_opened = True
 
     def open_image_part_button_clicked(self):
-        file_explorer = FilesExplorer.FileExplorer()
+        file_explorer = FilesExplorer.FileExplorer(custom_filter="Images (*.png *.jpg)")
         file_path = file_explorer.openFileNameDialog()
         self.create_pixmap_input_image(file_path, False)
         global RUN_PATH
@@ -289,31 +315,42 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.full_image_opened = False
 
     def create_pixmap_input_image(self, file_path, scaled_content):
-        pixmap = QPixmap(file_path)
-        self.loadedImageLabel.setPixmap(pixmap)
-        img = Image.open(file_path)
-        wid, hgt = img.size
-        img.close()
-        self.InputImageLabel.setText("Input image: " + str(wid) + "x" + str(hgt))
-        self.loadedImageLabel.resize(520, 640)
-        self.loadedImageLabel.setScaledContents(scaled_content)
+        if file_path is None or file_path == "":
+            return
+        else:
+            pixmap = QPixmap(file_path)
+            self.loadedImageLabel.setPixmap(pixmap)
+            img = Image.open(file_path)
+            wid, hgt = img.size
+            img.close()
+            self.InputImageLabel.setText("Input image: " + str(wid) + "x" + str(hgt))
+            self.loadedImageLabel.resize(520, 640)
+            self.loadedImageLabel.setScaledContents(scaled_content)
 
     def create_pixmap_detected_image(self, file_path, scaled_content):
-        pixmap = QPixmap(file_path)
-        self.predictedImageLabel.setPixmap(pixmap)
-        img = Image.open(file_path)
-        wid, hgt = img.size
-        img.close()
-        self.OutputImageLabel.setText("Output image:" + str(wid) + "x" + str(hgt))
-        self.predictedImageLabel.resize(520, 640)
-        self.predictedImageLabel.setScaledContents(scaled_content)
+        if file_path is None or file_path == "":
+            return
+        else:
+            pixmap = QPixmap(file_path)
+            self.predictedImageLabel.setPixmap(pixmap)
+            img = Image.open(file_path)
+            wid, hgt = img.size
+            img.close()
+            self.OutputImageLabel.setText("Output image:" + str(wid) + "x" + str(hgt))
+            self.predictedImageLabel.resize(520, 640)
+            self.predictedImageLabel.setScaledContents(scaled_content)
 
 
-def warning_message_box_popup(text):
+def warning_message_box_popup(text, msgbox_type='warning'):
     msg = QMessageBox()
-    msg.setIcon(QMessageBox.Warning)
-    msg.setText(text)
-    msg.setWindowTitle("Warning")
+    if msgbox_type == 'warning':
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(text)
+        msg.setWindowTitle("Warning")
+    if msgbox_type == 'error':
+        msg.setIcon(QMessageBox.Warning)
+        msg.setText(text)
+        msg.setWindowTitle("Error")
     msg.setStandardButtons(QMessageBox.Ok)
     LOG.warning("No detector selected warning MessageBox displayed")
     return msg

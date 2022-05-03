@@ -11,7 +11,6 @@ LOG.basicConfig(
     ]
 )
 
-
 class Yolo:
     def __init__(self, confidence, max_detections, path_to_single_image, model_size):
         self.config = app_config.get_config()
@@ -70,6 +69,7 @@ class Yolo:
         for path in img_paths:
             img = Image.open(self.config.get("paths", "ROOT_DIR") + 'PoreDetections/parts_of_image/' + path)
             images_to_detect.append(img)
+        # free_gpu_cache()
         return images_to_detect
 
     def load_single_image_to_detect(self, path_to_single_image):
