@@ -30,6 +30,12 @@ All models should have correct name and they should be in defined folders. YOLOv
 ![Welcome screen](assets/WelcomeScreen.png)
 
 ## <div align="center">Detections</div>
-![Welcome screen](assets/PoresDetectedFullImage.png)
+## <div align="left">Full image detected</div>
+Image below shows the full image of fingeprints with detected sweat pores.
+![Pores detected - full image](assets/PoresDetectedFullImage.png)
+## <div align="left">Image part detected</div>
+Image below shows the part of image of fingeprints with detected sweat pores.
 ![Welcome screen](assets/PoresDetectedImagePart.png)
+## <div align="left">Real masks</div>
+Image below shows the part of image of fingeprints with detected sweat pores and with real masks of sweat pores from JSON file.
 ![Welcome screen](assets/PoresDetectedImagePartWithMasks.png)
