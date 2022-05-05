@@ -19,3 +19,5 @@ cd GUI
 pip install -r requirements.txt  # install
 python gui.py # run
 ```
+
+![](assets/WelcomeScreen.png)
