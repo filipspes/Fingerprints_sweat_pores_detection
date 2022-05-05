@@ -1,7 +1,5 @@
 ## <div align="center">Introduction</div>
-This repository is a fork of official repository of YOLOv5 powered by ultralytics.com (Official repository URL: https://github.com/ultralytics/yolov5)
-This repository is customized to detect sweat pores on images of fingeprints.
-See the [YOLOv5 Docs](https://docs.ultralytics.com) for full documentation on training, testing and deployment.
+This project was created to detect sweat pores on fingerprints images using One-stage detector YOLOv5 (Official repository: https://github.com/ultralytics/yolov5) and the Two-stage detector Mask R-CNN (Official repository: https://github.com/matterport/Mask_RCNN).
 
 ## <div align="center">Quick Start Examples</div>
 
@@ -13,8 +11,11 @@ Create Ancaonda environment with Python 3.8 and clone this repo and install [req
 [**PyTorch>=1.7**](https://pytorch.org/get-started/locally/).
 
 ```bash
-conda create --name=YOLOv5 python=3.8
-git clone https://github.com/ultralytics/yolov5  # clone
-cd yolov5
+conda create --name=<name of environment> python=3.8
+conda activate <name of environment>
+git clone https://github.com/filipspes/Fingerprints_sweat_pores_detection  # clone
+cd Fingerprints\_sweat\_pores\_detection
+cd GUI
 pip install -r requirements.txt  # install
+python gui.py # run
 ```
