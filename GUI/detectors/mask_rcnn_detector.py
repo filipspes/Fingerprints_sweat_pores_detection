@@ -1,8 +1,8 @@
 import skimage
 
 from gui import *
-import AppConfig as app_config
-from mask_rcnn import model as modellib, MaskRcnnConfig as mask_rcnn_config, VisualizeMaskRcnnDetections
+import app_config as app_config
+from mask_rcnn import model as modellib, mask_rcnn_config as mask_rcnn_config, mask_rcnn_visualizations
 import time
 import numpy as np
 

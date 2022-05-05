@@ -11,6 +11,7 @@ LOG.basicConfig(
     ]
 )
 
+
 class Yolo:
     def __init__(self, confidence, max_detections, path_to_single_image, model_size):
         self.config = app_config.get_config()
@@ -55,7 +56,8 @@ class Yolo:
         return len(final_json_object)
 
     def create_model(self):
-        path_to_model = self.config.get("paths","ROOT_DIR") + '/yolov5_models/YOLOv5_'+self.model_size+'_weights.pt'
+        path_to_model = self.config.get("paths",
+                                        "ROOT_DIR") + '/yolov5_models/YOLOv5_' + self.model_size + '_weights.pt'
         yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom', path=path_to_model)
         LOG.info("Yolov5 model weights loaded from path: " + path_to_model)
         yolov5_model.conf = self.confidence / 100
@@ -69,7 +71,6 @@ class Yolo:
         for path in img_paths:
             img = Image.open(self.config.get("paths", "ROOT_DIR") + 'PoreDetections/parts_of_image/' + path)
             images_to_detect.append(img)
-        # free_gpu_cache()
         return images_to_detect
 
     def load_single_image_to_detect(self, path_to_single_image):

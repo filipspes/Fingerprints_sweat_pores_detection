@@ -9,14 +9,14 @@ from os.path import exists
 import shutil
 import time
 import logging as LOG
-from detectors import YoloDetector, MaskRcnnDetector
-from custom_utils import ImageProcessing, ImageViewer
+from detectors import yolo_detector, mask_rcnn_detector
+from custom_utils import image_processing, image_viewer
 import sys
 import numpy as np
 from PyQt5 import QtCore
-import AppConfig as app_config
+import app_config as app_config
 from PyQt5.QtWidgets import *
-from custom_utils import FileExplorer as FilesExplorer
+from custom_utils import file_explorer as FilesExplorer
 
 LOG.basicConfig(
     level=LOG.INFO,
@@ -46,7 +46,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         super(MyWindow, self).__init__(parent)
         self.setupUi(self)
         self.app_config = app_config.get_config()
-        self.seconWindow = ImageViewer.Window()
+        self.seconWindow = image_viewer.Window()
         self.openDetectedImageButton.clicked.connect(self.show_new_window)
         self.full_image_opened = False
         self.block_of_image_opened = False
@@ -104,7 +104,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 LOG.error('Failed to delete %s. Reason: %s' % (file_path, e))
 
     def detect_fingerprint_pores_yolo(self, full_image):
-        yolo = YoloDetector.Yolo(self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(), RUN_PATH,
+        yolo = yolo_detector.Yolo(self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(), RUN_PATH,
                                  self.YoloModelsComboBox.currentText())
         remove_content_of_folder_runs()
         path_to_model = self.app_config.get("paths",
@@ -116,7 +116,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             return
         start_time = time.time()
         if full_image:
-            image_proc = ImageProcessing.ImageProcessing(RUN_PATH)
+            image_proc = image_processing.ImageProcessing(RUN_PATH)
             image_proc.remove_content_of_folders()
             size = image_proc.split_image()
             number_of_detected_pores = yolo.detect(False, True)
@@ -154,9 +154,9 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.openDetectedImageButton.setEnabled(True)
 
     def detect_fingerprint_pores_mask_rcnn(self, full_image):
-        image_proc = ImageProcessing.ImageProcessing(RUN_PATH)
+        image_proc = image_processing.ImageProcessing(RUN_PATH)
         image_proc.remove_content_of_folders()
-        mask_rcnn = MaskRcnnDetector.MaskRCNN(RUN_PATH, self.MaskRcnnBackboneComboBox.currentText(),
+        mask_rcnn = mask_rcnn_detector.MaskRCNN(RUN_PATH, self.MaskRcnnBackboneComboBox.currentText(),
                                               self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(),
                                               self.MaskRcnnBackboneComboBox.currentText())
 
