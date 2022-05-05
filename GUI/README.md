@@ -19,5 +19,12 @@ cd GUI
 pip install -r requirements.txt  # install
 python gui.py # run
 ```
+IMPORTANT: Before you start application you have to change ROOT_DIR inside app_config.ini. This ROOT_DIR have to be changed, otherwise the application may not work properly. This folder should be the same as the one in which app_config.ini is located.
 
-![](assets/WelcomeScreen.png)
+## <div align="center">Pretrained models</div>
+This repository contain only two model. You can download mrcnn models from URL: https://mega.nz/folder/Ing3RaRA#UU66txug51g2RgQS7sl9Dg and YOLOv5 models from URL https://mega.nz/folder/piJXUIBQ#jUNc8qFzc109E0c-tEJbNg.
+All models should have correct name and they should be in defined folders. YOLOv5 modelse should be in yolov5_models folder and mrcnn models should be in mrcnn_models folder.
+
+
+## <div align="center">Welcome screeen after start</div>
+![Welcome screen](assets/WelcomeScreen.png)
