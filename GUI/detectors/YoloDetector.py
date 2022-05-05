@@ -1,5 +1,5 @@
 import torch
-from main import *
+from gui import *
 from datetime import datetime
 
 LOG.basicConfig(

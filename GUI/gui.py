@@ -108,9 +108,10 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                                  self.YoloModelsComboBox.currentText())
         remove_content_of_folder_runs()
         path_to_model = self.app_config.get("paths",
-                                        "ROOT_DIR") + '/yolov5_models/YOLOv5_' + self.YoloModelsComboBox.currentText() + '_weights.pt'
+                                            "ROOT_DIR") + '/yolov5_models/YOLOv5_' + self.YoloModelsComboBox.currentText() + '_weights.pt'
         if not exists(path_to_model):
-            msg = warning_message_box_popup("Selected model does not exists in folder: yolov5_models", msgbox_type='error')
+            msg = warning_message_box_popup("Selected model does not exists in folder: yolov5_models",
+                                            msgbox_type='error')
             msg.exec_()
             return
         start_time = time.time()
@@ -130,13 +131,16 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             LOG.info("-Detected " + str(number_of_detected_pores) + " sweat pores out of 1086")
             LOG.info("-Detection took: " + str(detection_time) + " seconds")
             # detection_time = round((end_time - start_time), 2)
-            self.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
+            self.number_of_pores_detected_label.setText(
+                str(number_of_detected_pores) + " pores detected in " + str(detection_time) + ' seconds')
         else:
             number_of_detected_pores = yolo.detect(True, False)
-            list_of_images = os.listdir('/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/runs/detect/exp/')
-            shutil.copyfile('/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/runs/detect/exp/' + list_of_images[0],
-                            '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
-                            '/block_of_image_detected/detected_image.jpg')
+            list_of_images = os.listdir(
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/runs/detect/exp/')
+            shutil.copyfile(
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/runs/detect/exp/' + list_of_images[0],
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
+                '/block_of_image_detected/detected_image.jpg')
             self.create_pixmap_detected_image(
                 '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
                 '/block_of_image_detected/detected_image'
@@ -144,7 +148,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 False)
             end_time = time.time()
             detection_time = round((end_time - start_time), 2)
-            self.number_of_pores_detected_label.setText(str(number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
+            self.number_of_pores_detected_label.setText(
+                str(number_of_detected_pores) + " pores detected in " + str(detection_time) + ' seconds')
             self.showRealMaskCheckBox.setEnabled(True)
         self.openDetectedImageButton.setEnabled(True)
 
@@ -155,9 +160,11 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                                               self.confidenceSlider.value(), self.maxDetectionsSlider_2.value(),
                                               self.MaskRcnnBackboneComboBox.currentText())
 
-        path_to_model = self.app_config.get("paths", "ROOT_DIR") + 'mrcnn_models/mask_rcnn_fingerprints_' + self.MaskRcnnBackboneComboBox.currentText().lower() + '.h5'
+        path_to_model = self.app_config.get("paths",
+                                            "ROOT_DIR") + 'mrcnn_models/mask_rcnn_fingerprints_' + self.MaskRcnnBackboneComboBox.currentText().lower() + '.h5'
         if not exists(path_to_model):
-            msg = warning_message_box_popup("Selected model does not exists in folder: mrcnn_models", msgbox_type='error')
+            msg = warning_message_box_popup("Selected model does not exists in folder: mrcnn_models",
+                                            msgbox_type='error')
             msg.exec_()
             return
         if full_image:
@@ -170,18 +177,21 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 True)
             end_time = time.time()
             detection_time = round((end_time - mask_rcnn.start_time), 2)
-            self.number_of_pores_detected_label.setText(str(mask_rcnn.number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
+            self.number_of_pores_detected_label.setText(
+                str(mask_rcnn.number_of_detected_pores) + " pores detected in " + str(detection_time) + ' seconds')
         else:
             mask_rcnn.detect_fingeprint_pores_on_single_image()
             self.create_pixmap_detected_image(
                 self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/detected_block_of_image.jpg',
                 False)
-            shutil.copyfile(self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/detected_block_of_image.jpg',
-                            '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
-                            '/block_of_image_detected/detected_image.jpg')
+            shutil.copyfile(
+                self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/detected_block_of_image.jpg',
+                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
+                '/block_of_image_detected/detected_image.jpg')
             end_time = time.time()
             detection_time = round((end_time - mask_rcnn.start_time), 2)
-            self.number_of_pores_detected_label.setText(str(mask_rcnn.number_of_detected_pores) + " pores detected in "+str(detection_time) + ' seconds')
+            self.number_of_pores_detected_label.setText(
+                str(mask_rcnn.number_of_detected_pores) + " pores detected in " + str(detection_time) + ' seconds')
         self.openDetectedImageButton.setEnabled(True)
 
     def show_new_window(self):
@@ -217,7 +227,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         if QtCore.Qt.Checked == state:
             self.Yolov5DetectorCheckBox.setChecked(False)
             self.MaskRcnnBackboneComboBox.setEnabled(True)
-            msg = warning_message_box_popup("Out of memory may occur when using Mask-RCNN", msgbox_type='warning')
+            msg = warning_message_box_popup("CUDA out of memory may occur when using Mask-RCNN", msgbox_type='warning')
             msg.exec_()
 
         else:
@@ -266,7 +276,6 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         self.mask_turned_on = True
         self.RealPoresLabel.setText("Real pores: " + str(shapes_count))
 
-
     def detect_pores_button_clicked(self):
         self.RealPoresLabel.setText("")
         if not self.Yolov5DetectorCheckBox.isChecked() and not self.MaskRcnnCheckBox.isChecked():
@@ -279,9 +288,19 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             else:
                 self.number_of_pores_detected_label.setText("")
                 if self.full_image_opened:
-                    self.detect_fingerprint_pores_yolo(True)
+                    try:
+                        self.detect_fingerprint_pores_yolo(True)
+                    except:
+                        msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
+                                                        msgbox_type='error')
+                        msg.exec_()
                 elif self.block_of_image_opened:
-                    self.detect_fingerprint_pores_yolo(False)
+                    try:
+                        self.detect_fingerprint_pores_yolo(False)
+                    except:
+                        msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
+                                                        msgbox_type='error')
+                        msg.exec_()
         if self.MaskRcnnCheckBox.isChecked():
             if 'RUN_PATH' not in globals() or RUN_PATH == "":
                 msg = warning_message_box_popup("No input image. Please load an input image.", msgbox_type='error')
@@ -289,9 +308,19 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             else:
                 self.number_of_pores_detected_label.setText("")
                 if self.full_image_opened:
-                    self.detect_fingerprint_pores_mask_rcnn(True)
+                    try:
+                        self.detect_fingerprint_pores_mask_rcnn(True)
+                    except:
+                        msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
+                                                        msgbox_type='error')
+                        msg.exec_()
                 elif self.block_of_image_opened:
-                    self.detect_fingerprint_pores_mask_rcnn(False)
+                    try:
+                        self.detect_fingerprint_pores_mask_rcnn(False)
+                    except:
+                        msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
+                                                        msgbox_type='error')
+                        msg.exec_()
                     self.number_of_pores_detected_label.setText("")
 
     def open_image_button_clicked(self):

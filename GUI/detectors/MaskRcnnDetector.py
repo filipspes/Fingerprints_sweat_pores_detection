@@ -1,6 +1,6 @@
 import skimage
 
-from main import *
+from gui import *
 import AppConfig as app_config
 from mask_rcnn import model as modellib, MaskRcnnConfig as mask_rcnn_config, VisualizeMaskRcnnDetections
 import time
