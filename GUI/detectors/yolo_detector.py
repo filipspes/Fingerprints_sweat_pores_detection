@@ -28,7 +28,13 @@ class Yolo:
         elif multiple_images:
             images = self.load_images_to_detect()
         torch.cuda.empty_cache()
-        results = yolov5_model(images, size=320)
+        try:
+            results = yolov5_model(images, size=320)
+        except:
+            msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
+                                            msgbox_type='error')
+            msg.exec_()
+            return -1
         results.save()
         torch.cuda.empty_cache()
         number_of_detected_pores = self.create_json_files(results)
@@ -58,6 +64,7 @@ class Yolo:
     def create_model(self):
         path_to_model = self.config.get("paths",
                                         "ROOT_DIR") + '/yolov5_models/YOLOv5_' + self.model_size + '_weights.pt'
+
         yolov5_model = torch.hub.load('ultralytics/yolov5', 'custom', path=path_to_model)
         LOG.info("Yolov5 model weights loaded from path: " + path_to_model)
         yolov5_model.conf = self.confidence / 100

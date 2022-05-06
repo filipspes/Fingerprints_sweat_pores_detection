@@ -17,6 +17,7 @@ git clone https://github.com/filipspes/Fingerprints_sweat_pores_detection  # clo
 cd Fingerprints\_sweat\_pores\_detection
 cd GUI
 pip install -r requirements.txt  # install
+conda install tensorflow-gpu cudatoolkit=10.1
 python gui.py # run
 ```
 IMPORTANT: Before you start application you have to change ROOT_DIR inside app_config.ini. This ROOT_DIR have to be changed, otherwise the application may not work properly. This folder should be the same as the one in which app_config.ini is located.

@@ -120,6 +120,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             image_proc.remove_content_of_folders()
             size = image_proc.split_image()
             number_of_detected_pores = yolo.detect(False, True)
+            if number_of_detected_pores < 0:
+                return
             image_proc.join_images(size, True)
             self.create_pixmap_detected_image(
                 self.app_config.get("paths",
@@ -135,6 +137,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 str(number_of_detected_pores) + " pores detected in " + str(detection_time) + ' seconds')
         else:
             number_of_detected_pores = yolo.detect(True, False)
+            if number_of_detected_pores < 0:
+                return
             list_of_images = os.listdir(
                 self.app_config.get("paths", "ROOT_DIR") + 'runs/detect/exp/')
             shutil.copyfile(
@@ -167,6 +171,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         if full_image:
             size = image_proc.split_image()
             mask_rcnn.detect_fingeprint_pores_on_multiple_images()
+            if mask_rcnn.number_of_detected_pores == -1:
+                return
             image_proc.join_images(size, False)
             self.create_pixmap_detected_image(
                 self.app_config.get("paths",
@@ -178,6 +184,8 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 str(mask_rcnn.number_of_detected_pores) + " pores detected in " + str(detection_time) + ' seconds')
         else:
             mask_rcnn.detect_fingeprint_pores_on_single_image()
+            if mask_rcnn.number_of_detected_pores == -1:
+                return
             self.create_pixmap_detected_image(
                 self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/detected_block_of_image.jpg',
                 False)
@@ -284,19 +292,9 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             else:
                 self.number_of_pores_detected_label.setText("")
                 if self.full_image_opened:
-                    try:
-                        self.detect_fingerprint_pores_yolo(True)
-                    except:
-                        msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
-                                                        msgbox_type='error')
-                        msg.exec_()
+                   self.detect_fingerprint_pores_yolo(True)
                 elif self.block_of_image_opened:
-                    try:
-                        self.detect_fingerprint_pores_yolo(False)
-                    except:
-                        msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
-                                                        msgbox_type='error')
-                        msg.exec_()
+                    self.detect_fingerprint_pores_yolo(False)
         if self.MaskRcnnCheckBox.isChecked():
             if 'RUN_PATH' not in globals() or RUN_PATH == "":
                 msg = warning_message_box_popup("No input image. Please load an input image.", msgbox_type='error')
@@ -304,20 +302,11 @@ class MyWindow(QMainWindow, Ui_MainWindow):
             else:
                 self.number_of_pores_detected_label.setText("")
                 if self.full_image_opened:
-                    try:
-                        self.detect_fingerprint_pores_mask_rcnn(True)
-                    except:
-                        msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
-                                                        msgbox_type='error')
-                        msg.exec_()
+                    self.detect_fingerprint_pores_mask_rcnn(True)
                 elif self.block_of_image_opened:
-                    try:
-                        self.detect_fingerprint_pores_mask_rcnn(False)
-                    except:
-                        msg = warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
-                                                        msgbox_type='error')
-                        msg.exec_()
-                    self.number_of_pores_detected_label.setText("")
+                    self.detect_fingerprint_pores_mask_rcnn(False)
+
+                # self.number_of_pores_detected_label.setText("")
 
     def open_image_button_clicked(self):
         file_path = None

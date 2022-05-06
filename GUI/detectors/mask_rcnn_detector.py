@@ -1,5 +1,6 @@
 import skimage
 
+import gui
 from gui import *
 import app_config as app_config
 from mask_rcnn import model as modellib, mask_rcnn_config as mask_rcnn_config, mask_rcnn_visualizations
@@ -76,7 +77,14 @@ class MaskRCNN:
                                 self.config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/' + file_name)
             else:
                 img_arr = np.array(img)
-                results = mask_rcnn_model_loaded.detect([img_arr], verbose=1)
+                try:
+                    results = mask_rcnn_model_loaded.detect([img_arr], verbose=1)
+                except:
+                    msg = gui.warning_message_box_popup("CUDA out of memory. Please restart application and try again.",
+                                                    msgbox_type='error')
+                    msg.exec_()
+                    self.number_of_detected_pores = -1
+                    return
                 r = results[0]
                 mask_rcnn_visualizations.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
                                                               class_names, r['scores'], figsize=(5, 5))

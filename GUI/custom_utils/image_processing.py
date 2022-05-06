@@ -3,6 +3,7 @@ import shutil
 from PIL import Image
 from itertools import product
 import logging as LOG
+from os.path import exists
 
 import app_config
 
@@ -63,7 +64,11 @@ class ImageProcessing:
 
     def join_images(self, size, yolo):
         if yolo:
-            input_directory = self.config.get("paths", "ROOT_DIR") + 'runs/detect/exp/'
+            if exists(self.config.get("paths", "ROOT_DIR") + 'runs/detect/exp/'):
+                input_directory = self.config.get("paths", "ROOT_DIR") + 'runs/detect/exp/'
+            else:
+                print('Directory ' + self.config.get("paths", "ROOT_DIR") + 'runs/detect/exp/' + ' does not exists.')
+                return
         else:
             input_directory = self.config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/'
         file_names = os.listdir(input_directory)
