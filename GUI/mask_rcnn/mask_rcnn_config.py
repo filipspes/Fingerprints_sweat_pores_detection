@@ -25,4 +25,5 @@ class InferenceConfig(FingeprintPoresConfig):
     IMAGE_MIN_DIM = 512
     IMAGE_MAX_DIM = 512
     DETECTION_MIN_CONFIDENCE = 0.5
+    PRE_NMS_LIMIT = 6000
     BACKBONE = 'resnet50'
