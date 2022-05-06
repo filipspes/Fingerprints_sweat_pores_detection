@@ -1,0 +1,1417 @@
+2022-04-30 17:10:42,500 [INFO] Application started
+2022-04-30 17:10:49,871 [INFO] Image successfully opened
+2022-04-30 17:10:51,225 [INFO] Deleting content of a folder: /parts_of_image/
+2022-04-30 17:10:51,250 [INFO] Deleting content of a folder: /pores_detected/
+2022-04-30 17:10:51,251 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-04-30 17:10:51,254 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-04-30 17:10:51,256 [INFO] Resizing image...
+2022-04-30 17:10:52,208 [INFO] Image resized successfully.
+2022-04-30 17:10:52,391 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-04-30 17:10:52,929 [INFO] The image has been split into 132 pictures.
+2022-04-30 17:10:56,538 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-04-30 17:11:19,520 [INFO] Fusing layers... 
+2022-04-30 17:11:20,277 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-04-30 17:11:20,284 [INFO] Adding AutoShape... 
+2022-04-30 17:11:20,287 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-04-30 17:11:20,287 [INFO] Loading images for detection
+2022-04-30 17:11:24,163 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-04-30 17:11:24,810 [INFO] Pores detection finished
+2022-04-30 17:11:25,054 [INFO] Re-creating image...
+2022-04-30 17:11:25,451 [INFO] All Done
+2022-04-30 17:11:26,289 [INFO] YOLOv5 XLarge:
+2022-04-30 17:11:26,289 [INFO] -Detected 1233 sweat pores out of 1086
+2022-04-30 17:11:26,289 [INFO] -Detection took: 35.07 seconds
+2022-04-30 20:40:51,612 [INFO] Application started
+2022-04-30 20:47:34,754 [INFO] Application started
+2022-04-30 20:51:47,112 [INFO] Application started
+2022-04-30 21:09:58,336 [INFO] Application started
+2022-04-30 21:10:17,749 [INFO] Image successfully opened
+2022-04-30 21:50:38,576 [INFO] Application started
+2022-04-30 21:50:50,454 [INFO] Image successfully opened
+2022-04-30 21:51:14,279 [INFO] Image successfully opened
+2022-04-30 21:53:33,228 [INFO] Application started
+2022-04-30 21:53:51,333 [INFO] Image successfully opened
+2022-04-30 21:55:52,621 [INFO] Application started
+2022-04-30 21:56:19,781 [INFO] Image successfully opened
+2022-04-30 21:56:20,943 [INFO] Deleting content of a folder: /parts_of_image/
+2022-04-30 21:56:20,979 [INFO] Deleting content of a folder: /pores_detected/
+2022-04-30 21:56:20,981 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-04-30 21:56:20,989 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-04-30 21:56:21,005 [INFO] Resizing image...
+2022-04-30 21:56:21,958 [INFO] Image resized successfully.
+2022-04-30 21:56:22,148 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-04-30 21:56:22,612 [INFO] The image has been split into 132 pictures.
+2022-04-30 21:59:40,748 [INFO] Application started
+2022-04-30 22:00:01,525 [INFO] Image successfully opened
+2022-04-30 22:00:03,552 [INFO] Deleting content of a folder: /parts_of_image/
+2022-04-30 22:00:03,583 [INFO] Deleting content of a folder: /pores_detected/
+2022-04-30 22:00:03,592 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-04-30 22:00:03,608 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-04-30 22:00:03,610 [INFO] Resizing image...
+2022-04-30 22:00:04,530 [INFO] Image resized successfully.
+2022-04-30 22:00:04,688 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-04-30 22:00:05,170 [INFO] The image has been split into 132 pictures.
+2022-04-30 22:03:28,851 [INFO] Application started
+2022-04-30 22:03:46,440 [INFO] Image successfully opened
+2022-04-30 22:03:48,241 [INFO] Deleting content of a folder: /parts_of_image/
+2022-04-30 22:03:48,280 [INFO] Deleting content of a folder: /pores_detected/
+2022-04-30 22:03:48,282 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-04-30 22:03:48,287 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-04-30 22:03:48,288 [INFO] Resizing image...
+2022-04-30 22:03:49,250 [INFO] Image resized successfully.
+2022-04-30 22:03:49,420 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-04-30 22:03:49,903 [INFO] The image has been split into 132 pictures.
+2022-04-30 22:03:53,918 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-04-30 22:04:26,904 [INFO] Fusing layers... 
+2022-04-30 22:04:27,256 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-04-30 22:04:27,262 [INFO] Adding AutoShape... 
+2022-04-30 22:04:27,265 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-04-30 22:04:27,265 [INFO] Loading images for detection
+2022-04-30 22:04:30,757 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-04-30 22:04:31,673 [INFO] Pores detection finished
+2022-04-30 22:04:31,779 [INFO] Re-creating image...
+2022-04-30 22:04:32,448 [INFO] All Done
+2022-04-30 22:04:33,411 [INFO] YOLOv5 XLarge:
+2022-04-30 22:04:33,412 [INFO] -Detected 930 sweat pores out of 1086
+2022-04-30 22:04:33,412 [INFO] -Detection took: 45.17 seconds
+2022-04-30 22:05:46,914 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-04-30 22:05:47,017 [INFO] Fusing layers... 
+2022-04-30 22:05:47,071 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-04-30 22:05:47,073 [INFO] Adding AutoShape... 
+2022-04-30 22:05:47,076 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-04-30 22:05:47,076 [INFO] Loading image for detection
+2022-04-30 22:05:47,332 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-04-30 22:05:47,345 [INFO] Pores detection finished
+2022-04-30 22:11:51,885 [INFO] Application started
+2022-04-30 22:12:15,411 [INFO] Image successfully opened
+2022-04-30 22:12:17,177 [INFO] Deleting content of a folder: /parts_of_image/
+2022-04-30 22:12:17,205 [INFO] Deleting content of a folder: /pores_detected/
+2022-04-30 22:12:17,206 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-04-30 22:12:17,207 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-04-30 22:12:17,209 [INFO] Resizing image...
+2022-04-30 22:12:18,063 [INFO] Image resized successfully.
+2022-04-30 22:12:18,199 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-04-30 22:12:18,559 [INFO] The image has been split into 132 pictures.
+2022-04-30 22:12:21,607 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-04-30 22:12:37,364 [INFO] Fusing layers... 
+2022-04-30 22:12:37,733 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-04-30 22:12:37,751 [INFO] Adding AutoShape... 
+2022-04-30 22:12:37,753 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-04-30 22:12:37,754 [INFO] Loading images for detection
+2022-04-30 22:12:41,420 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-04-30 22:12:42,174 [INFO] Pores detection finished
+2022-04-30 22:12:42,318 [INFO] Re-creating image...
+2022-04-30 22:12:42,648 [INFO] All Done
+2022-04-30 22:12:43,135 [INFO] YOLOv5 XLarge:
+2022-04-30 22:12:43,135 [INFO] -Detected 930 sweat pores out of 1086
+2022-04-30 22:12:43,136 [INFO] -Detection took: 25.96 seconds
+2022-05-01 10:52:44,210 [INFO] Application started
+2022-05-01 10:53:37,608 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-01 10:54:03,013 [INFO] Fusing layers... 
+2022-05-01 10:54:03,557 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-01 10:54:03,582 [INFO] Adding AutoShape... 
+2022-05-01 10:54:03,585 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-01 10:54:03,585 [INFO] Loading image for detection
+2022-05-01 10:54:04,990 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-01 10:54:05,104 [INFO] Pores detection finished
+2022-05-01 10:56:09,572 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-01 10:56:09,732 [INFO] Fusing layers... 
+2022-05-01 10:56:09,833 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-01 10:56:09,886 [INFO] Adding AutoShape... 
+2022-05-01 10:56:09,888 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-01 10:56:09,888 [INFO] Loading image for detection
+2022-05-01 10:56:09,975 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-01 10:56:09,982 [INFO] Pores detection finished
+2022-05-01 17:05:47,232 [INFO] Application started
+2022-05-01 17:05:58,963 [INFO] Image successfully opened
+2022-05-01 17:06:01,025 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-01 17:06:01,097 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-01 17:06:01,098 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-01 17:06:01,099 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-01 17:07:21,515 [INFO] Application started
+2022-05-01 17:07:32,701 [INFO] Image successfully opened
+2022-05-01 17:07:36,455 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-01 17:07:36,483 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-01 17:07:36,484 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-01 17:07:36,485 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-01 17:07:36,487 [INFO] Resizing image...
+2022-05-01 17:07:37,385 [INFO] Image resized successfully.
+2022-05-01 17:07:37,553 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-01 17:07:38,137 [INFO] The image has been split into 132 pictures.
+2022-05-01 17:07:38,246 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-01 17:10:54,173 [INFO] Application started
+2022-05-01 17:11:03,317 [INFO] Image successfully opened
+2022-05-01 17:11:06,074 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-01 17:11:06,137 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-01 17:11:06,148 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-01 17:11:06,167 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-01 17:11:06,177 [INFO] Resizing image...
+2022-05-01 17:11:07,085 [INFO] Image resized successfully.
+2022-05-01 17:11:07,233 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-01 17:11:07,745 [INFO] The image has been split into 132 pictures.
+2022-05-01 17:11:07,800 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-01 17:15:35,031 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet50_heads.h5
+2022-05-01 17:17:55,406 [INFO] Application started
+2022-05-01 17:18:06,944 [INFO] Image successfully opened
+2022-05-01 17:18:09,817 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-01 17:18:09,849 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-01 17:18:09,851 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-01 17:18:09,855 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-01 17:18:09,858 [INFO] Resizing image...
+2022-05-01 17:18:10,814 [INFO] Image resized successfully.
+2022-05-01 17:18:10,967 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-01 17:18:11,480 [INFO] The image has been split into 132 pictures.
+2022-05-01 17:18:11,594 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-01 17:20:36,494 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet50_heads.h5
+2022-05-01 17:22:48,000 [INFO] Re-creating image...
+2022-05-01 17:22:48,416 [INFO] All Done
+2022-05-02 13:54:44,647 [INFO] Application started
+2022-05-02 13:55:02,406 [INFO] Image successfully opened
+2022-05-02 13:55:11,954 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 13:55:11,983 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 13:55:12,008 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 13:55:12,009 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 13:55:12,012 [INFO] Resizing image...
+2022-05-02 13:55:12,916 [INFO] Image resized successfully.
+2022-05-02 13:55:13,056 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 13:55:13,447 [INFO] The image has been split into 132 pictures.
+2022-05-02 13:55:16,698 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 13:57:54,692 [INFO] Application started
+2022-05-02 13:58:04,737 [INFO] Image successfully opened
+2022-05-02 13:58:07,484 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 13:58:07,538 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 13:58:07,539 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 13:58:07,541 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 13:58:07,542 [INFO] Resizing image...
+2022-05-02 13:58:08,476 [INFO] Image resized successfully.
+2022-05-02 13:58:08,622 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 13:58:09,006 [INFO] The image has been split into 132 pictures.
+2022-05-02 13:58:11,083 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:01:09,199 [INFO] Application started
+2022-05-02 14:01:20,358 [INFO] Image successfully opened
+2022-05-02 14:01:22,961 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 14:01:22,986 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 14:01:22,986 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 14:01:22,987 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 14:01:22,988 [INFO] Resizing image...
+2022-05-02 14:01:23,835 [INFO] Image resized successfully.
+2022-05-02 14:01:23,981 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 14:01:24,350 [INFO] The image has been split into 132 pictures.
+2022-05-02 14:01:26,402 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:07:07,797 [INFO] Application started
+2022-05-02 14:07:57,875 [INFO] Application started
+2022-05-02 14:08:22,569 [INFO] Image successfully opened
+2022-05-02 14:10:52,883 [INFO] Application started
+2022-05-02 14:12:15,585 [INFO] Application started
+2022-05-02 14:13:18,409 [INFO] Application started
+2022-05-02 14:14:47,323 [INFO] Application started
+2022-05-02 14:15:22,636 [INFO] Application started
+2022-05-02 14:15:33,716 [INFO] Image successfully opened
+2022-05-02 14:17:53,089 [INFO] Application started
+2022-05-02 14:18:10,215 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:18:37,925 [INFO] Fusing layers... 
+2022-05-02 14:18:38,202 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 14:18:38,208 [INFO] Adding AutoShape... 
+2022-05-02 14:18:38,211 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 14:18:38,211 [INFO] Loading image for detection
+2022-05-02 14:18:38,652 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 14:18:38,674 [INFO] Pores detection finished
+2022-05-02 14:19:28,186 [INFO] Application started
+2022-05-02 14:19:50,063 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:19:52,660 [INFO] Fusing layers... 
+2022-05-02 14:19:52,729 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 14:19:52,731 [INFO] Adding AutoShape... 
+2022-05-02 14:19:52,763 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 14:19:52,763 [INFO] Loading image for detection
+2022-05-02 14:19:52,792 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 14:19:52,797 [INFO] Pores detection finished
+2022-05-02 14:20:41,046 [INFO] Application started
+2022-05-02 14:27:49,107 [INFO] Application started
+2022-05-02 14:30:41,867 [INFO] Application started
+2022-05-02 14:31:22,476 [INFO] Application started
+2022-05-02 14:31:46,903 [INFO] Application started
+2022-05-02 14:31:51,764 [INFO] Image successfully opened
+2022-05-02 14:32:01,299 [INFO] Image successfully opened
+2022-05-02 14:32:08,020 [INFO] Image successfully opened
+2022-05-02 14:32:09,668 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 14:32:09,720 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 14:32:09,722 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 14:32:09,728 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 14:32:09,731 [INFO] Resizing image...
+2022-05-02 14:32:10,648 [INFO] Image resized successfully.
+2022-05-02 14:32:10,797 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 14:32:11,200 [INFO] The image has been split into 132 pictures.
+2022-05-02 14:32:14,333 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:32:45,969 [INFO] Fusing layers... 
+2022-05-02 14:32:46,353 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 14:32:46,384 [INFO] Adding AutoShape... 
+2022-05-02 14:32:46,386 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 14:32:46,386 [INFO] Loading images for detection
+2022-05-02 14:32:49,328 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-02 14:32:49,827 [INFO] Pores detection finished
+2022-05-02 14:32:49,895 [INFO] Re-creating image...
+2022-05-02 14:32:50,396 [INFO] All Done
+2022-05-02 14:32:50,798 [INFO] YOLOv5 XLarge:
+2022-05-02 14:32:50,798 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-02 14:32:50,798 [INFO] -Detection took: 41.13 seconds
+2022-05-02 14:48:07,672 [INFO] Application started
+2022-05-02 14:48:11,697 [INFO] Image successfully opened
+2022-05-02 14:48:16,835 [INFO] Image successfully opened
+2022-05-02 14:48:28,264 [INFO] Image successfully opened
+2022-05-02 14:48:35,061 [INFO] Image successfully opened
+2022-05-02 14:48:42,615 [INFO] Image successfully opened
+2022-05-02 14:48:45,067 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 14:48:45,077 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 14:48:45,077 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 14:48:45,077 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 14:48:45,078 [INFO] Resizing image...
+2022-05-02 14:48:45,908 [INFO] Image resized successfully.
+2022-05-02 14:48:46,045 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 14:48:46,409 [INFO] The image has been split into 132 pictures.
+2022-05-02 14:48:48,737 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:48:51,603 [INFO] Fusing layers... 
+2022-05-02 14:48:51,673 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 14:48:51,675 [INFO] Adding AutoShape... 
+2022-05-02 14:48:51,677 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 14:48:51,677 [INFO] Loading images for detection
+2022-05-02 14:48:54,181 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-02 14:48:54,641 [INFO] Pores detection finished
+2022-05-02 14:48:54,719 [INFO] Re-creating image...
+2022-05-02 14:48:55,058 [INFO] All Done
+2022-05-02 14:48:55,470 [INFO] YOLOv5 XLarge:
+2022-05-02 14:48:55,471 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-02 14:48:55,471 [INFO] -Detection took: 10.4 seconds
+2022-05-02 14:49:11,679 [INFO] Application started
+2022-05-02 14:50:23,395 [INFO] Application started
+2022-05-02 14:50:31,698 [INFO] Image successfully opened
+2022-05-02 14:50:38,458 [INFO] Image successfully opened
+2022-05-02 14:50:56,975 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:50:59,850 [INFO] Fusing layers... 
+2022-05-02 14:50:59,937 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 14:50:59,938 [INFO] Adding AutoShape... 
+2022-05-02 14:50:59,940 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 14:50:59,940 [INFO] Loading image for detection
+2022-05-02 14:51:00,080 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 14:51:00,087 [INFO] Pores detection finished
+2022-05-02 14:51:27,216 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:51:27,284 [INFO] Fusing layers... 
+2022-05-02 14:51:27,336 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 14:51:27,338 [INFO] Adding AutoShape... 
+2022-05-02 14:51:27,340 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 14:51:27,340 [INFO] Loading image for detection
+2022-05-02 14:51:27,363 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 14:51:27,367 [INFO] Pores detection finished
+2022-05-02 14:51:42,008 [INFO] Application started
+2022-05-02 14:54:40,471 [INFO] Application started
+2022-05-02 14:56:10,743 [INFO] Application started
+2022-05-02 14:56:23,596 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:56:26,240 [INFO] Fusing layers... 
+2022-05-02 14:56:26,309 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 14:56:26,311 [INFO] Adding AutoShape... 
+2022-05-02 14:56:26,313 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 14:56:26,313 [INFO] Loading image for detection
+2022-05-02 14:56:26,339 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 14:56:26,343 [INFO] Pores detection finished
+2022-05-02 14:57:16,052 [INFO] Application started
+2022-05-02 14:57:29,169 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 14:57:31,780 [INFO] Fusing layers... 
+2022-05-02 14:57:31,850 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 14:57:31,852 [INFO] Adding AutoShape... 
+2022-05-02 14:57:31,854 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 14:57:31,854 [INFO] Loading image for detection
+2022-05-02 14:57:31,882 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 14:57:31,887 [INFO] Pores detection finished
+2022-05-02 15:00:40,402 [INFO] Application started
+2022-05-02 15:01:04,659 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:01:07,400 [INFO] Fusing layers... 
+2022-05-02 15:01:07,470 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:01:07,472 [INFO] Adding AutoShape... 
+2022-05-02 15:01:07,474 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:01:07,474 [INFO] Loading image for detection
+2022-05-02 15:01:07,543 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:01:07,548 [INFO] Pores detection finished
+2022-05-02 15:06:26,818 [INFO] Application started
+2022-05-02 15:06:46,323 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:07:12,687 [INFO] Fusing layers... 
+2022-05-02 15:07:12,904 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:07:12,920 [INFO] Adding AutoShape... 
+2022-05-02 15:07:12,922 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:07:12,922 [INFO] Loading image for detection
+2022-05-02 15:07:13,641 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:07:13,650 [INFO] Pores detection finished
+2022-05-02 15:08:53,846 [INFO] Application started
+2022-05-02 15:09:08,645 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:09:11,248 [INFO] Fusing layers... 
+2022-05-02 15:09:11,316 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:09:11,318 [INFO] Adding AutoShape... 
+2022-05-02 15:09:11,321 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:09:11,321 [INFO] Loading image for detection
+2022-05-02 15:09:11,349 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:09:11,354 [INFO] Pores detection finished
+2022-05-02 15:11:41,331 [INFO] Application started
+2022-05-02 15:11:52,109 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:11:54,710 [INFO] Fusing layers... 
+2022-05-02 15:11:54,779 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:11:54,781 [INFO] Adding AutoShape... 
+2022-05-02 15:11:54,783 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:11:54,783 [INFO] Loading image for detection
+2022-05-02 15:11:54,828 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:11:54,833 [INFO] Pores detection finished
+2022-05-02 15:13:18,960 [INFO] Application started
+2022-05-02 15:13:29,266 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:13:31,884 [INFO] Fusing layers... 
+2022-05-02 15:13:31,956 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:13:31,957 [INFO] Adding AutoShape... 
+2022-05-02 15:13:31,960 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:13:31,960 [INFO] Loading image for detection
+2022-05-02 15:13:31,987 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:13:31,992 [INFO] Pores detection finished
+2022-05-02 15:14:41,478 [INFO] Application started
+2022-05-02 15:15:09,675 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:15:22,258 [INFO] Fusing layers... 
+2022-05-02 15:15:22,331 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:15:22,334 [INFO] Adding AutoShape... 
+2022-05-02 15:15:22,336 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:15:22,336 [INFO] Loading image for detection
+2022-05-02 15:15:22,482 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:15:22,506 [INFO] Pores detection finished
+2022-05-02 15:16:41,510 [INFO] Application started
+2022-05-02 15:16:55,200 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:16:57,783 [INFO] Fusing layers... 
+2022-05-02 15:16:57,857 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:16:57,859 [INFO] Adding AutoShape... 
+2022-05-02 15:16:57,861 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:16:57,861 [INFO] Loading image for detection
+2022-05-02 15:16:57,890 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:16:57,895 [INFO] Pores detection finished
+2022-05-02 15:17:53,780 [INFO] Application started
+2022-05-02 15:18:03,291 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:18:05,998 [INFO] Fusing layers... 
+2022-05-02 15:18:06,066 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:18:06,068 [INFO] Adding AutoShape... 
+2022-05-02 15:18:06,070 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:18:06,070 [INFO] Loading image for detection
+2022-05-02 15:18:06,099 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:18:06,103 [INFO] Pores detection finished
+2022-05-02 15:27:16,729 [INFO] Application started
+2022-05-02 15:30:54,898 [INFO] Application started
+2022-05-02 15:31:02,551 [INFO] Image successfully opened
+2022-05-02 15:31:05,985 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:31:06,029 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:31:06,030 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:31:06,031 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:31:06,032 [INFO] Resizing image...
+2022-05-02 15:31:06,849 [INFO] Image resized successfully.
+2022-05-02 15:31:06,990 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 15:31:07,357 [INFO] The image has been split into 132 pictures.
+2022-05-02 15:31:07,400 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:31:09,985 [INFO] Loading images for detection
+2022-05-02 15:32:33,386 [INFO] Application started
+2022-05-02 15:32:42,528 [INFO] Image successfully opened
+2022-05-02 15:32:44,960 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:32:44,995 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:32:44,996 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:32:45,023 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:32:45,024 [INFO] Resizing image...
+2022-05-02 15:32:45,871 [INFO] Image resized successfully.
+2022-05-02 15:32:46,010 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 15:32:46,372 [INFO] The image has been split into 132 pictures.
+2022-05-02 15:32:46,440 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:40:32,618 [INFO] Application started
+2022-05-02 15:40:42,472 [INFO] Image successfully opened
+2022-05-02 15:41:32,928 [INFO] Application started
+2022-05-02 15:41:40,477 [INFO] Image successfully opened
+2022-05-02 15:41:44,522 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:41:52,093 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:41:57,585 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:42:01,936 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:42:02,028 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:42:02,029 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:42:02,036 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:42:02,038 [INFO] Resizing image...
+2022-05-02 15:42:02,905 [INFO] Image resized successfully.
+2022-05-02 15:42:03,088 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 15:42:03,448 [INFO] The image has been split into 132 pictures.
+2022-05-02 15:42:06,338 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:42:38,087 [INFO] Fusing layers... 
+2022-05-02 15:42:38,397 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:42:38,442 [INFO] Adding AutoShape... 
+2022-05-02 15:42:38,445 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:42:38,445 [INFO] Loading images for detection
+2022-05-02 15:42:41,596 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-02 15:42:42,169 [INFO] Pores detection finished
+2022-05-02 15:42:42,243 [INFO] Re-creating image...
+2022-05-02 15:42:42,612 [INFO] All Done
+2022-05-02 15:42:43,015 [INFO] YOLOv5 XLarge:
+2022-05-02 15:42:43,016 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-02 15:42:43,016 [INFO] -Detection took: 41.08 seconds
+2022-05-02 15:45:12,255 [INFO] Application started
+2022-05-02 15:45:24,078 [INFO] Image successfully opened
+2022-05-02 15:45:37,389 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:45:37,412 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:45:37,430 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:45:37,432 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:46:20,730 [INFO] Application started
+2022-05-02 15:46:28,254 [INFO] Image successfully opened
+2022-05-02 15:46:32,474 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:46:32,495 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:46:32,498 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:46:32,500 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:46:32,588 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:46:37,630 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:46:37,631 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:46:37,632 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:46:37,632 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:46:37,635 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:46:41,726 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:46:41,727 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:46:41,728 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:46:41,728 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:46:41,731 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:46:44,873 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:46:44,875 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:46:44,876 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:46:44,876 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:46:44,879 [WARNING] No detector selected warning MessageBox displayed
+2022-05-02 15:46:49,249 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:46:49,250 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:46:49,251 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:46:49,251 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:46:49,252 [INFO] Resizing image...
+2022-05-02 15:46:50,136 [INFO] Image resized successfully.
+2022-05-02 15:46:50,313 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 15:46:50,794 [INFO] The image has been split into 132 pictures.
+2022-05-02 15:46:53,798 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:47:24,938 [INFO] Fusing layers... 
+2022-05-02 15:47:25,448 [INFO] Model Summary: 213 layers, 7012822 parameters, 0 gradients
+2022-05-02 15:47:25,477 [INFO] Adding AutoShape... 
+2022-05-02 15:47:25,480 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Small_weights.pt
+2022-05-02 15:47:25,480 [INFO] Loading images for detection
+2022-05-02 15:47:29,985 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-02 15:47:30,546 [INFO] Pores detection finished
+2022-05-02 15:47:30,633 [INFO] Re-creating image...
+2022-05-02 15:47:31,009 [INFO] All Done
+2022-05-02 15:47:31,418 [INFO] YOLOv5 XLarge:
+2022-05-02 15:47:31,418 [INFO] -Detected 1416 sweat pores out of 1086
+2022-05-02 15:47:31,418 [INFO] -Detection took: 42.17 seconds
+2022-05-02 15:49:16,149 [INFO] Application started
+2022-05-02 15:50:35,469 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:50:38,211 [INFO] Fusing layers... 
+2022-05-02 15:50:38,279 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:50:38,280 [INFO] Adding AutoShape... 
+2022-05-02 15:50:38,283 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:50:38,283 [INFO] Loading image for detection
+2022-05-02 15:50:38,308 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-02 15:50:38,313 [INFO] Pores detection finished
+2022-05-02 15:51:04,208 [INFO] Image successfully opened
+2022-05-02 15:51:05,467 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:51:05,490 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:51:05,490 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:51:05,492 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:51:05,496 [INFO] Resizing image...
+2022-05-02 15:51:06,373 [INFO] Image resized successfully.
+2022-05-02 15:51:06,515 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 15:51:06,876 [INFO] The image has been split into 132 pictures.
+2022-05-02 15:51:07,251 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:51:07,315 [INFO] Fusing layers... 
+2022-05-02 15:51:07,366 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:51:07,368 [INFO] Adding AutoShape... 
+2022-05-02 15:51:07,370 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:51:07,370 [INFO] Loading images for detection
+2022-05-02 15:51:09,757 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-02 15:51:10,242 [INFO] Pores detection finished
+2022-05-02 15:51:10,347 [INFO] Re-creating image...
+2022-05-02 15:51:10,685 [INFO] All Done
+2022-05-02 15:51:11,119 [INFO] YOLOv5 XLarge:
+2022-05-02 15:51:11,119 [INFO] -Detected 896 sweat pores out of 1086
+2022-05-02 15:51:11,119 [INFO] -Detection took: 5.65 seconds
+2022-05-02 15:51:32,540 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:51:32,563 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:51:32,564 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:51:32,566 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:51:32,570 [INFO] Resizing image...
+2022-05-02 15:51:33,429 [INFO] Image resized successfully.
+2022-05-02 15:51:33,567 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 15:51:33,926 [INFO] The image has been split into 132 pictures.
+2022-05-02 15:51:34,235 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:51:34,292 [INFO] Fusing layers... 
+2022-05-02 15:51:34,347 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:51:34,348 [INFO] Adding AutoShape... 
+2022-05-02 15:51:34,351 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:51:34,351 [INFO] Loading images for detection
+2022-05-02 15:51:36,499 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-02 15:51:37,118 [INFO] Pores detection finished
+2022-05-02 15:51:37,219 [INFO] Re-creating image...
+2022-05-02 15:51:37,531 [INFO] All Done
+2022-05-02 15:51:37,966 [INFO] YOLOv5 XLarge:
+2022-05-02 15:51:37,966 [INFO] -Detected 0 sweat pores out of 1086
+2022-05-02 15:51:37,966 [INFO] -Detection took: 5.43 seconds
+2022-05-02 15:51:42,838 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-02 15:51:42,859 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-02 15:51:42,860 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-02 15:51:42,864 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-02 15:51:42,868 [INFO] Resizing image...
+2022-05-02 15:51:43,756 [INFO] Image resized successfully.
+2022-05-02 15:51:43,894 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-02 15:51:44,283 [INFO] The image has been split into 132 pictures.
+2022-05-02 15:51:44,548 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-02 15:51:44,607 [INFO] Fusing layers... 
+2022-05-02 15:51:44,664 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-02 15:51:44,667 [INFO] Adding AutoShape... 
+2022-05-02 15:51:44,671 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-02 15:51:44,671 [INFO] Loading images for detection
+2022-05-02 15:51:47,072 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-02 15:51:47,525 [INFO] Pores detection finished
+2022-05-02 15:51:47,622 [INFO] Re-creating image...
+2022-05-02 15:51:47,953 [INFO] All Done
+2022-05-02 15:51:48,386 [INFO] YOLOv5 XLarge:
+2022-05-02 15:51:48,386 [INFO] -Detected 1207 sweat pores out of 1086
+2022-05-02 15:51:48,386 [INFO] -Detection took: 5.55 seconds
+2022-05-03 18:16:51,971 [INFO] Application started
+2022-05-03 18:16:57,749 [INFO] Image successfully opened
+2022-05-03 18:17:06,314 [INFO] Image successfully opened
+2022-05-03 18:17:10,757 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:17:19,114 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-03 18:17:19,134 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-03 18:17:19,135 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-03 18:17:19,138 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-03 18:17:19,140 [INFO] Resizing image...
+2022-05-03 18:17:20,280 [INFO] Image resized successfully.
+2022-05-03 18:17:20,422 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-03 18:17:20,813 [INFO] The image has been split into 132 pictures.
+2022-05-03 18:17:24,380 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-03 18:17:43,147 [INFO] Fusing layers... 
+2022-05-03 18:17:43,523 [INFO] Model Summary: 213 layers, 7012822 parameters, 0 gradients
+2022-05-03 18:17:43,542 [INFO] Adding AutoShape... 
+2022-05-03 18:17:43,547 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Small_weights.pt
+2022-05-03 18:17:43,547 [INFO] Loading images for detection
+2022-05-03 18:17:47,879 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-03 18:17:48,735 [INFO] Pores detection finished
+2022-05-03 18:17:48,858 [INFO] Re-creating image...
+2022-05-03 18:17:49,260 [INFO] All Done
+2022-05-03 18:17:49,701 [INFO] YOLOv5 XLarge:
+2022-05-03 18:17:49,701 [INFO] -Detected 898 sweat pores out of 1086
+2022-05-03 18:17:49,701 [INFO] -Detection took: 30.59 seconds
+2022-05-03 18:18:35,053 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-03 18:18:35,300 [INFO] Fusing layers... 
+2022-05-03 18:18:35,416 [INFO] Model Summary: 213 layers, 7012822 parameters, 0 gradients
+2022-05-03 18:18:35,418 [INFO] Adding AutoShape... 
+2022-05-03 18:18:35,420 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Small_weights.pt
+2022-05-03 18:18:35,420 [INFO] Loading image for detection
+2022-05-03 18:18:35,477 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-03 18:18:35,481 [INFO] Pores detection finished
+2022-05-03 18:24:37,489 [INFO] Application started
+2022-05-03 18:26:08,265 [INFO] Application started
+2022-05-03 18:31:27,262 [INFO] Application started
+2022-05-03 18:31:29,267 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:31:48,816 [INFO] Application started
+2022-05-03 18:31:50,579 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:32:12,966 [INFO] Application started
+2022-05-03 18:33:34,886 [INFO] Application started
+2022-05-03 18:33:36,424 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:34:18,361 [INFO] Application started
+2022-05-03 18:34:19,832 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:34:24,584 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:34:26,493 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:34:38,389 [INFO] Image successfully opened
+2022-05-03 18:34:41,375 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:35:58,199 [INFO] Application started
+2022-05-03 18:35:59,551 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:36:13,652 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:36:26,530 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-03 18:36:26,562 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-03 18:36:26,563 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-03 18:36:26,565 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-03 18:36:26,569 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:53:09,501 [INFO] Application started
+2022-05-03 18:53:58,888 [INFO] Image successfully opened
+2022-05-03 18:54:03,604 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-03 18:54:03,605 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-03 18:54:03,606 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-03 18:54:03,606 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-03 18:54:03,614 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 18:54:51,415 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-03 18:54:51,416 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-03 18:54:51,417 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-03 18:54:51,418 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-03 18:54:51,421 [INFO] Resizing image...
+2022-05-03 18:54:52,343 [INFO] Image resized successfully.
+2022-05-03 18:54:52,489 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-03 18:54:52,908 [INFO] The image has been split into 132 pictures.
+2022-05-03 18:54:53,107 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-03 18:57:40,582 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet50_heads.h5
+2022-05-03 19:05:45,859 [INFO] Application started
+2022-05-03 19:05:47,487 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 19:06:06,916 [INFO] Application started
+2022-05-03 19:06:11,089 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 19:17:07,695 [INFO] Application started
+2022-05-03 19:17:24,881 [INFO] Image successfully opened
+2022-05-03 19:17:26,981 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-03 19:17:27,031 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-03 19:17:27,047 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-03 19:17:27,048 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-03 19:17:27,049 [INFO] Resizing image...
+2022-05-03 19:17:28,234 [INFO] Image resized successfully.
+2022-05-03 19:17:28,475 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-03 19:17:29,147 [INFO] The image has been split into 132 pictures.
+2022-05-03 19:17:38,947 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-03 19:17:54,913 [INFO] Fusing layers... 
+2022-05-03 19:17:55,413 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-03 19:17:55,507 [INFO] Adding AutoShape... 
+2022-05-03 19:17:55,510 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-03 19:17:55,510 [INFO] Loading images for detection
+2022-05-03 19:19:34,006 [INFO] Application started
+2022-05-03 19:19:46,795 [INFO] Image successfully opened
+2022-05-03 19:19:47,534 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-03 19:19:47,566 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-03 19:19:47,991 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-03 19:19:47,993 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-03 19:19:47,995 [INFO] Resizing image...
+2022-05-03 19:19:48,976 [INFO] Image resized successfully.
+2022-05-03 19:19:49,142 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-03 19:19:49,631 [INFO] The image has been split into 132 pictures.
+2022-05-03 19:19:52,873 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-03 19:20:28,255 [INFO] Fusing layers... 
+2022-05-03 19:20:28,660 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-03 19:20:28,760 [INFO] Adding AutoShape... 
+2022-05-03 19:20:28,771 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-03 19:20:28,772 [INFO] Loading images for detection
+2022-05-03 19:20:32,074 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-03 19:20:32,662 [INFO] Pores detection finished
+2022-05-03 19:20:32,734 [INFO] Re-creating image...
+2022-05-03 19:20:33,081 [INFO] All Done
+2022-05-03 19:20:33,503 [INFO] YOLOv5 XLarge:
+2022-05-03 19:20:33,503 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-03 19:20:33,504 [INFO] -Detection took: 45.97 seconds
+2022-05-03 19:23:04,694 [INFO] Application started
+2022-05-03 19:23:08,860 [INFO] Image successfully opened
+2022-05-03 19:23:15,566 [INFO] Image successfully opened
+2022-05-03 19:23:27,977 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 19:23:36,943 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-03 19:23:36,967 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-03 19:23:36,968 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-03 19:23:36,971 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-03 19:23:36,977 [WARNING] No detector selected warning MessageBox displayed
+2022-05-03 19:23:52,257 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-03 19:23:52,259 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-03 19:23:52,259 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-03 19:23:52,260 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-03 19:23:52,410 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-03 19:28:32,426 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet50_heads.h5
+2022-05-04 19:17:01,784 [INFO] Application started
+2022-05-04 19:17:07,260 [WARNING] No detector selected warning MessageBox displayed
+2022-05-04 19:18:01,093 [INFO] Application started
+2022-05-04 19:18:03,884 [WARNING] No detector selected warning MessageBox displayed
+2022-05-04 19:18:42,274 [INFO] Application started
+2022-05-04 19:18:48,916 [INFO] Image successfully opened
+2022-05-04 19:18:50,876 [WARNING] No detector selected warning MessageBox displayed
+2022-05-04 19:18:57,176 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-04 19:18:57,177 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-04 19:18:57,177 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-04 19:18:57,177 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-04 19:18:57,180 [WARNING] No detector selected warning MessageBox displayed
+2022-05-04 19:19:15,081 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-04 19:19:15,082 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-04 19:19:15,109 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-04 19:19:15,110 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-04 19:19:15,112 [INFO] Resizing image...
+2022-05-04 19:19:16,018 [INFO] Image resized successfully.
+2022-05-04 19:19:16,193 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-04 19:19:16,744 [INFO] The image has been split into 132 pictures.
+2022-05-04 19:19:16,830 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-04 19:22:18,966 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet101_all.h5
+2022-05-04 19:27:38,865 [INFO] Application started
+2022-05-04 19:32:51,315 [WARNING] No detector selected warning MessageBox displayed
+2022-05-04 19:32:59,612 [INFO] Image successfully opened
+2022-05-04 19:33:03,222 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-04 19:33:03,259 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-04 19:33:03,260 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-04 19:33:03,264 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-04 19:33:03,268 [INFO] Resizing image...
+2022-05-04 19:33:04,129 [INFO] Image resized successfully.
+2022-05-04 19:33:04,278 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-04 19:33:04,717 [INFO] The image has been split into 132 pictures.
+2022-05-04 19:33:04,792 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-04 19:36:55,188 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet101_all.h5
+2022-05-04 19:39:51,615 [INFO] Application started
+2022-05-04 19:40:06,933 [INFO] Image successfully opened
+2022-05-04 19:40:09,921 [WARNING] No detector selected warning MessageBox displayed
+2022-05-04 19:40:17,349 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-04 19:40:17,397 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-04 19:40:17,398 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-04 19:40:17,399 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-04 19:40:17,400 [INFO] Resizing image...
+2022-05-04 19:40:18,583 [INFO] Image resized successfully.
+2022-05-04 19:40:18,769 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-04 19:40:19,375 [INFO] The image has been split into 132 pictures.
+2022-05-04 19:40:19,477 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-04 19:45:51,373 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet101_all.h5
+2022-05-04 19:53:03,696 [INFO] Application started
+2022-05-04 19:53:11,717 [INFO] Image successfully opened
+2022-05-04 19:58:04,996 [INFO] Application started
+2022-05-04 19:58:20,338 [INFO] Image successfully opened
+2022-05-04 19:58:22,839 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-04 19:58:22,876 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-04 19:58:22,891 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-04 19:58:22,892 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-04 19:58:22,893 [INFO] Resizing image...
+2022-05-04 19:58:23,983 [INFO] Image resized successfully.
+2022-05-04 19:58:24,280 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-04 19:58:25,007 [INFO] The image has been split into 132 pictures.
+2022-05-04 19:58:27,401 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-04 19:58:46,524 [INFO] Fusing layers... 
+2022-05-04 19:58:46,791 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-04 19:58:46,810 [INFO] Adding AutoShape... 
+2022-05-04 19:58:46,816 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-04 19:58:46,816 [INFO] Loading images for detection
+2022-05-04 19:58:49,720 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-04 19:58:50,447 [INFO] Pores detection finished
+2022-05-04 19:58:50,542 [INFO] Re-creating image...
+2022-05-04 19:58:51,008 [INFO] All Done
+2022-05-04 19:58:51,555 [INFO] YOLOv5 XLarge:
+2022-05-04 19:58:51,555 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-04 19:58:51,555 [INFO] -Detection took: 28.72 seconds
+2022-05-04 20:01:57,360 [INFO] Application started
+2022-05-04 20:02:03,928 [INFO] Image successfully opened
+2022-05-04 20:02:04,945 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-04 20:02:04,952 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-04 20:02:04,952 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-04 20:02:04,952 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-04 20:02:04,954 [INFO] Resizing image...
+2022-05-04 20:02:05,815 [INFO] Image resized successfully.
+2022-05-04 20:02:05,968 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-04 20:02:06,489 [INFO] The image has been split into 132 pictures.
+2022-05-04 20:02:08,748 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-04 20:02:11,597 [INFO] Fusing layers... 
+2022-05-04 20:02:11,667 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-04 20:02:11,669 [INFO] Adding AutoShape... 
+2022-05-04 20:02:11,671 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-04 20:02:11,671 [INFO] Loading images for detection
+2022-05-04 20:02:14,124 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-04 20:02:14,565 [INFO] Pores detection finished
+2022-05-04 20:02:14,644 [INFO] Re-creating image...
+2022-05-04 20:02:15,100 [INFO] All Done
+2022-05-04 20:02:15,546 [INFO] YOLOv5 XLarge:
+2022-05-04 20:02:15,546 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-04 20:02:15,547 [INFO] -Detection took: 10.6 seconds
+2022-05-04 20:10:59,709 [INFO] Application started
+2022-05-04 20:11:01,814 [WARNING] No detector selected warning MessageBox displayed
+2022-05-04 20:11:09,859 [INFO] Image successfully opened
+2022-05-04 20:11:12,944 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-04 20:11:12,976 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-04 20:11:12,977 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-04 20:11:12,978 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-04 20:11:13,009 [INFO] Resizing image...
+2022-05-04 20:11:13,853 [INFO] Image resized successfully.
+2022-05-04 20:11:14,006 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-04 20:11:14,403 [INFO] The image has been split into 132 pictures.
+2022-05-04 20:11:14,607 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-04 20:14:02,029 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet101_all.h5
+2022-05-04 20:15:37,791 [INFO] Image successfully opened
+2022-05-05 11:17:30,762 [INFO] Application started
+2022-05-05 11:18:19,227 [INFO] Application started
+2022-05-05 11:18:28,294 [INFO] Image successfully opened
+2022-05-05 11:18:29,624 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 11:18:29,646 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 11:18:29,647 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 11:18:29,649 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 11:18:29,650 [INFO] Resizing image...
+2022-05-05 11:18:30,605 [INFO] Image resized successfully.
+2022-05-05 11:18:30,763 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 11:18:31,235 [INFO] The image has been split into 132 pictures.
+2022-05-05 11:18:34,305 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 11:19:02,072 [INFO] Fusing layers... 
+2022-05-05 11:19:02,527 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 11:19:02,582 [INFO] Adding AutoShape... 
+2022-05-05 11:19:02,586 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 11:19:02,586 [INFO] Loading images for detection
+2022-05-05 11:19:05,622 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-05 11:19:06,155 [INFO] Pores detection finished
+2022-05-05 11:19:06,248 [INFO] Re-creating image...
+2022-05-05 11:19:06,625 [INFO] All Done
+2022-05-05 11:19:07,020 [INFO] YOLOv5 XLarge:
+2022-05-05 11:19:07,020 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-05 11:19:07,020 [INFO] -Detection took: 37.4 seconds
+2022-05-05 11:19:56,155 [INFO] Application started
+2022-05-05 11:20:00,581 [INFO] Image successfully opened
+2022-05-05 11:23:07,647 [INFO] Application started
+2022-05-05 11:23:15,525 [INFO] Image successfully opened
+2022-05-05 11:23:18,587 [WARNING] No detector selected warning MessageBox displayed
+2022-05-05 11:23:56,677 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 11:23:56,684 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 11:23:56,684 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 11:23:56,685 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 11:23:56,687 [INFO] Resizing image...
+2022-05-05 11:23:57,825 [INFO] Image resized successfully.
+2022-05-05 11:23:57,965 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 11:23:58,392 [INFO] The image has been split into 132 pictures.
+2022-05-05 11:23:59,853 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 11:24:07,767 [INFO] Fusing layers... 
+2022-05-05 11:24:08,868 [INFO] Model Summary: 444 layers, 86173414 parameters, 0 gradients
+2022-05-05 11:24:08,889 [INFO] Adding AutoShape... 
+2022-05-05 11:24:08,893 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_XLarge_weights.pt
+2022-05-05 11:24:08,893 [INFO] Loading images for detection
+2022-05-05 11:24:09,525 [WARNING] No detector selected warning MessageBox displayed
+2022-05-05 11:24:16,844 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 11:24:16,903 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 11:24:16,903 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 11:24:16,905 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 11:24:16,907 [INFO] Resizing image...
+2022-05-05 11:24:17,741 [INFO] Image resized successfully.
+2022-05-05 11:24:17,881 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 11:24:18,273 [INFO] The image has been split into 132 pictures.
+2022-05-05 11:24:18,640 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 11:24:19,143 [INFO] Fusing layers... 
+2022-05-05 11:24:20,758 [INFO] Model Summary: 444 layers, 86173414 parameters, 0 gradients
+2022-05-05 11:24:20,765 [INFO] Adding AutoShape... 
+2022-05-05 11:24:20,783 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_XLarge_weights.pt
+2022-05-05 11:24:20,783 [INFO] Loading images for detection
+2022-05-05 11:24:21,546 [WARNING] No detector selected warning MessageBox displayed
+2022-05-05 11:25:18,901 [INFO] Application started
+2022-05-05 11:25:27,089 [INFO] Image successfully opened
+2022-05-05 11:25:30,397 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 11:25:30,401 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 11:25:30,405 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 11:25:30,405 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 11:25:30,405 [INFO] Resizing image...
+2022-05-05 11:25:31,614 [INFO] Image resized successfully.
+2022-05-05 11:25:31,773 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 11:25:32,299 [INFO] The image has been split into 132 pictures.
+2022-05-05 11:25:33,357 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 11:25:37,562 [INFO] Fusing layers... 
+2022-05-05 11:25:38,914 [INFO] Model Summary: 444 layers, 86173414 parameters, 0 gradients
+2022-05-05 11:25:38,921 [INFO] Adding AutoShape... 
+2022-05-05 11:25:38,931 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_XLarge_weights.pt
+2022-05-05 11:25:38,931 [INFO] Loading images for detection
+2022-05-05 11:25:39,431 [WARNING] No detector selected warning MessageBox displayed
+2022-05-05 12:23:54,400 [INFO] Application started
+2022-05-05 12:25:04,118 [INFO] Application started
+2022-05-05 12:55:43,965 [INFO] Application started
+2022-05-05 12:57:56,166 [INFO] Image successfully opened
+2022-05-05 12:57:58,791 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 12:57:58,796 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 12:57:58,796 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 12:57:58,797 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 12:57:58,797 [INFO] Resizing image...
+2022-05-05 12:57:59,631 [INFO] Image resized successfully.
+2022-05-05 12:57:59,773 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 12:58:00,214 [INFO] The image has been split into 132 pictures.
+2022-05-05 12:58:01,266 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 12:58:08,438 [INFO] Fusing layers... 
+2022-05-05 12:58:08,962 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 12:58:08,991 [INFO] Adding AutoShape... 
+2022-05-05 12:58:09,001 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 12:58:09,002 [INFO] Loading images for detection
+2022-05-05 12:58:12,952 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-05 12:58:13,552 [INFO] Pores detection finished
+2022-05-05 12:58:13,630 [INFO] Re-creating image...
+2022-05-05 12:58:13,972 [INFO] All Done
+2022-05-05 12:58:14,518 [INFO] YOLOv5 XLarge:
+2022-05-05 12:58:14,518 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-05 12:58:14,518 [INFO] -Detection took: 15.73 seconds
+2022-05-05 13:00:34,623 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:00:34,734 [INFO] Fusing layers... 
+2022-05-05 13:00:34,786 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:00:34,788 [INFO] Adding AutoShape... 
+2022-05-05 13:00:34,790 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:00:34,790 [INFO] Loading image for detection
+2022-05-05 13:00:34,844 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-05 13:00:34,849 [INFO] Pores detection finished
+2022-05-05 13:02:35,448 [INFO] Image successfully opened
+2022-05-05 13:02:57,079 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:02:57,147 [INFO] Fusing layers... 
+2022-05-05 13:02:57,199 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:02:57,201 [INFO] Adding AutoShape... 
+2022-05-05 13:02:57,203 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:02:57,203 [INFO] Loading image for detection
+2022-05-05 13:02:57,225 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-05 13:02:57,229 [INFO] Pores detection finished
+2022-05-05 13:03:53,554 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:03:53,637 [INFO] Fusing layers... 
+2022-05-05 13:03:53,689 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:03:53,691 [INFO] Adding AutoShape... 
+2022-05-05 13:03:53,693 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:03:53,693 [INFO] Loading image for detection
+2022-05-05 13:03:53,716 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-05 13:03:53,720 [INFO] Pores detection finished
+2022-05-05 13:04:16,536 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:04:16,599 [INFO] Fusing layers... 
+2022-05-05 13:04:16,652 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:04:16,653 [INFO] Adding AutoShape... 
+2022-05-05 13:04:16,655 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:04:16,655 [INFO] Loading image for detection
+2022-05-05 13:04:16,680 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-05 13:04:16,685 [INFO] Pores detection finished
+2022-05-05 13:04:41,850 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:04:41,913 [INFO] Fusing layers... 
+2022-05-05 13:04:41,965 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:04:41,967 [INFO] Adding AutoShape... 
+2022-05-05 13:04:41,969 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:04:41,969 [INFO] Loading image for detection
+2022-05-05 13:04:41,992 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-05 13:04:41,997 [INFO] Pores detection finished
+2022-05-05 13:06:06,654 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:06:06,723 [INFO] Fusing layers... 
+2022-05-05 13:06:06,775 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:06:06,776 [INFO] Adding AutoShape... 
+2022-05-05 13:06:06,778 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:06:06,778 [INFO] Loading image for detection
+2022-05-05 13:06:06,802 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-05 13:06:06,807 [INFO] Pores detection finished
+2022-05-05 13:13:03,647 [INFO] Image successfully opened
+2022-05-05 13:13:05,506 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 13:13:05,563 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 13:13:05,570 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 13:13:05,582 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 13:13:05,591 [INFO] Resizing image...
+2022-05-05 13:13:06,501 [INFO] Image resized successfully.
+2022-05-05 13:13:06,655 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 13:13:07,061 [INFO] The image has been split into 132 pictures.
+2022-05-05 13:13:07,411 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:13:07,514 [INFO] Fusing layers... 
+2022-05-05 13:13:07,570 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:13:07,572 [INFO] Adding AutoShape... 
+2022-05-05 13:13:07,573 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:13:07,574 [INFO] Loading images for detection
+2022-05-05 13:13:09,953 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-05 13:13:10,394 [INFO] Pores detection finished
+2022-05-05 13:13:10,462 [INFO] Re-creating image...
+2022-05-05 13:13:10,812 [INFO] All Done
+2022-05-05 13:13:11,209 [INFO] YOLOv5 XLarge:
+2022-05-05 13:13:11,210 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-05 13:13:11,210 [INFO] -Detection took: 5.7 seconds
+2022-05-05 13:13:29,626 [INFO] Image successfully opened
+2022-05-05 13:13:30,690 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 13:13:30,711 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 13:13:30,712 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 13:13:30,713 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 13:13:30,714 [INFO] Resizing image...
+2022-05-05 13:13:31,523 [INFO] Image resized successfully.
+2022-05-05 13:13:31,660 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 13:13:32,017 [INFO] The image has been split into 132 pictures.
+2022-05-05 13:13:32,323 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:13:32,386 [INFO] Fusing layers... 
+2022-05-05 13:13:32,439 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:13:32,440 [INFO] Adding AutoShape... 
+2022-05-05 13:13:32,442 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:13:32,443 [INFO] Loading images for detection
+2022-05-05 13:13:34,835 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-05 13:13:35,253 [INFO] Pores detection finished
+2022-05-05 13:13:35,322 [INFO] Re-creating image...
+2022-05-05 13:13:35,670 [INFO] All Done
+2022-05-05 13:13:36,101 [INFO] YOLOv5 XLarge:
+2022-05-05 13:13:36,101 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-05 13:13:36,101 [INFO] -Detection took: 5.41 seconds
+2022-05-05 13:14:24,632 [INFO] Application started
+2022-05-05 13:14:33,896 [INFO] Image successfully opened
+2022-05-05 13:14:34,972 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 13:14:34,977 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 13:14:34,977 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 13:14:34,977 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 13:14:34,978 [INFO] Resizing image...
+2022-05-05 13:14:35,827 [INFO] Image resized successfully.
+2022-05-05 13:14:35,970 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 13:14:36,394 [INFO] The image has been split into 132 pictures.
+2022-05-05 13:14:38,923 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:14:56,618 [INFO] Fusing layers... 
+2022-05-05 13:14:56,686 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:14:56,688 [INFO] Adding AutoShape... 
+2022-05-05 13:14:56,690 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:14:56,690 [INFO] Loading images for detection
+2022-05-05 13:14:59,246 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-05 13:14:59,709 [INFO] Pores detection finished
+2022-05-05 13:14:59,798 [INFO] Re-creating image...
+2022-05-05 13:15:00,174 [INFO] All Done
+2022-05-05 13:15:00,599 [INFO] YOLOv5 XLarge:
+2022-05-05 13:15:00,599 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-05 13:15:00,599 [INFO] -Detection took: 25.63 seconds
+2022-05-05 13:15:04,108 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 13:15:04,118 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 13:15:04,118 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 13:15:04,119 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 13:15:04,120 [INFO] Resizing image...
+2022-05-05 13:15:04,944 [INFO] Image resized successfully.
+2022-05-05 13:15:05,117 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 13:15:05,886 [INFO] The image has been split into 132 pictures.
+2022-05-05 13:15:06,869 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 13:15:06,966 [INFO] Fusing layers... 
+2022-05-05 13:15:07,017 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 13:15:07,019 [INFO] Adding AutoShape... 
+2022-05-05 13:15:07,021 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 13:15:07,021 [INFO] Loading images for detection
+2022-05-05 13:15:09,415 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-05 13:15:09,844 [INFO] Pores detection finished
+2022-05-05 13:15:09,952 [INFO] Re-creating image...
+2022-05-05 13:15:10,313 [INFO] All Done
+2022-05-05 13:15:10,760 [INFO] YOLOv5 XLarge:
+2022-05-05 13:15:10,761 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-05 13:15:10,761 [INFO] -Detection took: 6.65 seconds
+2022-05-05 14:05:05,986 [INFO] Application started
+2022-05-05 14:09:30,544 [INFO] Application started
+2022-05-05 14:09:37,862 [INFO] Image successfully opened
+2022-05-05 14:09:38,928 [WARNING] No detector selected warning MessageBox displayed
+2022-05-05 14:09:44,061 [WARNING] No detector selected warning MessageBox displayed
+2022-05-05 14:10:03,690 [WARNING] No detector selected warning MessageBox displayed
+2022-05-05 14:13:40,656 [INFO] Application started
+2022-05-05 14:13:49,541 [INFO] Image successfully opened
+2022-05-05 14:13:50,658 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 14:13:50,702 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 14:13:50,704 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 14:13:50,706 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 14:13:50,708 [INFO] Resizing image...
+2022-05-05 14:13:51,532 [INFO] Image resized successfully.
+2022-05-05 14:13:51,674 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 14:13:52,037 [INFO] The image has been split into 132 pictures.
+2022-05-05 14:13:54,880 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 14:14:14,762 [INFO] Fusing layers... 
+2022-05-05 14:14:15,514 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 14:14:15,571 [INFO] Adding AutoShape... 
+2022-05-05 14:14:15,576 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 14:14:15,576 [INFO] Loading images for detection
+2022-05-05 14:14:19,459 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-05 14:14:20,070 [INFO] Pores detection finished
+2022-05-05 14:14:20,199 [INFO] Re-creating image...
+2022-05-05 14:14:20,566 [INFO] All Done
+2022-05-05 14:14:21,007 [INFO] YOLOv5 XLarge:
+2022-05-05 14:14:21,007 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-05 14:14:21,008 [INFO] -Detection took: 30.35 seconds
+2022-05-05 14:14:48,246 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 14:14:48,355 [INFO] Fusing layers... 
+2022-05-05 14:14:48,406 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 14:14:48,408 [INFO] Adding AutoShape... 
+2022-05-05 14:14:48,410 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 14:14:48,410 [INFO] Loading image for detection
+2022-05-05 14:14:48,531 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-05 14:14:48,536 [INFO] Pores detection finished
+2022-05-05 14:15:01,405 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 14:15:01,462 [INFO] Fusing layers... 
+2022-05-05 14:15:01,513 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 14:15:01,515 [INFO] Adding AutoShape... 
+2022-05-05 14:15:01,517 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 14:15:01,517 [INFO] Loading image for detection
+2022-05-05 14:15:01,555 [INFO] Saved 1 image to [1mruns/detect/exp[0m
+2022-05-05 14:15:01,562 [INFO] Pores detection finished
+2022-05-05 14:15:19,896 [INFO] Image successfully opened
+2022-05-05 14:15:22,294 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-05 14:15:22,322 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-05 14:15:22,353 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-05 14:15:22,358 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-05 14:15:22,360 [INFO] Resizing image...
+2022-05-05 14:15:22,738 [INFO] Image resized successfully.
+2022-05-05 14:15:22,798 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-05 14:15:22,967 [INFO] The image has been split into 64 pictures.
+2022-05-05 14:15:23,276 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-05 14:15:23,339 [INFO] Fusing layers... 
+2022-05-05 14:15:23,391 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-05 14:15:23,393 [INFO] Adding AutoShape... 
+2022-05-05 14:15:23,395 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-05 14:15:23,395 [INFO] Loading images for detection
+2022-05-05 14:15:24,419 [INFO] Saved 64 images to [1mruns/detect/exp[0m
+2022-05-05 14:15:24,733 [INFO] Pores detection finished
+2022-05-05 14:15:24,775 [INFO] Re-creating image...
+2022-05-05 14:15:24,918 [INFO] All Done
+2022-05-05 14:15:25,104 [INFO] YOLOv5 XLarge:
+2022-05-05 14:15:25,104 [INFO] -Detected 8 sweat pores out of 1086
+2022-05-05 14:15:25,104 [INFO] -Detection took: 2.81 seconds
+2022-05-06 12:23:18,476 [INFO] Application started
+2022-05-06 12:23:31,055 [INFO] Image successfully opened
+2022-05-06 12:23:32,134 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 12:23:32,162 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 12:23:32,163 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 12:23:32,165 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 12:23:32,169 [INFO] Resizing image...
+2022-05-06 12:23:33,131 [INFO] Image resized successfully.
+2022-05-06 12:23:33,277 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 12:23:33,775 [INFO] The image has been split into 132 pictures.
+2022-05-06 12:23:37,070 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-06 12:24:03,094 [INFO] Fusing layers... 
+2022-05-06 12:24:03,432 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-06 12:24:03,461 [INFO] Adding AutoShape... 
+2022-05-06 12:24:03,464 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-06 12:24:03,464 [INFO] Loading images for detection
+2022-05-06 12:24:07,143 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-06 12:24:07,942 [INFO] Pores detection finished
+2022-05-06 12:24:08,129 [INFO] Re-creating image...
+2022-05-06 12:24:08,510 [INFO] All Done
+2022-05-06 12:24:09,089 [INFO] YOLOv5 XLarge:
+2022-05-06 12:24:09,090 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-06 12:24:09,090 [INFO] -Detection took: 36.96 seconds
+2022-05-06 12:25:48,915 [INFO] Application started
+2022-05-06 12:25:56,715 [INFO] Image successfully opened
+2022-05-06 12:25:58,275 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 12:26:17,893 [INFO] Application started
+2022-05-06 12:26:23,812 [INFO] Image successfully opened
+2022-05-06 12:26:25,206 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 12:26:44,955 [INFO] Application started
+2022-05-06 12:26:53,130 [INFO] Image successfully opened
+2022-05-06 12:26:53,136 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 12:26:53,143 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 12:26:53,145 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 12:26:53,148 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 12:26:53,149 [INFO] Resizing image...
+2022-05-06 12:26:53,979 [INFO] Image resized successfully.
+2022-05-06 12:26:54,121 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 12:26:54,518 [INFO] The image has been split into 132 pictures.
+2022-05-06 12:26:59,167 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-06 12:27:10,615 [INFO] Fusing layers... 
+2022-05-06 12:27:10,715 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-06 12:27:10,717 [INFO] Adding AutoShape... 
+2022-05-06 12:27:10,719 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-06 12:27:10,719 [INFO] Loading images for detection
+2022-05-06 12:27:13,668 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-06 12:27:14,220 [INFO] Pores detection finished
+2022-05-06 12:27:14,361 [INFO] Re-creating image...
+2022-05-06 12:27:14,735 [INFO] All Done
+2022-05-06 12:27:15,166 [INFO] YOLOv5 XLarge:
+2022-05-06 12:27:15,166 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-06 12:27:15,166 [INFO] -Detection took: 22.03 seconds
+2022-05-06 12:27:15,280 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 12:27:15,291 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 12:27:15,291 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 12:27:15,292 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 12:27:15,294 [INFO] Resizing image...
+2022-05-06 12:27:16,255 [INFO] Image resized successfully.
+2022-05-06 12:27:16,413 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 12:27:16,853 [INFO] The image has been split into 132 pictures.
+2022-05-06 12:27:17,516 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-06 12:27:17,578 [INFO] Fusing layers... 
+2022-05-06 12:27:17,632 [INFO] Model Summary: 213 layers, 1760518 parameters, 0 gradients
+2022-05-06 12:27:17,634 [INFO] Adding AutoShape... 
+2022-05-06 12:27:17,636 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_Nano_weights.pt
+2022-05-06 12:27:17,636 [INFO] Loading images for detection
+2022-05-06 12:27:20,052 [INFO] Saved 132 images to [1mruns/detect/exp[0m
+2022-05-06 12:27:20,527 [INFO] Pores detection finished
+2022-05-06 12:27:20,618 [INFO] Re-creating image...
+2022-05-06 12:27:20,964 [INFO] All Done
+2022-05-06 12:27:21,416 [INFO] YOLOv5 XLarge:
+2022-05-06 12:27:21,416 [INFO] -Detected 1233 sweat pores out of 1086
+2022-05-06 12:27:21,427 [INFO] -Detection took: 6.14 seconds
+2022-05-06 18:02:58,435 [INFO] Application started
+2022-05-06 18:03:22,600 [INFO] Image successfully opened
+2022-05-06 18:03:26,252 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:03:30,824 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:04:15,006 [INFO] Application started
+2022-05-06 18:04:21,518 [INFO] Image successfully opened
+2022-05-06 18:04:24,922 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:04:54,112 [INFO] Application started
+2022-05-06 18:05:02,496 [INFO] Image successfully opened
+2022-05-06 18:07:22,307 [INFO] Application started
+2022-05-06 18:07:31,582 [INFO] Image successfully opened
+2022-05-06 18:07:34,857 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 18:07:34,881 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 18:07:34,937 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 18:07:34,944 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 18:07:34,947 [INFO] Resizing image...
+2022-05-06 18:07:35,889 [INFO] Image resized successfully.
+2022-05-06 18:07:36,088 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 18:07:36,656 [INFO] The image has been split into 132 pictures.
+2022-05-06 18:07:42,374 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-06 18:08:14,533 [INFO] Fusing layers... 
+2022-05-06 18:08:15,928 [INFO] Model Summary: 444 layers, 86173414 parameters, 0 gradients
+2022-05-06 18:08:15,981 [INFO] Adding AutoShape... 
+2022-05-06 18:08:15,988 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_XLarge_weights.pt
+2022-05-06 18:08:15,988 [INFO] Loading images for detection
+2022-05-06 18:10:15,348 [INFO] Application started
+2022-05-06 18:10:25,620 [INFO] Image successfully opened
+2022-05-06 18:10:28,958 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 18:10:29,000 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 18:10:29,004 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 18:10:29,011 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 18:10:29,012 [INFO] Resizing image...
+2022-05-06 18:10:30,000 [INFO] Image resized successfully.
+2022-05-06 18:10:30,244 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 18:10:30,803 [INFO] The image has been split into 132 pictures.
+2022-05-06 18:10:34,410 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-06 18:11:04,623 [INFO] Fusing layers... 
+2022-05-06 18:11:06,157 [INFO] Model Summary: 444 layers, 86173414 parameters, 0 gradients
+2022-05-06 18:11:06,193 [INFO] Adding AutoShape... 
+2022-05-06 18:11:06,197 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_XLarge_weights.pt
+2022-05-06 18:11:06,197 [INFO] Loading images for detection
+2022-05-06 18:11:07,403 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:16:25,412 [INFO] Application started
+2022-05-06 18:16:34,193 [INFO] Image successfully opened
+2022-05-06 18:16:36,327 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 18:16:36,365 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 18:16:36,365 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 18:16:36,370 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 18:16:36,372 [INFO] Resizing image...
+2022-05-06 18:16:37,226 [INFO] Image resized successfully.
+2022-05-06 18:16:37,376 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 18:16:37,782 [INFO] The image has been split into 132 pictures.
+2022-05-06 18:16:40,163 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-06 18:17:01,123 [INFO] Fusing layers... 
+2022-05-06 18:17:02,521 [INFO] Model Summary: 444 layers, 86173414 parameters, 0 gradients
+2022-05-06 18:17:02,590 [INFO] Adding AutoShape... 
+2022-05-06 18:17:02,607 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_XLarge_weights.pt
+2022-05-06 18:17:02,608 [INFO] Loading images for detection
+2022-05-06 18:17:03,593 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:19:36,684 [INFO] Application started
+2022-05-06 18:19:48,420 [INFO] Image successfully opened
+2022-05-06 18:19:51,483 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 18:19:51,513 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 18:19:51,514 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 18:19:51,520 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 18:19:51,522 [INFO] Resizing image...
+2022-05-06 18:19:52,425 [INFO] Image resized successfully.
+2022-05-06 18:19:52,580 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 18:19:52,947 [INFO] The image has been split into 132 pictures.
+2022-05-06 18:19:56,632 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-06 18:20:39,427 [INFO] Fusing layers... 
+2022-05-06 18:20:40,660 [INFO] Model Summary: 444 layers, 86173414 parameters, 0 gradients
+2022-05-06 18:20:40,698 [INFO] Adding AutoShape... 
+2022-05-06 18:20:40,702 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_XLarge_weights.pt
+2022-05-06 18:20:40,702 [INFO] Loading images for detection
+2022-05-06 18:20:41,727 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:20:47,972 [INFO] Image successfully opened
+2022-05-06 18:28:31,011 [INFO] Application started
+2022-05-06 18:28:38,974 [INFO] Image successfully opened
+2022-05-06 18:28:56,924 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:29:01,627 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 18:29:01,660 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 18:29:01,660 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 18:29:01,662 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 18:29:01,665 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:29:05,558 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 18:29:05,559 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 18:29:05,560 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 18:29:05,561 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 18:29:05,563 [INFO] Resizing image...
+2022-05-06 18:29:06,437 [INFO] Image resized successfully.
+2022-05-06 18:29:06,577 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 18:29:06,998 [INFO] The image has been split into 132 pictures.
+2022-05-06 18:29:07,121 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-06 18:37:44,783 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet101_all.h5
+2022-05-06 18:40:50,996 [INFO] Application started
+2022-05-06 18:41:05,168 [INFO] Image successfully opened
+2022-05-06 18:41:08,004 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 18:41:08,051 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 18:41:08,069 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 18:41:08,085 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 18:41:08,102 [INFO] Resizing image...
+2022-05-06 18:41:09,101 [INFO] Image resized successfully.
+2022-05-06 18:41:09,244 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 18:41:09,671 [INFO] The image has been split into 132 pictures.
+2022-05-06 18:41:13,599 [INFO] YOLOv5 🚀 2022-1-27 torch 1.10.1+cu102 CUDA:0 (NVIDIA GeForce 940M, 2004MiB)
+
+2022-05-06 18:41:55,131 [INFO] Fusing layers... 
+2022-05-06 18:41:56,717 [INFO] Model Summary: 444 layers, 86173414 parameters, 0 gradients
+2022-05-06 18:41:56,741 [INFO] Adding AutoShape... 
+2022-05-06 18:41:56,746 [INFO] Yolov5 model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI//yolov5_models/YOLOv5_XLarge_weights.pt
+2022-05-06 18:41:56,747 [INFO] Loading images for detection
+2022-05-06 18:41:58,249 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:42:14,721 [INFO] Image successfully opened
+2022-05-06 18:42:15,601 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:42:19,411 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 18:42:30,735 [INFO] Image successfully opened
+2022-05-06 18:42:33,136 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 18:42:33,140 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 18:42:33,140 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 18:42:33,140 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 18:42:33,141 [INFO] Resizing image...
+2022-05-06 18:42:33,977 [INFO] Image resized successfully.
+2022-05-06 18:42:34,149 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 18:42:34,587 [INFO] The image has been split into 132 pictures.
+2022-05-06 18:42:35,026 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-06 18:46:04,075 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet101_all.h5
+2022-05-06 18:59:42,933 [INFO] Application started
+2022-05-06 19:00:10,685 [INFO] Image successfully opened
+2022-05-06 19:00:11,519 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 19:00:15,667 [INFO] Deleting content of a folder: /parts_of_image/
+2022-05-06 19:00:15,706 [INFO] Deleting content of a folder: /pores_detected/
+2022-05-06 19:00:15,712 [INFO] Deleting content of a folder: /high_resolution_image/
+2022-05-06 19:00:15,717 [INFO] Deleting content of a folder: /final_fingerprint/
+2022-05-06 19:00:15,723 [INFO] Resizing image...
+2022-05-06 19:00:16,711 [INFO] Image resized successfully.
+2022-05-06 19:00:16,857 [INFO] Resized image saved to/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections/high_resolution_image/
+2022-05-06 19:00:17,234 [INFO] The image has been split into 132 pictures.
+2022-05-06 19:00:17,461 [WARNING] From /home/filip/anaconda3/envs/GUI_Final/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py:1659: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2022-05-06 19:04:26,849 [INFO] Mask R-CNN model weights loaded from path: /home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/mrcnn_models/mask_rcnn_fingerprints_resnet101_all.h5
+2022-05-06 19:05:03,059 [WARNING] No detector selected warning MessageBox displayed
+2022-05-06 19:05:11,438 [INFO] Image successfully opened
