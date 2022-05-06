@@ -49,7 +49,7 @@ class MaskRCNN:
         img_arr = np.array(img)
         results = mask_rcnn_model_loaded.detect([img_arr], verbose=1)
         r = results[0]
-        VisualizeMaskRcnnDetections.display_instances(img, "detected_block_of_image.jpg", r['rois'], r['masks'],
+        mask_rcnn_visualizations.display_instances(img, "detected_block_of_image.jpg", r['rois'], r['masks'],
                                                       r['class_ids'],
                                                       class_names, r['scores'])
         self.number_of_detected_pores = len(r['rois'])
@@ -78,7 +78,7 @@ class MaskRCNN:
                 img_arr = np.array(img)
                 results = mask_rcnn_model_loaded.detect([img_arr], verbose=1)
                 r = results[0]
-                VisualizeMaskRcnnDetections.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
+                mask_rcnn_visualizations.display_instances(img, file_name, r['rois'], r['masks'], r['class_ids'],
                                                               class_names, r['scores'], figsize=(5, 5))
                 print(len(r['rois']))
                 number_of_detected_pores = number_of_detected_pores + len(r['rois'])
