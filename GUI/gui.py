@@ -136,15 +136,12 @@ class MyWindow(QMainWindow, Ui_MainWindow):
         else:
             number_of_detected_pores = yolo.detect(True, False)
             list_of_images = os.listdir(
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/runs/detect/exp/')
+                self.app_config.get("paths", "ROOT_DIR") + 'runs/detect/exp/')
             shutil.copyfile(
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/runs/detect/exp/' + list_of_images[0],
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
-                '/block_of_image_detected/detected_image.jpg')
+                self.app_config.get("paths", "ROOT_DIR") + 'runs/detect/exp/' + list_of_images[0],
+                self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/block_of_image_detected/detected_image.jpg')
             self.create_pixmap_detected_image(
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
-                '/block_of_image_detected/detected_image'
-                '.jpg',
+                self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/block_of_image_detected/detected_image.jpg',
                 False)
             end_time = time.time()
             detection_time = round((end_time - start_time), 2)
@@ -186,8 +183,7 @@ class MyWindow(QMainWindow, Ui_MainWindow):
                 False)
             shutil.copyfile(
                 self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/pores_detected/detected_block_of_image.jpg',
-                '/home/filip/Documents/DP/Git/DP_2021-2022/GUI2/DP_2021-2022/GUI/PoreDetections'
-                '/block_of_image_detected/detected_image.jpg')
+                self.app_config.get("paths", "ROOT_DIR") + 'PoreDetections/block_of_image_detected/detected_image.jpg')
             end_time = time.time()
             detection_time = round((end_time - mask_rcnn.start_time), 2)
             self.number_of_pores_detected_label.setText(
