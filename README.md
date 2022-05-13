@@ -23,7 +23,7 @@ python gui.py # run
 IMPORTANT: Before you start application you have to change ROOT_DIR inside app_config.ini. This ROOT_DIR have to be changed, otherwise the application may not work properly. This folder should be the same as the one in which app_config.ini is located.
 
 ## <div align="center">Pretrained models</div>
-This repository contains only two models. You can download mrcnn models from URL: https://mega.nz/folder/Ing3RaRA#UU66txug51g2RgQS7sl9Dg and YOLOv5 models from URL https://mega.nz/folder/piJXUIBQ#jUNc8qFzc109E0c-tEJbNg.
+This repository contains only two models. You can download mrcnn models from URL: https://drive.google.com/drive/folders/1RQ4rHWexq8nswqiiu5QSYuzCImgfh4aT and YOLOv5 models from URL https://drive.google.com/drive/folders/1D2_QoZ6OKOiXe-G3lsVbHJBMwxtM2SHo.
 All models should have correct name and they should be in defined folders. YOLOv5 models should be in yolov5_models folder and mrcnn models should be in mrcnn_models folder.
 
 
